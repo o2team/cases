@@ -59,5 +59,8 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 				$scope.caselist[i].links[u].url = $sce.trustAsHtml($scope.caselist[i].links[u].url);
 			}
 		}
+
+		document.querySelector('.loading').setAttribute('class', 'loading loaded');
+		setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
 	}
 });
