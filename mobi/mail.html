@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html ng-app="cases" ng-controller="casesList">
+<head>
+	<meta charset="utf-8" />
+	<title>H5 精品案例赏析 - 第{{vol}}期</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/mail.css">
+</head>
+<body>
+	<article class="wrap">
+		<header class="header">
+			<h1>H5精品案例赏析</h1>
+			<h2>{{date}} 第{{vol}}期</h2>
+		</header>
+
+		<section class="prewords"><p ng-repeat="para in prewords" ng-bind-html="para"></p></section>
+
+		<section class="mail_sec" ng-repeat="case in caselist">
+			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
+			<a href="{{case.url}}"><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
+			<div class="aside_wrap">
+				<ul class="attr_list">
+					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
+					<li><strong>需求背景：</strong>{{case.type[2].name}}</li>	
+				</ul>
+				<ul class="rate_list">
+					<li><strong>创意指数：</strong><span class="rate_star"><i>{{case.fe[0]}}</i></span></li>	
+					<li><strong>实现难度：</strong><span class="rate_star"><i>{{case.fe[1]}}</i></span></li>	
+				</ul>
+			</div>
+
+			<div class="cont">
+				<h4 class="subtitle">创意分析</h4>
+				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
+			</div>
+			<div class="cont">
+				<h4 class="subtitle">技术分析</h4>
+				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+			</div>
+		</section>
+	</article>
+	<script src="js/angular-1.4.7.min.js"></script>
+	<script src="js/angular-route-1.4.7.min.js"></script>
+	<script src="js/me-lazyload.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/vol.js"></script>
+</body>
+</html>
