@@ -17,7 +17,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.header h1 i{width:240px;height:34px;position:absolute;top:50%;left:50%;margin-top:-17px;margin-left:-120px;background:url(../img/title.png) no-repeat top center;background-size:100% auto;}
 	.header h2{line-height:24px;display:inline-block;font-size:14px;padding:0 24px;background:#CA1F24;color:#EAA5A7;border-radius:3px;}
 
-	.prewords{line-height:22px;margin:0 20px 20px;background:#FAFBFB;border-left:4px solid #DDDDDD;color:#999999;font-size:12px;padding:9px 12px;}
+	.prewords{line-height:22px;margin:0 20px 20px;background:#FAFBFB;color:#999999;font-size:12px;padding:9px 12px;}
 		.prewords p, .prewords ul{margin-bottom:10px;text-indent:2em;}
 			.prewords p:first-child{text-indent:0;}
 
