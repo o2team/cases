@@ -1,11 +1,14 @@
 //controllers.js
 
 var cases = angular.module('cases', ['me-lazyload', 'ngRoute']), 
-	data = [];
+	data = [], 
+	h5type = [{"name": "游戏", "id": 1}, 
+		{"name": "短片", "id": 2}, 
+		{"name": "翻页动画", "id": 3}, 
+		{"name": "多屏互动", "id": 4}];
 
 cases.controller('casesList', function($scope, $http, $location, $sce){
 	$scope.vol = $location.search().vol;
-	$scope.date = '2015-10-26';
 	$scope.preword = '';
 
 	parseHtml = function(array){
@@ -16,16 +19,25 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 
 	window.json2 = function(res){
 		var volList = res, 
+			latest = volList[volList.length-1], 
 			pt, projectTime;
-			for(var v=0; v<volList.length; v++){
-				if(volList[v].vol === parseInt($scope.vol)){
-					$scope.date = volList[v].date;
-					if(!!volList[v].prewords){
-						$scope.prewords = volList[v].prewords.split('\n');
-						parseHtml($scope.prewords);
+			if($scope.vol){
+				for(var v=0; v<volList.length; v++){
+					if(volList[v].vol === parseInt($scope.vol)){
+						$scope.date = volList[v].date;
+						if(!!volList[v].prewords){
+							$scope.prewords = volList[v].prewords.split('\n');
+						}
 					}
 				}
+			}else{
+
+				$scope.date = latest.date;
+				$scope.vol = latest.vol;
+				$scope.prewords = latest.prewords.split('\n');
 			}
+			
+		parseHtml($scope.prewords);
 
 		pt = $scope.date.split('-');
 		projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2]), 8, 0).toGMTString();
@@ -52,6 +64,11 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 				$scope.caselist[i].fe[j]=rate;
 			}
 			$scope.caselist[i].desc=$scope.caselist[i].desc.split('\n');
+			for(var t=0; t<h5type.length; t++){
+				if($scope.caselist[i].type[1].name===h5type[t].name){
+					$scope.caselist[i].type[1].id = h5type[t].id;
+				}
+			}
 			/*$scope.caselist[i].desc.forEach(parseHtml);
 			$scope.caselist[i].links.forEach(parseHtml);*/
 			parseHtml($scope.caselist[i].desc);

@@ -20,7 +20,7 @@
 
 		<section class="mail_sec" ng-repeat="case in caselist">
 			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
-			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].data}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
+			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
 			<div class="aside_wrap">
 				<ul class="attr_list">
 					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
@@ -41,6 +41,18 @@
 				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
 			</div>
 		</section>
+
+		<footer class="footer">
+			<div class="wanted">
+				<div class="wanted_qrcode"><img src="img/wanted_qrcode.png" alt="O2team"></div>
+				<div class="wanted_words">
+					<p>HI! 我们是<br />JDC的H5品鉴小分队</p>
+					<p class="aside">爷～赏点钱呗～</p>
+				</div>
+			</div>
+
+			<a href="#" class="back" style="display:none;">查看往期</a>
+		</footer>
 	</article>
 	<div class="loading">
 		<div><i></i><i></i><i></i></div>

@@ -21,7 +21,6 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 			.prewords p:first-child{text-indent:0;}
 
 .mail_sec{margin:0 20px;padding-bottom:30px;margin-bottom:26px;border-bottom:1px solid #DDDDDD;}
-	.main_sec:last-child{border-bottom:none;}
 	.title{font-size:18px;color:#333333;margin-bottom:10px;position:relative;}
 		.title:after{width:0;height:0;border-top:7px dashed transparent;border-bottom:7px dashed transparent;border-left:10px solid #E12228;position:absolute;top:50%;left:-20px;margin-top:-8px;content:"";}
 	.img_link{display:block;position:relative;}
@@ -71,14 +70,26 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 			50%{-webkit-transform:translate(-10px, 6px) rotate(-90deg);}
 		}
 
+.footer{position:relative;background:#E9242F;}
+	.wanted{height:120px;position:relative;}
+	.wanted_qrcode{position:absolute;top:10px;left:10px;padding:6px;background:#FFFFFF;}
+		.wanted_qrcode img{width:90px;height:90px;display:block;}
+	.wanted_words{font-size:16px;color:#FFFFFF;line-height:26px;padding-left:130px;padding-top:18px;}
+		.wanted_words p{font-weight:bold;}
+		.wanted_words .aside{font-size:12px;font-weight:normal;line-height:18px;padding:0 7px;display:inline-block;background:#BA1D26;}
+	.back{width:107px;height:120px;line-height:120px;position:absolute;top:0;right:0;background:#D1202A;color:#FFFFFF;text-align:center;font-size:14px;}
+
 @media (max-width:700px){
 	.wrap{margin:0;}
 }
 @media (max-width:400px){
-	.header{margin-bottom:10px;}
-	.prewords{margin:0 10px 20px;font-size:14px;}
-	.mail_sec{margin:0 10px;margin-bottom:15px;}
-		.title:after{left:-10px;}
+	.header{margin-bottom:15px;}
+	.prewords{margin:0 15px 20px;font-size:14px;}
+	.mail_sec{margin:0 15px;margin-bottom:15px;}
+		.title:after{left:-15px;}
 		.rate_list{position:static;}
 	.mail_sec .cont p{font-size:14px;}
+}
+@media (max-width:375px){
+	.back{width:100%;height:40px;line-height:40px;position:static;display:block;}
 }
