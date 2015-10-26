@@ -2,7 +2,7 @@
 <html ng-app="cases" ng-controller="casesList">
 <head>
 	<meta charset="utf-8" />
-	<title>H5 精品案例赏析 - 第{{vol}}期</title>
+	<title>H5 精品案例赏析</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -42,16 +42,6 @@
 			</div>
 		</section>
 
-		<section class="prewords">
-			<p>小分队成员：</p>
-			<ul>
-				<li>阿姨<b>EC</b>（RTX：p_jdyixli，邮箱：<a href='mailto:liyixin@jd.com'>liyixin@jd.com</a>，ERP：liyixin5）</li>
-				<li>萌妹子<b>燕婷</b>（RTX：p_jdytzhang，邮箱：<a href='mailto:zhangyanting@jd.com'>zhangyanting@jd.com</a>，ERP：zhangyanting）</li>
-				<li>软妹子<b>婷婷</b>（RTX：p_jdttingli，邮箱：<a href='mailto:litingting6@jd.com'>litingting6@jd.com</a>，ERP：litingting14）</li>
-			</ul>
-			<p>接受任何形式的投案（投递案例）与提议，有需求尽管说，一定保证服侍好各位。</p>
-		</section>
-
 		<footer class="footer">
 			<div class="wanted">
 				<div class="wanted_qrcode"><img src="img/wanted_qrcode.png" alt="O2team"></div>
@@ -73,30 +63,80 @@
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
 
-	<script type="text/javascript" src="http://static.paipaiimg.com/paipai_h5/js/ttj/shareapi.js"></script>
-	<script>
-	    //分享设置
-	    shareApi({
-	        "url":"",
-	        "qq_title":"H5精品案例赏析vol.{{vol}} - JDC的H5品鉴小分队",
-	        "qzone_title":"H5精品案例赏析vol.{{vol}} - JDC的H5品鉴小分队",
-	        "wechat_title":"H5精品案例赏析vol.{{vol}} - JDC的H5品鉴小分队",
-	        "wechat_time_title":"H5精品案例赏析vol.{{vol}} - JDC的H5品鉴小分队",
-	        "wechat_desc":"",
-	        "qq_desc":"",
-	        "qzone_desc":"",
-	        "img":"img/share.png",
-	        "ptag":{ 
-	        w2w:"20400.5.3", //微信分享至微信好友
-	        w2t:"20400.5.4", //微信分享至朋友圈
-	        //w2b:"",       //微信分享至腾讯微博,如果没有，可不传
-	        //w2e:"",       //微信发送邮件，如果没有，可不传
-	        q2q:"20400.5.1", //手Q分享至QQ好友或群
-	        q2z:"20400.5.2", //手Q分享至QQ空间
-	        q2w:"20400.5.3", //手Q分享至微信好友
-	        q2t:"20400.5.4"  //手Q分享至朋友圈
-	        }
-	    });
+	<script  type="text/javascript" charset="utf-8">
+	/**
+	* 微信分享
+	*/
+	var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
+	    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+	        WeixinJSBridge.on('menu:share:timeline', function(argv){
+	            WeixinJSBridge.invoke('shareTimeline',{
+	                "img_url":img_url,
+	                "img_width":img_width,
+	                "img_height":img_height,
+	                "link":link,
+	                "title": title,
+	                "desc":desc
+	            }, function() {
+	                callback('timeline');
+	            });
+	        });
+
+	        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+
+	            WeixinJSBridge.invoke('sendAppMessage',{
+	                "appid":appid || "",
+	                "img_url":img_url,
+	                "img_width":img_width,
+	                "img_height":img_height,
+	                "link":link,
+	                "title": title,
+	                "desc":desc
+	            }, function() {
+	                callback('appmessage');
+	            })
+
+	        });
+
+
+	        WeixinJSBridge.on('menu:share:weibo', function(argv){
+	          WeixinJSBridge.invoke('shareWeibo',{
+	             "content":title,
+	             "url":link
+	          }, function(res){
+	            callback('weibo');
+	          });
+	        });
+
+	        WeixinJSBridge.on('menu:share:facebook', function(argv){
+	          (dataForWeixin.callback)();
+	          WeixinJSBridge.invoke('shareFB',{
+	                "img_url":img_url,
+	                "img_width":img_width,
+	                "img_height":img_height,
+	                "link":link,
+	                "title": title,
+	                "desc":desc
+	          }, function(res){
+	            callback('facebook');
+	          });
+	        });
+
+	    })
+
+	}
+	wxShare('http://o2team.com/cases/mobi/img/share.png',100,100,'http://o2team.com/cases/mobi/mail.html#?vol=1','H5 精品案例赏析-第1期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
 	</script>
+	<script>
+	/*统计*/
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?805df717cea51309f3cd529482faa663";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
 </body>
 </html>

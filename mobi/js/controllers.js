@@ -51,7 +51,7 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 		
 	window.json1 = function (data) { 
 		data = data;
-		$scope.caselist = data;
+		$scope.caselist = data.reverse();
 
 		for(var i=0; i<$scope.caselist.length; i++){
 			$scope.caselist[i].vd=$scope.caselist[i].vd.split(',');
