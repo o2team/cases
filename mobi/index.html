@@ -2,7 +2,7 @@
 <html ng-app="cases" ng-controller="casesList">
 <head>
 	<meta charset="utf-8" />
-	<title>H5 精品案例赏析 - 第{{vol}}期</title>
+	<title>H5 精品案例赏析</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -12,7 +12,7 @@
 <body>
 	<article class="wrap">
 		<header class="header">
-			<h1>H5精品案例赏析</h1>
+			<h1>H5精品案例赏析<i></i></h1>
 			<h2>{{date}} 第{{vol}}期</h2>
 		</header>
 
@@ -20,7 +20,7 @@
 
 		<section class="mail_sec" ng-repeat="case in caselist">
 			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
-			<a href="{{case.url}}"><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
+			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
 			<div class="aside_wrap">
 				<ul class="attr_list">
 					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
@@ -28,7 +28,7 @@
 				</ul>
 				<ul class="rate_list">
 					<li><strong>创意指数：</strong><span class="rate_star"><i>{{case.fe[0]}}</i></span></li>	
-					<li><strong>实现难度：</strong><span class="rate_star"><i>{{case.fe[1]}}</i></span></li>	
+					<li><strong>实现难度：</strong><span class="rate_star"><i>{{case.fe[1]}}</i></span></li>
 				</ul>
 			</div>
 
@@ -41,11 +41,40 @@
 				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
 			</div>
 		</section>
+
+		<footer class="footer">
+			<div class="wanted">
+				<div class="wanted_qrcode"><img src="img/wanted_qrcode.png" alt="O2team"></div>
+				<div class="wanted_words">
+					<p>HI! 我们是<br />JDC的H5品鉴小分队</p>
+					<p class="aside">爷～赏点钱呗～</p>
+				</div>
+			</div>
+
+			<a href="#" class="back" style="display:none;">查看往期</a>
+		</footer>
 	</article>
+	<div class="loading">
+		<div><i></i><i></i><i></i></div>
+	</div>
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
 	<script src="js/me-lazyload.js"></script>
+	<script src="js/share.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
+	<script>
+	var vol = GetQueryString('vol')?GetQueryString('vol'):1;
+	/*分享*/
+		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,'http://jdc.jd.com/h5/case/index.html?vol='+vol,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
+	/*统计*/
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
 </body>
 </html>

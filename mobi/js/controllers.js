@@ -7,8 +7,8 @@ var cases = angular.module('cases', ['me-lazyload', 'ngRoute']),
 		{"name": "翻页动画", "id": 3}, 
 		{"name": "多屏互动", "id": 4}];
 
-cases.controller('casesList', function($scope, $http, $location, $sce){
-	$scope.vol = $location.search().vol;
+cases.controller('casesList', function($scope, $http, $sce){
+	$scope.vol = GetQueryString('vol');
 	$scope.preword = '';
 
 	parseHtml = function(array){
@@ -31,7 +31,6 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 					}
 				}
 			}else{
-
 				$scope.date = latest.date;
 				$scope.vol = latest.vol;
 				$scope.prewords = latest.prewords.split('\n');
@@ -81,3 +80,10 @@ cases.controller('casesList', function($scope, $http, $location, $sce){
 		setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
 	}
 });
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
