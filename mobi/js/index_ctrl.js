@@ -58,8 +58,8 @@ index.controller('iList', function($scope, $http, $sce){
 			}
 		}
 
-		// document.querySelector('.loading').setAttribute('class', 'loading loaded');
-		// setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
+		document.querySelector('.loading').setAttribute('class', 'loading loaded');
+		setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
 	}
 		
 });
