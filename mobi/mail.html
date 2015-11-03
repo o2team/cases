@@ -19,7 +19,7 @@
 		<section class="prewords"><p ng-repeat="para in prewords" ng-bind-html="para"></p></section>
 
 		<section class="mail_sec" ng-repeat="case in caselist" id="{{case._id}}">
-			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
+			<h3 class="title"><a href="{{case.url}}" ng-bind-html="case.title"></a></h3>
 			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
 			<div class="aside_wrap">
 				<ul class="attr_list">

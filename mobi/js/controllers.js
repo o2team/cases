@@ -9,7 +9,6 @@ var cases = angular.module('cases', ['me-lazyload', 'ngRoute']),
 
 cases.controller('casesList', function($scope, $http, $sce){
 	$scope.vol = GetQueryString('vol');
-	$scope.preword = '';
 
 	parseHtml = function(array){
 		for(var p=0; p<array.length; p++){
@@ -25,7 +24,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 				for(var v=0; v<volList.length; v++){
 					if(volList[v].vol === parseInt($scope.vol)){
 						$scope.date = volList[v].date;
-						if(!!volList[v].prewords){
+						if(!!volList[v].prewords && volList[v].prewords!==""){
 							$scope.prewords = volList[v].prewords.split('\n');
 						}
 					}
@@ -35,12 +34,13 @@ cases.controller('casesList', function($scope, $http, $sce){
 				$scope.vol = latest.vol;
 				$scope.prewords = latest.prewords.split('\n');
 			}
-			
-		parseHtml($scope.prewords);
-
+	
+		if($scope.prewords){
+			parseHtml($scope.prewords);
+		}
+		
 		pt = $scope.date.split('-');
 		projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-		console.log(projectTime);
 		$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json1');
 	}
 
@@ -56,6 +56,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 		for(var i=0; i<$scope.caselist.length; i++){
 			$scope.caselist[i].vd=$scope.caselist[i].vd.split(',');
 			$scope.caselist[i].fe=$scope.caselist[i].fe.split(',');
+			$scope.caselist[i].title=$sce.trustAsHtml($scope.caselist[i].title);
 			for(var j=0; j<$scope.caselist[i].fe.length; j++){
 				var rate = "", star = "★";
 				for(var k=0; k<parseInt($scope.caselist[i].fe[j]); k++){
