@@ -20,7 +20,7 @@
 
 		<section class="mail_sec" ng-repeat="case in caselist" id="{{case._id}}">
 			<h3 class="title"><a href="{{case.url}}" ng-bind-html="case.title"></a></h3>
-			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
+			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /><span id="caseqc_{{case._id}}" class="qrcode"></span></a>
 			<div class="aside_wrap">
 				<ul class="attr_list">
 					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
@@ -61,6 +61,7 @@
 	<script src="js/angular-route-1.4.7.min.js"></script>
 	<script src="js/me-lazyload.js"></script>
 	<script src="js/share.js"></script>
+	<script src="js/qrcode.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
 	<script>

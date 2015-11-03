@@ -2,6 +2,7 @@
 
 var cases = angular.module('cases', ['me-lazyload', 'ngRoute']), 
 	data = [], 
+	qrIdPre = 'caseqc_', 
 	h5type = [{"name": "游戏", "id": 1}, 
 		{"name": "短片", "id": 2}, 
 		{"name": "翻页动画", "id": 3}, 
@@ -32,7 +33,9 @@ cases.controller('casesList', function($scope, $http, $sce){
 			}else{
 				$scope.date = latest.date;
 				$scope.vol = latest.vol;
-				$scope.prewords = latest.prewords.split('\n');
+				if(!!latest.prewords && latest.prewords!==""){
+					$scope.prewords = latest.prewords.split('\n');
+				}
 			}
 	
 		if($scope.prewords){
@@ -57,6 +60,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 			$scope.caselist[i].vd=$scope.caselist[i].vd.split(',');
 			$scope.caselist[i].fe=$scope.caselist[i].fe.split(',');
 			$scope.caselist[i].title=$sce.trustAsHtml($scope.caselist[i].title);
+
 			for(var j=0; j<$scope.caselist[i].fe.length; j++){
 				var rate = "", star = "★";
 				for(var k=0; k<parseInt($scope.caselist[i].fe[j]); k++){
@@ -78,8 +82,18 @@ cases.controller('casesList', function($scope, $http, $sce){
 			}
 		}
 
-		document.querySelector('.loading').setAttribute('class', 'loading loaded');
-		setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
+		var show = setInterval(function(){
+			var bb = document.querySelectorAll('.mail_sec').length;
+			if(bb===$scope.caselist.length){
+				clearInterval(show);
+				for(var q=0; q<$scope.caselist.length; q++){
+					var qrcode = new QRCode(document.getElementById(qrIdPre+$scope.caselist[q]._id), $scope.caselist[q].url);
+				}
+				document.querySelector('.loading').setAttribute('class', 'loading loaded');
+				setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
+			}
+		});
+
 	}
 });
 
