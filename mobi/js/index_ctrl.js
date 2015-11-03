@@ -1,10 +1,6 @@
 //index_ctrl.js
 
-var index = angular.module('index', ['ngRoute']),
-	h5type = [{"name": "游戏", "id": 1}, 
-		{"name": "短片", "id": 2}, 
-		{"name": "翻页动画", "id": 3}, 
-		{"name": "多屏互动", "id": 4}];
+var index = angular.module('index', ['ngRoute']);
 
 index.controller('iList', function($scope, $http, $sce){
 	$scope.total = 0;
@@ -22,8 +18,9 @@ index.controller('iList', function($scope, $http, $sce){
 
 		for(var i=0; i<tmplist.length; i++){
 			var tmpObj = {};
-			tmpObj.title=tmplist[i].title;
+			tmpObj.title=$sce.trustAsHtml(tmplist[i].title);
 			tmpObj.date=tmplist[i].projectTime;
+			tmpObj.id = tmplist[i]._id;
 			$scope.ilist.push(tmpObj);
 		}
 
@@ -42,22 +39,27 @@ index.controller('iList', function($scope, $http, $sce){
 
 		if($scope.total>0){
 			for(var v=0; v<$scope.total; v++){
+				var tmpCases = [], 
+					tmpIndex = 0;
+
 				$scope.volList[v].date = $scope.volList[v].date.split('-').join('.');
 				$scope.volList[v].titles = [];
 
-				pt = $scope.date.split('.');
-				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2]), 8, 0).toGMTString();
+				pt = $scope.volList[v].date.split('.');
+				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
 
 				for(var i=0; i<$scope.ilist.length; i++){
 					if($scope.ilist[i].date === projectTime){
-
+						$scope.ilist[i].num=++tmpIndex;
+						tmpCases.push($scope.ilist[i]);
 					}
 				}
+				$scope.volList[v].titles = tmpCases;
 			}
 		}
 
-		document.querySelector('.loading').setAttribute('class', 'loading loaded');
-		setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
+		// document.querySelector('.loading').setAttribute('class', 'loading loaded');
+		// setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
 	}
 		
 });
