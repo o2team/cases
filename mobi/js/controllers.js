@@ -39,7 +39,8 @@ cases.controller('casesList', function($scope, $http, $sce){
 		parseHtml($scope.prewords);
 
 		pt = $scope.date.split('-');
-		projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2]), 8, 0).toGMTString();
+		projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
+		console.log(projectTime);
 		$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json1');
 	}
 

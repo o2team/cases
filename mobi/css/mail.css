@@ -1,4 +1,6 @@
 /*mail.css*/
+
+/*gb*/
 * { -webkit-tap-highlight-color: transparent; outline: 0; margin:0; padding:0; vertical-align:baseline;}
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; vertical-align: baseline; font-weight:normal;}
 img { border: 0 none; vertical-align: top;}
@@ -21,6 +23,16 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.prewords p, .prewords ul{margin-bottom:10px;text-indent:2em;}
 			.prewords p:first-child{text-indent:0;}
 
+/*index*/
+.index_sec{margin:15px 20px;background:#FAFAFA;padding:10px;}
+	.i_title{line-height:30px;position:relative;padding-left:10px;}
+		.i_title:after{width:2px;height:14px;position:absolute;top:50%;left:0;content:"";margin-top:-7px;background:#E12228;}
+		.i_title a{font-size:14px;display:block;color:#333333;}
+		.i_title a span{font-size:12px;color:#999999;margin-left:5px;}
+	.i_list{line-height:20px;font-size:12px;color:#666666;}
+		.i_list a{display:block;color:#666666;}
+
+/*mail*/
 .mail_sec{margin:0 20px;padding-bottom:30px;margin-bottom:26px;border-bottom:1px solid #DDDDDD;}
 	.title{font-size:18px;color:#333333;margin-bottom:10px;position:relative;}
 		.title:after{width:0;height:0;border-top:7px dashed transparent;border-bottom:7px dashed transparent;border-left:10px solid #E12228;position:absolute;top:50%;left:-20px;margin-top:-8px;content:"";}

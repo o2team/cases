@@ -18,7 +18,7 @@
 
 		<section class="prewords"><p ng-repeat="para in prewords" ng-bind-html="para"></p></section>
 
-		<section class="mail_sec" ng-repeat="case in caselist">
+		<section class="mail_sec" ng-repeat="case in caselist" id="{{case._id}}">
 			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
 			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
 			<div class="aside_wrap">
@@ -60,83 +60,21 @@
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
 	<script src="js/me-lazyload.js"></script>
+	<script src="js/share.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
-
-	<script  type="text/javascript" charset="utf-8">
-	/**
-	* 微信分享
-	*/
-	var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
-	    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-	        WeixinJSBridge.on('menu:share:timeline', function(argv){
-	            WeixinJSBridge.invoke('shareTimeline',{
-	                "img_url":img_url,
-	                "img_width":img_width,
-	                "img_height":img_height,
-	                "link":link,
-	                "title": title,
-	                "desc":desc
-	            }, function() {
-	                callback('timeline');
-	            });
-	        });
-
-	        WeixinJSBridge.on('menu:share:appmessage', function(argv){
-
-	            WeixinJSBridge.invoke('sendAppMessage',{
-	                "appid":appid || "",
-	                "img_url":img_url,
-	                "img_width":img_width,
-	                "img_height":img_height,
-	                "link":link,
-	                "title": title,
-	                "desc":desc
-	            }, function() {
-	                callback('appmessage');
-	            })
-
-	        });
-
-
-	        WeixinJSBridge.on('menu:share:weibo', function(argv){
-	          WeixinJSBridge.invoke('shareWeibo',{
-	             "content":title,
-	             "url":link
-	          }, function(res){
-	            callback('weibo');
-	          });
-	        });
-
-	        WeixinJSBridge.on('menu:share:facebook', function(argv){
-	          (dataForWeixin.callback)();
-	          WeixinJSBridge.invoke('shareFB',{
-	                "img_url":img_url,
-	                "img_width":img_width,
-	                "img_height":img_height,
-	                "link":link,
-	                "title": title,
-	                "desc":desc
-	          }, function(res){
-	            callback('facebook');
-	          });
-	        });
-
-	    })
-
-	}
-	wxShare('http://o2team.com/cases/mobi/img/share.png',100,100,'http://o2team.com/cases/mobi/mail.html#?vol=1','H5 精品案例赏析-第1期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
-	</script>
 	<script>
+	var vol = GetQueryString('vol')?GetQueryString('vol'):1;
+	/*分享*/
+		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,'http://jdc.jd.com/h5/case/index.html?vol='+vol,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
 	/*统计*/
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?805df717cea51309f3cd529482faa663";
+	  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
-
 </body>
 </html>
