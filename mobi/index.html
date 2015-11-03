@@ -17,7 +17,7 @@
 		</header>
 
 		<section class="index_sec" ng-repeat="item in volList">
-			<h3 class="i_title"><a href="#">第{{item.vol}}期<span class="i_title_date">{{item.date}}</span></a></h3>
+			<h3 class="i_title"><a href="mail.html?vol={{item.vol}}">第{{item.vol}}期<span class="i_title_date">{{item.date}}</span></a></h3>
 			<ol class="i_list">
 				<li ng-repeat="case in volList.titles"><a href="mail.html?vol={{item.vol}}#{{item.id}}">{{case.num}} {{case.title}}</a></li>
 			</ol>
