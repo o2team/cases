@@ -16,7 +16,13 @@
 			<h2>{{date}} 第{{vol}}期</h2>
 		</header>
 
-		<section class="prewords"><p ng-repeat="para in prewords" ng-bind-html="para"></p></section>
+		<div class="prewrap">
+			<div class="page_qrcode">
+				<div id="pageQrcode"></div>
+				<p>扫一扫手机阅读</p>
+			</div>
+			<section class="prewords"><p ng-repeat="para in prewords" ng-bind-html="para"></p></section>
+		</div>
 
 		<section class="mail_sec" ng-repeat="case in caselist" id="{{case._id}}">
 			<h3 class="title"><a href="{{case.url}}" ng-bind-html="case.title"></a></h3>
@@ -67,9 +73,13 @@
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
 	<script>
-	var vol = GetQueryString('vol')?GetQueryString('vol'):1;
+	var vol = GetQueryString('vol')?GetQueryString('vol'):0;
+	
 	/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,'http://jdc.jd.com/h5/case/index.html?vol='+vol,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
+		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,location.href,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
+	var pageQrcode = new QRCode(document.getElementById('pageQrcode'), location.href);
+
+
 	/*统计*/
 	var _hmt = _hmt || [];
 	(function() {

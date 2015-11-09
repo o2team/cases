@@ -14,14 +14,19 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 
 .wrap{margin:50px 50px 0;background:#FFFFFF;}
 
-.header{width:100%;height:92px;background:#E9242F;text-align:center;padding-top:8px;margin-bottom:20px;position:relative;}
-	.header h1{line-height:56px;font-size:30px;font-weight:bold;color:#FFFFFF;position:relative;}
-		.header h1 i{width:240px;height:34px;position:absolute;top:50%;left:50%;margin-top:-17px;margin-left:-120px;background:url(../img/title.png) no-repeat top center;background-size:100% auto;}
-	.header h2{line-height:24px;display:inline-block;font-size:14px;padding:0 24px;background:#CA1F24;color:#EAA5A7;border-radius:3px;}
+.header{width:100%;height:96px;background:#E9242F;padding-top:24px;margin-bottom:20px;position:relative;}
+	.header h1{line-height:40px;font-size:30px;font-weight:bold;color:#FFFFFF;position:relative;padding-left:20px;}
+		.header h1 i{width:240px;height:34px;position:absolute;top:50%;left:20px;margin-top:-17px;background:url(../img/title.png) no-repeat top center;background-size:100% auto;}
+	.header h2{line-height:20px;display:inline-block;font-size:14px;padding-left:22px;color:#EAA5A7;border-radius:3px;}
 
-	.prewords{line-height:22px;margin:0 20px 20px;background:#FAFBFB;color:#999999;font-size:12px;padding:9px 12px;}
-		.prewords p, .prewords ul{margin-bottom:10px;text-indent:2em;}
-			.prewords p:first-child{text-indent:0;}
+	.prewrap{min-height:178px;position:relative;padding-left:154px;}
+		.page_qrcode{width:145px;position:absolute;top:0;left:20px;}
+			.page_qrcode img{width:145px;height:145px;display:block;}
+			.page_qrcode p{text-align:center;font-size:14px;color:#666666;line-height:34px;}
+		.prewords{line-height:16px;margin:0 20px 20px;background:#FAFBFB;color:#999999;font-size:12px;padding:9px 12px;}
+			.prewords p, .prewords ul{margin-bottom:5px;}
+				.prewords p:first-child{text-indent:0;}
+				.prewords strong{font-size:14px;color:#666666;}
 
 /*index*/
 .index_sec{margin:15px 20px;background:#FAFAFA;padding:10px;}
@@ -122,4 +127,5 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.title:after{left:-15px;}
 		.rate_list{position:static;}
 	.mail_sec .cont p{font-size:14px;}
+	.page_qrcode{display:none;}
 }
