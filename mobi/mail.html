@@ -50,18 +50,18 @@
 
 		<footer class="footer">
 			<div class="wanted">
-				<div class="wanted_qrcode">
-					<img src="img/wanted_qrcode_2.png" alt="O2team">
+				<div class="wanted_words">
+					<p><strong>HI! </strong>我们是JDC的H5品鉴小分队</p>
 					<p class="aside">爷～赏点钱呗～</p>
 				</div>
-				<div class="wanted_words">
-					<p>HI! 我们是JDC的H5品鉴小分队</p>
+				<div class="wanted_qrcode">
+					<img src="img/wanted_qrcode.png" alt="O2team">
 				</div>
 			</div>		
 		</footer>
-	</article>
 
-	<a href="http://jdc.jd.com/h5/case/index.html" class="back">往期回顾&nbsp;&gt;</a>
+		<a href="http://jdc.jd.com/h5/case/index.html" class="back">往期回顾<span>&nbsp;&gt;</span></a>
+	</article>
 	<div class="loading">
 		<div><i></i><i></i><i></i></div>
 	</div>
@@ -73,21 +73,21 @@
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
 	<script>
-	var vol = GetQueryString('vol')?GetQueryString('vol'):0;
-	
-	/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,location.href,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
-	var pageQrcode = new QRCode(document.getElementById('pageQrcode'), location.href);
+		var vol = GetQueryString('vol')?GetQueryString('vol'):0;
+		
+		/*分享*/
+			wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,location.href,'H5 精品案例赏析-第'+vol+'期','JDC贫贱小分队为您奉上热腾腾的精品案例赏析');
+		var pageQrcode = new QRCode(document.getElementById('pageQrcode'), location.href);
 
 
-	/*统计*/
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
+		/*统计*/
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
 	</script>
 </body>
 </html>
