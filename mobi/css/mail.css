@@ -10,11 +10,11 @@ input, select, button, h1, h2, h3, h4, h5, h6 { font-size: 100%; font-family: in
 table { border-collapse: collapse; border-spacing: 0;}
 a { text-decoration: none; color: #666;}
 body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
-  font-family: Helvetica, STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial; line-height: 1.5; color: #666;background:#F5F5F5;}
+  font-family: Helvetica, STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial; line-height: 1.5; color: #666;background:#eeeeee;}
 
-.wrap{margin:50px;background:#FFFFFF;}
+.wrap{margin:50px 50px 0;background:#FFFFFF;}
 
-.header{width:100%;height:92px;background:#E9242F;text-align:center;padding-top:8px;margin-bottom:20px;}
+.header{width:100%;height:92px;background:#E9242F;text-align:center;padding-top:8px;margin-bottom:20px;position:relative;}
 	.header h1{line-height:56px;font-size:30px;font-weight:bold;color:#FFFFFF;position:relative;}
 		.header h1 i{width:240px;height:34px;position:absolute;top:50%;left:50%;margin-top:-17px;margin-left:-120px;background:url(../img/title.png) no-repeat top center;background-size:100% auto;}
 	.header h2{line-height:24px;display:inline-block;font-size:14px;padding:0 24px;background:#CA1F24;color:#EAA5A7;border-radius:3px;}
@@ -86,14 +86,14 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 			50%{-webkit-transform:translate(-10px, 6px) rotate(-90deg);}
 		}
 
-.footer{display:block;position:relative;background:#E9242F;}
-	.wanted{height:120px;position:relative;background:#E9242F;}
-	.wanted_qrcode{position:absolute;top:10px;left:10px;padding:6px;background:#FFFFFF;}
-		.wanted_qrcode img{width:90px;height:90px;display:block;}
-	.wanted_words{font-size:16px;color:#FFFFFF;line-height:26px;padding-left:130px;padding-top:18px;}
+.footer{display:block;position:relative;background:#f6f6f6;}
+	.wanted{height:180px;position:relative;background:#f6f6f6;}
+	.wanted_qrcode{position:absolute;top:22px;left:22px;}
+		.wanted_qrcode img{width:110px;height:110px;display:block;padding:5px;background:#FFFFFF;}
+		.wanted_qrcode .aside{font-size:12px;font-weight:normal;line-height:24px;color:#999999;text-align:center;}
+	.wanted_words{font-size:18px;color:#e91b2f;line-height:26px;padding-left:150px;padding-top:20px;}
 		.wanted_words p{font-weight:bold;}
-		.wanted_words .aside{font-size:12px;font-weight:normal;line-height:18px;padding:0 7px;display:inline-block;background:#BA1D26;}
-	.back{width:107px;height:120px;line-height:120px;position:absolute;top:0;right:0;background:#D1202A;color:#FFFFFF;text-align:center;font-size:14px;}
+	.back{line-height:50px;display:block;text-align:right;color:#73a3fb;font-size:14px;margin:0 50px 50px;}
 
 @media (max-width:650px){
 	.wrap{margin:0;}
@@ -109,7 +109,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	.back{width:100%;height:40px;line-height:40px;position:static;display:block;}
 }
 
-@media (-webkit-min-device-pixel-ratio:2){
+@media (-webkit-min-device-pixel-ratio:2) and (max-width:640px){
 	.header{height:40px;padding-top:0;}
 		.header h1{height:40px;line-height:40px;text-align:left;text-indent:10px;font-size:14px;}
 			.header h1 i{width:140px;height:20px;left:5px;top:10px;margin:0;}
