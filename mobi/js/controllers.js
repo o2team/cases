@@ -33,6 +33,10 @@ cases.controller('casesList', function($scope, $http, $sce){
 						}
 					}
 				}
+				var curVol = parseInt($scope.vol);
+				var latestVol = parseInt(latest.vol);
+				$scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
+				$scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
 			}
 	
 		if($scope.prewords){

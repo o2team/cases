@@ -101,6 +101,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.wanted_words p strong{display:block;}
 		.wanted_words .aside{display:inline-block;font-size:12px;font-weight:normal;line-height:24px;color:#ffffff;text-align:center;background:#ba1626;line-height:18px;padding:0 5px;}
 
+	.switch_vol{display:none;}
 	.back{width:110px;height:120px;line-height:120px;display:block;text-align:center;color:#ffffff;font-size:14px;background:#eeeeee;position:absolute;bottom:0;right:0;background:#d1182a;}
 
 @media (max-width:650px){
@@ -122,7 +123,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.header h2{position:absolute;right:5px;top:8px;}
 	.wrap{margin:0;}
 	.header{margin-bottom:15px;}
-	.prewrap{padding-left:0;}
+	.prewrap{min-height:auto;padding-left:0;}
 	.prewords{margin:0 15px 20px;}
 		.prewords p{margin-bottom:5px;}
 	.mail_sec{margin:0 15px;margin-bottom:15px;}
@@ -139,5 +140,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.wanted_qrcode{position:relative;left:0;top:0;}
 			.wanted_qrcode img{width:110px;height:110px;margin:0 auto;}
 
+	.switch_vol{display:-webkit-flex;display:flex;padding:0 5px;margin-bottom:10px;}
+		.switch_vol a{height:40px;line-height:40px;-webkit-flex:1;fex:1;display:block;text-align:center;background:#eeeeee;margin:10px 5px 0;color:#aaaaaa;}
 	.back{width:auto;height:40px;line-height:40px;background:#eeeeee;margin:10px;padding:0;text-align:center;color:#aaaaaa;font-size:12px;position:static;}
 }
