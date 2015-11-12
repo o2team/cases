@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/mail.css">
 </head>
 <body>
-	<article class="wrap">
+	<article class="wrap" ng-show="vol > 0">
 		<header class="header">
 			<h1>H5精品案例赏析<i></i></h1>
 			<h2>{{date}} 第{{vol}}期</h2>
@@ -60,6 +60,10 @@
 			</div>		
 		</footer>
 
+		<div class="">
+			<a ng-show="prevol>0" href="?vol={{prevol}}">上一篇</a>
+			<a ng-show="nextvol>0" href="?vol={{nextvol}}">下一篇</a>
+		</div>
 		<a href="http://jdc.jd.com/h5/case/index.html" class="back">往期回顾</a>
 	</article>
 	<div class="loading">

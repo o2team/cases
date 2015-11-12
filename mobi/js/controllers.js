@@ -7,10 +7,12 @@ var cases = angular.module('cases', ['me-lazyload', 'ngRoute']),
 		{"name": "游戏", "id": 1}, 
 		{"name": "短片", "id": 2}, 
 		{"name": "翻页动画", "id": 3}, 
-		{"name": "多屏互动", "id": 4}];
+		{"name": "多屏互动", "id": 4}], 
+	indexHref = 'index.html';
 
 cases.controller('casesList', function($scope, $http, $sce){
 	$scope.vol = GetQueryString('vol');
+	$scope.prevol = $scope.nextvol = 0;
 
 	parseHtml = function(array){
 		for(var p=0; p<array.length; p++){
@@ -31,21 +33,19 @@ cases.controller('casesList', function($scope, $http, $sce){
 						}
 					}
 				}
-			}else{
-				$scope.date = latest.date;
-				$scope.vol = latest.vol;
-				if(!!latest.prewords && latest.prewords!==""){
-					$scope.prewords = latest.prewords.split('\n');
-				}
 			}
 	
 		if($scope.prewords){
 			parseHtml($scope.prewords);
 		}
-		
-		pt = $scope.date.split('-');
-		projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-		$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json1');
+
+		if($scope.date){
+			pt = $scope.date.split('-');
+			projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
+			$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json1');
+		}else{
+			location.href = jumpHref(indexHref);
+		}
 	}
 
 	$http.get('js/vol.js')
@@ -103,4 +103,13 @@ function GetQueryString(name)
      var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
      var r = window.location.search.substr(1).match(reg);
      if(r!=null)return  unescape(r[2]); return null;
+}
+
+function jumpHref(jumpPath){
+	var p = location.pathname, 
+		pArr = p.split('/');
+	pArr.pop();
+	p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+	return p;
 }
