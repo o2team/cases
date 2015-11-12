@@ -141,6 +141,6 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 			.wanted_qrcode img{width:110px;height:110px;margin:0 auto;}
 
 	.switch_vol{display:-webkit-flex;display:flex;padding:0 5px;margin-bottom:10px;}
-		.switch_vol a{height:40px;line-height:40px;-webkit-flex:1;fex:1;display:block;text-align:center;background:#eeeeee;margin:10px 5px 0;color:#aaaaaa;}
+		.switch_vol a{height:40px;line-height:40px;-webkit-flex:1;fex:1;display:block;text-align:center;background:#eeeeee;margin:10px 5px 0;color:#aaaaaa;font-size:12px;}
 	.back{width:auto;height:40px;line-height:40px;background:#eeeeee;margin:10px;padding:0;text-align:center;color:#aaaaaa;font-size:12px;position:static;}
 }
