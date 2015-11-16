@@ -24,20 +24,27 @@ cases.controller('casesList', function($scope, $http, $sce){
 		var volList = res, 
 			latest = volList[volList.length-1], 
 			pt, projectTime;
-			if($scope.vol){
-				for(var v=0; v<volList.length; v++){
-					if(volList[v].vol === parseInt($scope.vol)){
-						$scope.date = volList[v].date;
-						if(!!volList[v].prewords && volList[v].prewords!==""){
-							$scope.prewords = volList[v].prewords.split('\n');
-						}
+
+		if($scope.vol){
+			var latestVol = parseInt(latest.vol), 
+				curVol;
+
+			if($scope.vol === 'latest'){
+				$scope.vol = latestVol;
+			}
+
+			for(var v=0; v<volList.length; v++){
+				if(volList[v].vol === parseInt($scope.vol)){
+					$scope.date = volList[v].date;
+					if(!!volList[v].prewords && volList[v].prewords!==""){
+						$scope.prewords = volList[v].prewords.split('\n');
 					}
 				}
-				var curVol = parseInt($scope.vol);
-				var latestVol = parseInt(latest.vol);
-				$scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
-				$scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
 			}
+			curVol = parseInt($scope.vol);
+			$scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
+			$scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
+		}
 	
 		if($scope.prewords){
 			parseHtml($scope.prewords);
