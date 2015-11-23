@@ -63,7 +63,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	.subtitle{line-height:30px;color:#333333;font-weight:bold;padding-left:10px;position:relative;}
 		.subtitle:after{width:2px;height:14px;background:#E12228;position:absolute;top:50%;margin-top:-7px;left:0;content:"";}
 	.cont{}
-		.cont p{font-size:12px;line-height:22px;margin-bottom:8px;}
+		.cont p{font-size:12px;line-height:22px;margin-bottom:8px;text-indent:2em;}
 		.cont p a{color:#0088CC;text-decoration:underline;margin:0 3px;}
 
 .loading{width:100%;height:100%;position:fixed;top:0;left:0;background:#F5F5F5;z-index:100;opacity:1;-webkit-transition:all ease .2s .2s;}
@@ -129,7 +129,9 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	.mail_sec{margin:0 15px;margin-bottom:15px;}
 		.title:after{left:-15px;}
 		.rate_list{position:static;}
-	.mail_sec .cont p{font-size:14px;}
+		.aside_wrap{margin-bottom:22px;}
+		.subtitle{margin-bottom:22px;}
+	.mail_sec .cont p{font-size:14px;margin-bottom:22px;}
 	.page_qrcode{display:none;}
 
 	.footer{background:#f6f6f6;}
