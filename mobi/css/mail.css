@@ -123,7 +123,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.header h2{position:absolute;right:5px;top:8px;}
 	.wrap{margin:0;}
 	.header{margin-bottom:15px;}
-	.prewrap{min-height:auto;padding-left:0;}
+	.prewrap{min-height:0px;padding-left:0;}
 	.prewords{margin:0 15px 20px;}
 		.prewords p{margin-bottom:5px;}
 	.mail_sec{margin:0 15px;margin-bottom:15px;}
