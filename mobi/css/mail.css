@@ -136,6 +136,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	.wanted{height:auto;padding-bottom:10px;background:#f6f6f6;}
 		.wanted_words{padding-left:0;text-align:center;color:#e91b2f;}
 			.wanted_words p strong{display:inline;}
+			.wanted_words p span{display:block;}
 		.wanted_words .aside{display:block;font-size:14px;color:#999999;font-weight:normal;margin-bottom:10px;line-height:24px;text-align:center;background:none;}
 		.wanted_qrcode{position:relative;left:0;top:0;}
 			.wanted_qrcode img{width:110px;height:110px;margin:0 auto;}
