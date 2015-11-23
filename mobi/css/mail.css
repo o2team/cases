@@ -131,7 +131,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 		.rate_list{position:static;}
 		.aside_wrap{margin-bottom:22px;}
 		.subtitle{margin-bottom:22px;}
-	.mail_sec .cont p{font-size:14px;line-height:28px;margin-bottom:22px;}
+	.mail_sec .cont p{font-size:14px;line-height:24px;margin-bottom:14px;}
 	.page_qrcode{display:none;}
 
 	.footer{background:#f6f6f6;}
