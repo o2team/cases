@@ -1,6 +1,7 @@
-//controllers.js
+// author: EC
+// last modify: 2015-11-25 17:57
 
-var cases = angular.module('cases', ['me-lazyload', 'ngRoute']), 
+var cases = angular.module('cases', ['ngRoute']), 
 	data = [], 
 	qrIdPre = 'caseqc_', 
 	h5type = [{"name": "其他", "id": 0}, 
@@ -103,6 +104,8 @@ cases.controller('casesList', function($scope, $http, $sce){
 				}
 				document.querySelector('.loading').setAttribute('class', 'loading loaded');
 				setTimeout(function(){document.querySelector('.loading').style.display="none";}, 400);
+
+				lazyLoad();
 			}
 		});
 
