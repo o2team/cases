@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="cases" ng-controller="casesList">
+<head>
+	<meta charset="utf-8" />
+	<title>H5 精品案例赏析</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/maga.css">
+<script>
+    !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
+</script>
+</head>
+<body>
+<div class="wrap" id="magazines" style="display:none;">
+	<!-- S：单期封面 -->
+        <div class="page cover" style="background-color:#{{hexocolor[0]}};border-color:#{{hexocolor[1]}};">
+        	<div class="co_info" style="background-color:#{{hexocolor[1]}}">
+        		<p class="co_date">{{date}}</p>
+        		<p class="co_vol">第{{vol}}期</p>
+        	</div>
+        	<div class="co_img" style="background-image:url({{cover}});"></div>
+        	<div class="co_logo"></div>
+        	<h2 class="co_tit" ng-repeat="para in prewords" ng-bind-html="para"></h2>
+        </div>
+	<!-- E：单期封面 -->
+	<!-- S：模式选择 -->
+        <div class="page choose" style="background-color:#FE4C4A;border-color:#AF004D">
+        	<p class="ch_ask">你是<br/>?</p>
+        	<a class="ch_item ch_pic" data-mode="pic_mode" href="javascript:;">懒癌<i class="ch_item_icon"></i>罹患者</a>
+        	<a class="ch_item ch_text" data-mode="text_mode" href="javascript:;">文字<i class="ch_item_icon"></i>受虐狂</a>
+        </div>
+	<!-- E：模式选择 -->
+	<!-- S：工具栏 -->
+	<div class="ar_tool">
+		<a class="ar_list" href="#">往期回顾</a>
+		<a class="ar_sort" style="display:none;" href="javascript:;">分类</a>
+		<div class="ar_search" style="display:none;"><input class="ar_search_input" type="text" placeholder="翻页" /><a href="javascript:;" class="ar_search_btn">搜索</a></div>
+	</div>
+	<!-- E：工具栏 -->
+	<!-- S：文章 -->
+	<div class="page article" data-mode="">
+		<div class="ar_wrap" style="background-image:url();">
+		<!-- S：文字模式 -->
+	        <section class="ar_sec" ng-repeat="case in caselist">
+	        	<div class="ar_sec_wrap">
+					<a class="ar_img" href="{{case.url}}">
+						<img alt="{{case.title}}" lazy-src="{{case.image}}" />
+					</a>
+					<div class="ar_cnt">
+						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
+						<h3 class="ar_tit"><a href="{{case.url}}" ng-bind-html="case.title"></a><span class="ar_type ar_type_{{case.type[1].id}}">{{case.type[1].name}}</span></h3>
+						<div class="ar_aside">
+							<ul class="ar_attr">
+								<li class="ar_tag">标签：<span ng-repeat="tags in case.vd">{{tags}}</span></li>	
+								<li><strong>需求背景：</strong>{{case.type[2].name}}</li>	
+								<li><strong>创意指数：</strong><span class="ar_star"><i>{{case.fe[0]}}</i></span></li>
+								<li><strong>实现难度：</strong><span class="ar_star"><i>{{case.fe[1]}}</i></span></li>
+							</ul>
+						</div>
+						<div class="ar_analysis">
+							<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
+							<a href="javascript:;" class="ar_more" data-id="{{case._id}}">查看更多</a>
+						</div>
+					</div>
+					<!-- 点赞 -->
+					<a href="javascript:;" class="ar_love loved">
+						<i class="ar_love_icon"></i><span class="ar_love_num">120</span>
+					</a>
+				</div>
+
+				<div class="ar_mask mask_hide" id="{{case._id}}" style="display:none;">
+					<div class="mask"></div>
+					<a href="javascript:;" class="ar_full_close" data-id="{{case._id}}">&times;</a>
+					<div class="ar_full">
+						<h3 class="ar_full_tit" ng-bind-html="case.title"></h3>
+						<div class="ar_full_analysis">
+							<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+						</div>
+					</div>
+				</div>
+	        </section>
+	        <section class="ar_sec">
+	        	<div class="ar_sec_wrap">
+					<div class="bc_qr"><img src="http://jdc.jd.com/h5/case/img/o2team_qrcode_temp.png" alt="凹凸实验室" /></div>
+					<a class="bc_back" href="#">往期回顾</a>
+				</div>
+	        </section>
+	    </div>
+		<!-- E：文字模式 -->
+		<!-- S：滑动导航 -->
+		<ul class="ar_nav"></ul>
+		<!-- E：滑动导航 -->
+		<!-- S：切换视图 -->
+		<div class="ar_shake"></div>
+		<!-- E：切换视图 -->
+	</div>
+	<!-- E：文章 -->
+</div>
+<div class="wrap" id="index">
+	<!-- S：封面 -->
+	<div class="page fcover" style="background-color:#FE4C4A;border-color:#AF004D;">
+    	<div class="fc_logo"></div>
+    	<h2 class="fc_tit">精品案例赏析</h2>
+    	<a class="fc_btn" href="javascript:;"></a>
+    </div>
+	<!-- E：封面 -->
+	<!-- S：往期回顾 -->
+    <ul class="page list" style="display:;">
+    	<li class="li_item clear">
+    		<p class="li_month">2015年</p>
+    		<a class="li_cover" href="?vol={{item.vol}}" ng-repeat="item in volList">
+    			<img class="li_cover_img" lazy-src="{{item.cover}}" />
+    			<div class="li_cover_mask"></div>
+	        	<div class="li_cover_info">
+	        		<p class="li_cover_vol">第{{item.vol}}期</p>
+	        		<p class="li_cover_date">{{item.date}}</p>
+	        	</div>
+    		</a>
+    	</li>
+    </ul>
+	<!-- E：往期回顾 -->
+	<!-- S：分类 -->
+	<div class="page sort" style="display:none;">
+		<ul class="so_list clear so_type">
+			<li class="so_item"><a class="so_item_text" href="javascript:;">游戏</a></li
+		</ul>
+		<ul class="so_list clear so_tag">
+			<li class="so_item"><a class="so_item_text" href="javascript:;">游戏</a></li>
+		</ul>
+	</div>
+	<!-- E：分类 -->
+</div>
+<div class="loading">
+</div>
+	<script src="js/angular-1.4.7.min.js"></script>
+	<script src="js/angular-route-1.4.7.min.js"></script>
+	<script src="js/controllers_maga.js"></script>
+	<script src="js/index_ctrl.js"></script>
+	<script src="js/vol_maga.js"></script>
+	<script src="js/lazyload2.0.js"></script>
+	<script src="js/slides.js"></script>
+	<script src="js/mode.js"></script>
+</body>
+</html>
