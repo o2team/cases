@@ -60,7 +60,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 		}
 	}
 
-	$http.get('js/vol.js')
+	$http.get('js/vol_test.js')
 		.success(function(res){
 			json2(res);
 		});

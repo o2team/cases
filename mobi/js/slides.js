@@ -3,6 +3,7 @@
 
 	var Slides = {
 		index: document.querySelector('.ar_nav'), 
+		bar: document.querySelector('.ar_tool'), 
 		secNum: 1, 
 		cur: 0, 
 		slideWrap: document.querySelector('.ar_wrap'), 
@@ -97,10 +98,12 @@
 			if(action === 'open'){
 				document.getElementById(id).style.display = 'block';
 				self.index.style.display = 'none';
+				self.bar.style.display = 'none';
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_show');
 			}else if(action === 'close'){
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_hide');
 				self.index.style.display = 'block';
+				self.bar.style.display = 'block';
 				setTimeout(function(){
 					document.getElementById(id).style.display = 'none';
 				}, 200);

@@ -136,11 +136,18 @@
 </div>
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
+	<script src="js/share.js"></script>
 	<script src="js/controllers_maga.js"></script>
 	<script src="js/index_ctrl.js"></script>
 	<script src="js/vol_maga.js"></script>
 	<script src="js/lazyload2.0.js"></script>
 	<script src="js/slides.js"></script>
 	<script src="js/mode.js"></script>
+<script>
+	var vol = GetQueryString('vol')?GetQueryString('vol'):0;
+	
+	/*分享*/
+		wxShare('http://jdc.jd.com/h5/case/img/share.png',100,100,location.href,'H5 精品案例赏析-第'+vol+'期','新年新气象～（是不是有点早');
+</script>
 </body>
 </html>

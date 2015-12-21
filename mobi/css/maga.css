@@ -132,7 +132,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 		.ar_nav li{display: inline-block;width: 0.25rem;height: 0.25rem;border: 0.1rem #fff solid;border-radius: 50%;margin-right: 0.1rem;}
 		.ar_nav li:last-child{margin-right: 0;}
 		.ar_nav li.cur{background-color: #fff;}
-	.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 2;}
+	.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}
 		.ar_shaking{-webkit-transform-origin:105% 150%;-webkit-animation:shakingScale ease 1s;}
 @-webkit-keyframes shakingScale{
 	0%, 50%{-webkit-transform:rotate(0) scale(4);}
