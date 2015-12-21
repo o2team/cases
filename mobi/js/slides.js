@@ -78,7 +78,6 @@
 					self.cur = self.secNum - 1;
 				}
 			}
-			console.log(self.cur);
 
 			self.slideWrap.style.transform = 'translateX(-' + self.cur * self.winWidth + 'px)';
 			self.slideWrap.style.webkitTransform = 'translateX(-' + self.cur * self.winWidth + 'px)';
@@ -93,11 +92,15 @@
 		}, 
 
 		floatToggle: function(id, action){
+			var self = this;
+
 			if(action === 'open'){
 				document.getElementById(id).style.display = 'block';
+				self.index.style.display = 'none';
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_show');
 			}else if(action === 'close'){
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_hide');
+				self.index.style.display = 'block';
 				setTimeout(function(){
 					document.getElementById(id).style.display = 'none';
 				}, 200);

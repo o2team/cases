@@ -41,12 +41,12 @@
 	<!-- E：工具栏 -->
 	<!-- S：文章 -->
 	<div class="page article" data-mode="">
-		<div class="ar_wrap" style="background-image:url();">
+		<div class="ar_wrap">
 		<!-- S：文字模式 -->
-	        <section class="ar_sec" ng-repeat="case in caselist">
+	        <section class="ar_sec" ng-repeat="case in caselist" style="background-image:url({{case.image}});">
 	        	<div class="ar_sec_wrap">
 					<a class="ar_img" href="{{case.url}}">
-						<img alt="{{case.title}}" lazy-src="{{case.image}}" />
+						<img alt="{{case.title}}" src="{{case.image}}" />
 					</a>
 					<div class="ar_cnt">
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
@@ -65,7 +65,7 @@
 						</div>
 					</div>
 					<!-- 点赞 -->
-					<a href="javascript:;" class="ar_love loved">
+					<a href="javascript:;" class="ar_love loved" style="display:none;">
 						<i class="ar_love_icon"></i><span class="ar_love_num">120</span>
 					</a>
 				</div>
@@ -98,7 +98,7 @@
 	</div>
 	<!-- E：文章 -->
 </div>
-<div class="wrap" id="index">
+<div class="wrap" id="index" style="display:none;">
 	<!-- S：封面 -->
 	<div class="page fcover" style="background-color:#FE4C4A;border-color:#AF004D;">
     	<div class="fc_logo"></div>
