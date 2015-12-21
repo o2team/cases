@@ -13,7 +13,7 @@ var cases = angular.module('cases', ['ngRoute']),
 	beforeHref = 'mail.html?vol=', 
 	cover = document.querySelector('.cover'), 
 	coverLoaded = 'page cover loaded', 
-	sec = document.querySelectorAll('.ar_sec'), 
+	sec = '.ar_sec', 
 	indexLi = '.li_cover', 
 	indexCover = document.querySelector('.fcover'), 
 	indexCoverLoaded = 'page fcover loaded', 
@@ -131,7 +131,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 		setTimeout(function(){
 			var show = setInterval(function(){
-				var bb = sec.length;
+				var bb = document.querySelectorAll(sec).length;
 				
 				if(bb===($scope.caselist.length+1)){
 					clearInterval(show);
