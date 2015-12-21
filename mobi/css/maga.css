@@ -145,6 +145,13 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	25%, 100%{-webkit-transform:rotate(0) scale(1);}
 }
 
+	/*图片模式 by Yetty 12.21*/
+	.pic_mode .ar_analysis,
+	.pic_mode .ar_attr li:nth-child(1),
+	.pic_mode .ar_attr li:nth-child(2),
+	.pic_mode .ar_attr li:nth-child(4){display: none}
+	.pic_mode .ar_img{height: 17.7067rem;padding-top: 0;}
+
 /*=========list==========*/
 .list{position: relative;padding:0.810667rem 0 0 1.28rem;box-sizing:border-box;}
 	.list:before{content: "";position: absolute;width: 1px;background-color: #c9c9c9;height: 100%;left: 0.64rem;top:0;}
