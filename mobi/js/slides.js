@@ -133,7 +133,7 @@
 				self.bar.style.display = 'block';
 				setTimeout(function(){
 					document.getElementById(id).style.display = 'none';
-				}, 200);
+				}, 400);
 			}
 		}
 	};
