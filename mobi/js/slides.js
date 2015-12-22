@@ -61,7 +61,7 @@
 						self.floatToggle(id, 'open');	
 					}
 				});
-				document.querySelectorAll(self.closeBtnClass)[i].addEventListener('touchstart', function(){
+				document.querySelectorAll(self.closeBtnClass)[i].addEventListener('touchend', function(){
 					self.move = 1;
 					self.move2 = 1;
 					// document.body.addEventListener('touchstart', self.noMove, false);
