@@ -48,7 +48,7 @@
 					<a class="ar_img" href="{{case.url}}">
 						<img alt="{{case.title}}" src="{{case.image}}" />
 					</a>
-					<div class="ar_cnt">
+					<div class="ar_cnt" data-id="{{case._id}}">
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
 						<h3 class="ar_tit"><a href="{{case.url}}" ng-bind-html="case.title"></a><span class="ar_type ar_type_{{case.type[1].id}}">{{case.type[1].name}}</span></h3>
 						<div class="ar_aside">
@@ -61,7 +61,7 @@
 						</div>
 						<div class="ar_analysis">
 							<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
-							<a href="javascript:;" class="ar_more" data-id="{{case._id}}">查看更多</a>
+							<p class="ar_more">查看更多<p>
 						</div>
 					</div>
 					<!-- 点赞 -->

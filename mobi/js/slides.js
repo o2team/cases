@@ -8,13 +8,15 @@
 		cur: 0, 
 		slideWrap: document.querySelector('.ar_wrap'), 
 		slideBox: document.querySelector('.article'), 
-		moreBtnClass: '.ar_more', 
+		moreBtnClass: '.ar_cnt', 
 		closeBtnClass: '.ar_full_close',
 		secClass: '.ar_sec', 
 
 		winWidth: document.documentElement.clientWidth, 
 		winHeight: document.documentElement.clientHeight, 
 		startPos: 0, 
+		move: 1, 
+		move2: 1, 
 
 		init: function(){
 			var self = this, 
@@ -34,6 +36,8 @@
 				indexString += '<li></li>';
 			}
 
+			document.body.addEventListener('touchstart', self.noMove, false);
+
 			self.index.innerHTML = indexString;
 			self.index.childNodes[self.cur].setAttribute('class', 'cur');
 
@@ -44,23 +48,46 @@
 			});
 
 			for(var i=0; i<document.querySelectorAll(self.moreBtnClass).length; i++){
-				document.querySelectorAll(self.moreBtnClass)[i].addEventListener('click', function(){
-					var id = this.getAttribute('data-id');
-					self.floatToggle(id, 'open');
+				document.querySelectorAll(self.moreBtnClass)[i].addEventListener('touchend', function(e){
+					self.move = 0;
+					// document.body.removeEventListener('touchstart', self.noMove, false);
+					// self.slideWrap.removeEventListener('touchmove', self.watch);
+					var endPos = e.changedTouches[0].clientX, 
+						posGap = endPos - self.startPos;
+
+					if(posGap === 0){
+						var id = this.getAttribute('data-id');
+						self.move2 = 0;
+						self.floatToggle(id, 'open');	
+					}
 				});
-				document.querySelectorAll(self.closeBtnClass)[i].addEventListener('click', function(){
+				document.querySelectorAll(self.closeBtnClass)[i].addEventListener('touchstart', function(){
+					self.move = 1;
+					self.move2 = 1;
+					// document.body.addEventListener('touchstart', self.noMove, false);
+					// self.slideWrap.addEventListener('touchmove', self.watch);
 					var id = this.getAttribute('data-id');
 					self.floatToggle(id, 'close');
-				});			}
+				});
+			}
+		}, 
+
+		noMove: function(e){
+			if(Slides.move){
+				e.preventDefault();
+			}
 		}, 
 
 		watch: function(e){
-			Slides.endPos = e.changedTouches[0].clientX;
-			var posGap = Slides.endPos - Slides.startPos;
-			
-			if(Math.abs(posGap) > 50){
-				Slides.pageMov(posGap);
-				Slides.slideWrap.removeEventListener('touchmove', Slides.watch);
+			if(Slides.move2){
+				e.preventDefault();
+				Slides.endPos = e.changedTouches[0].clientX;
+				var posGap = Slides.endPos - Slides.startPos;
+				
+				if(Math.abs(posGap) > 50){
+					Slides.pageMov(posGap);
+					Slides.slideWrap.removeEventListener('touchmove', Slides.watch);
+				}
 			}
 		}, 
 

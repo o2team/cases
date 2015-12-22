@@ -47,7 +47,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 			.type_tag_1{background:#E12228;}
 			.type_tag_2{background:#0088CC;}
 			.type_tag_3{background:#FFA900;}
-			.type_tag_4{background:#4CBB1B;}
+			.tyope_tag_4{background:#4CBB1B;}
 		.img{width:100%;position:absolute;top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);}
 		.qrcode{width:22%;background:#FFFFFF;position:absolute;top:50%;right:4.46%;padding:2%;-webkit-transform:translateY(-50%);transform:translateY(-50%);}
 			.qrcode img{width:100%;display:block;}
