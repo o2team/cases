@@ -36,7 +36,7 @@
 				indexString += '<li></li>';
 			}
 
-			document.body.addEventListener('touchstart', self.noMove, false);
+			document.body.addEventListener('touchmove', self.noMove, false);
 
 			self.index.innerHTML = indexString;
 			self.index.childNodes[self.cur].setAttribute('class', 'cur');

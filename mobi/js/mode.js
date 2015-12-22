@@ -28,11 +28,11 @@
 				}
 				self.setMode(modeString);
 			}else{
-				picBtn.addEventListener('click', function(){
+				picBtn.addEventListener('touchstart', function(){
 					self.setMode(this.getAttribute('data-mode'));
 					self.modeVal = 0;
 				});
-				textBtn.addEventListener('click', function(){
+				textBtn.addEventListener('touchstart', function(){
 					self.setMode(this.getAttribute('data-mode'));
 					self.modeVal = 1;
 				});
