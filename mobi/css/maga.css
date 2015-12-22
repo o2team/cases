@@ -116,7 +116,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 }
 
 		.ar_full_close{width:100%;text-indent:0.5rem;font-size: 24px;line-height: 32px;color: #000;position:absolute;top:0;left:0;z-index:3;background:#FFFFFF;border-bottom: 1px solid #ddd;}
-		.ar_full{height:100%;position: relative;overflow-x:hidden;overflow-y:scroll;background-color: #fff;padding:0 0.64rem 0.64rem;z-index:2;}
+		.ar_full{height:100%;position: relative;overflow-x:hidden;overflow-y:scroll;background-color: #fff;padding:0 0.64rem 0.64rem;z-index:2;-webkit-overflow-scrolling:touch;}
 			.mask_show .ar_full_close, .mask_show .ar_full{-webkit-animation:textShow ease 1s;animation:textShow ease 1s;}
 @-webkit-keyframes textShow{
 	0%, 60%{opacity:0;}
