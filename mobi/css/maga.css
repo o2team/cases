@@ -22,7 +22,9 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 .ch_pic .ch_item_icon,
 .ch_text,
 .ch_text .ch_item_icon,
-.ar_shake{background: url("../img/sprite.png") no-repeat;background-size: 9.51467rem 7.59467rem;}
+.ar_shake,
+/*shake修改 by Yetty 12.23*/
+.ar_shake:after{background: url("../img/sprite.png") no-repeat;background-size: 9.51467rem 7.59467rem;}
 
 .co_logo,.fc_logo{background-position: 0 0}
 .ch_pic{background-position: 0 -3.11467rem}
@@ -30,6 +32,8 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 .ch_text{background-position: -5.03467rem -3.11467rem}
 .ch_text .ch_item_icon{background-position: -6.912rem -1.55733rem}
 .ar_shake{background-position: -3.28533rem 0}
+/*shake修改 by Yetty 12.23*/
+.ar_shake:after{background-position: -3.28533rem -1.70667rem;}
 #index{z-index:23;}
 
 /*===================*/
@@ -132,7 +136,12 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 		.ar_nav li{display: inline-block;width: 0.25rem;height: 0.25rem;border: 0.1rem #fff solid;border-radius: 50%;margin-right: 0.1rem;}
 		.ar_nav li:last-child{margin-right: 0;}
 		.ar_nav li.cur{background-color: #fff;}
-	.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}
+
+	/*shake修改 by Yetty 12.23*/
+	/*.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}*/
+	.ar_shake{position: absolute;width: 3.584rem;height: 1.70667rem;right: 0.3rem;bottom: 1.83467rem;z-index: 6;}
+	.ar_shake:after{content: "";display: block;position: absolute;width: 3.584rem;height: 1.28rem;left: 0;top:1.216rem;}
+
 		.ar_shaking{-webkit-transform-origin:105% 150%;-webkit-animation:shakingScale ease 1s;}
 @-webkit-keyframes shakingScale{
 	0%, 50%{-webkit-transform:rotate(0) scale(4);}
