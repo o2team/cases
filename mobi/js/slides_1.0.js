@@ -22,9 +22,9 @@
 			var self = this, 
 				indexString = '';
 
-			self.slideBox.style.width =	self.slideWrap.style.width = self.winWidth + 'px';
-			self.slideBox.style.height = self.winHeight + 'px';
-			self.slideWrap.style.height = self.winHeight * self.secNum + 'px';
+			self.slideBox.style.width = self.winWidth + 'px';
+			self.slideWrap.style.width = self.winWidth * self.secNum + 'px';
+			self.slideBox.style.height = self.slideWrap.style.height = self.winHeight + 'px';
 
 			for(var i=0; i<self.secNum; i++){
 				var secItem = document.querySelectorAll(self.secClass)[i];
@@ -42,7 +42,7 @@
 			self.index.childNodes[self.cur].setAttribute('class', 'cur');
 
 			self.slideWrap.addEventListener('touchstart', function(e){
-				self.startPos = e.changedTouches[0].clientY;
+				self.startPos = e.changedTouches[0].clientX;
 
 				self.slideWrap.addEventListener('touchmove', self.watch);
 			});
@@ -52,7 +52,7 @@
 					self.move = 0;
 					// document.body.removeEventListener('touchstart', self.noMove, false);
 					// self.slideWrap.removeEventListener('touchmove', self.watch);
-					var endPos = e.changedTouches[0].clientY, 
+					var endPos = e.changedTouches[0].clientX, 
 						posGap = endPos - self.startPos;
 
 					if(posGap === 0){
@@ -81,7 +81,7 @@
 		watch: function(e){
 			if(Slides.move2){
 				e.preventDefault();
-				Slides.endPos = e.changedTouches[0].clientY;
+				Slides.endPos = e.changedTouches[0].clientX;
 				var posGap = Slides.endPos - Slides.startPos;
 				
 				if(Math.abs(posGap) > 50){
@@ -100,29 +100,21 @@
 				if(self.cur < 0){
 					self.cur = 0;
 				}
-			}else if(distance<0){
+			}else{
 				self.cur += 1;
 				if(self.cur > (self.secNum-1)){
 					self.cur = self.secNum - 1;
 				}
 			}
 
-			self.slideWrap.style.transform = 'translateY(-' + self.cur * self.winHeight + 'px)';
-			self.slideWrap.style.webkitTransform = 'translateY(-' + self.cur * self.winHeight + 'px)';
+			self.slideWrap.style.transform = 'translateX(-' + self.cur * self.winWidth + 'px)';
+			self.slideWrap.style.webkitTransform = 'translateX(-' + self.cur * self.winWidth + 'px)';
 
 			for(var i=0; i<indexLi.length; i++){
 				if(i===self.cur){
 					indexLi[i].setAttribute('class', 'cur');
 				}else{
 					indexLi[i].setAttribute('class', '');
-				}
-
-				if(i===(self.cur-1)){
-					document.querySelectorAll(self.secClass)[i].setAttribute('class', 'ar_sec prev');
-				}else if(i===(self.cur+1)){
-					document.querySelectorAll(self.secClass)[i].setAttribute('class', 'ar_sec next');
-				}else{
-					document.querySelectorAll(self.secClass)[i].setAttribute('class', 'ar_sec');
 				}
 			}
 		}, 
