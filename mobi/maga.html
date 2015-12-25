@@ -46,7 +46,7 @@
 	        <section class="ar_sec" ng-repeat="case in caselist" style="background-image:url({{case.image}});">
 	        	<div class="ar_sec_wrap">
 					<a class="ar_img" href="{{case.url}}">
-						<img alt="{{case.title}}" src="{{case.image}}" />
+						<img alt="{{case.title}}" lazy-src="{{case.image}}" />
 					</a>
 					<div class="ar_cnt" data-id="{{case._id}}">
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
@@ -147,6 +147,7 @@
 	<script src="js/lazyload2.0.js"></script>
 	<script src="js/slides.js"></script>
 	<script src="js/mode.js"></script>
+	<script src="js/setcookie.js"></script>
 <script>
 	var vol = GetQueryString('vol')?GetQueryString('vol'):0;
 	

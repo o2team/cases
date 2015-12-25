@@ -1,7 +1,7 @@
 // author: EC
-// last modify: 2015-11-25 17:57
+// last modify: 2015-12-25 13:16
 
-function lazyLoad(){
+function lazyLoad(context){
     var doc = document,
         body = doc.body,
         win = window,
@@ -45,8 +45,7 @@ function lazyLoad(){
             }
         }else if(elemOffsetY >= winOffsetY){
             if(elemOffsetY <= winOffsetY + viewHeight){
-                yVisible = true;
-            }
+                yVisible = true;            }
         }
 
         if(elemOffsetX <= winOffsetX){
@@ -76,7 +75,10 @@ function lazyLoad(){
     }
 
     $win.bind('scroll', checkImage);
+    context.addEventListener('scroll', checkImage);
     $win.bind('resize', checkImage);
+    $win.bind('touchmove', checkImage);
+    $win.bind('touchend', checkImage);
 
     function onLoad(){
         var $el = angular.element(this),
@@ -89,7 +91,12 @@ function lazyLoad(){
         }
     }
 
-    imgArr = doc.getElementsByTagName('img');
+    if(context){
+        imgArr = context.getElementsByTagName('img');
+    }else{
+        imgArr = doc.getElementsByTagName('img');
+    }
+
     for(var i=0; i<imgArr.length; i++){
         var el = angular.element(imgArr[i]), 
             src = imgArr[i].getAttribute('lazy-src');
@@ -103,7 +110,7 @@ function lazyLoad(){
                 var uid = getUid(el[0]);
                 el.css({
                     'background-color': '#fff',
-                    'opacity': 0,
+                    'opacity': 1,
                     '-webkit-transition': 'opacity .2s',
                     'transition': 'opacity .2s'
                 });
@@ -116,4 +123,6 @@ function lazyLoad(){
 
         el.unbind('load');
     }
+
+    setTimeout(function(){checkImage();}, 200);
 };
