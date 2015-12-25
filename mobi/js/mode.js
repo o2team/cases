@@ -71,6 +71,10 @@
 			setCookie("mode", self.modeVal);
 
 			self.shakeIco.setAttribute('class', 'ar_shake ar_shaking');
+
+			setTimeout(function(){
+				self.shakeIco.style.display = 'none';
+			}, 5000);
 		}, 
 
 		// 摇动手机
@@ -86,6 +90,7 @@
 				window.addEventListener('devicemotion', function(){
 					if(!modified){
 						var acceleration =event.accelerationIncludingGravity;
+						self.shakeIco.style.display = 'none';
 						//将传感值赋给acceleration
 						x = acceleration.x;
 						y = acceleration.y;
