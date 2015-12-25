@@ -97,6 +97,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 				.ar_star:after{position:absolute;top:0;left:0;content:"★★★★★";color:#DADADA}
 				.ar_star i{color:#FDC574;z-index:1;position:relative;display: inline-block;}
 			.ar_analysis{font-size: 0.6rem;color: #666;line-height: 0.9rem;margin-bottom: 1rem;}
+				.ar_analysis a{color:#389EFF;}
 			.ar_more{color: #999;display:block;text-align:center;font-size:32px;}
 			.ar_love{position: absolute;min-width:26px; height: 26px;top: 10px;right: 10px;background-color: rgba(0,0,0,0.38); border: 3px solid rgba(255,255,255,0.38);border-radius: 26px;line-height: 26px;text-align: center;}
 				.ar_love_icon{position:absolute; display:block;width: 18px;height: 14px;background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAcCAMAAADY3iYuAAAAbFBMVEUAAADw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PBLZ/EuAAAAI3RSTlMA+usOvAf28IZ5cGlFKx0B27KagV0j89LPxcKNcuKik1NOMQJzc4YAAAC/SURBVCjPhdDZDsIgFEXRDZTOVTs5z/z/P5pq1RKxd72dZIcADBbtNlY6yhbw2lmkXbxt33uZxe5FpRawqRp3nC2fQeO+9gazn+xmSHI3VVN7OweTOE/jz8RwdPNyIqGI0EKhcRLkM3ZCsSMVipZKKHqE59bAfS5QFcBlpjgwMKu/wcbyVK1dWNIzuqnwJUo+imDRMZEHggJPIQXQKf8OHT/KZBKsSwL6zSdYVQTZwxicDf+Uw/fqKzPs8ZQaPA/il1abetrpxgAAAABJRU5ErkJggg==") no-repeat;background-size: 18px 14px;top:6px;left:4px;}
@@ -131,6 +132,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 		    .ar_full_tit a{color: #333;}
 		    .ar_full_sub{font-size: 16px;color: #333;line-height:32px;font-weight: normal;}
 		    .ar_full p{font-size: 16px;color: #666;margin-bottom: 16px;}
+		    .ar_full a{color:#389EFF;}
 
 	.ar_nav{position: absolute;bottom:1.05rem;left: 50%;-webkit-transform:translateX(-50%);}
 		.ar_nav li{display: inline-block;width: 0.25rem;height: 0.25rem;border: 0.1rem #fff solid;border-radius: 50%;margin-right: 0.1rem;}
@@ -197,3 +199,5 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	.choose{z-index:99;-webkit-transition:all ease .4s;transition:all ease .4s;}
 
 .no_transition{-webkit-transition:none;transition:none;}
+.figurecapture{color:#999;text-align:center;font-size:14px;padding:0 20px;}
+.author{text-align:right;color:#999999;}

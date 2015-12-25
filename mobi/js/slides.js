@@ -66,7 +66,8 @@
 			var self = this, 
 				indexString = '';
 
-			if(getCookie('epi') === getCookie('preepi')){		var iniPage = getCookie('page'), 
+			if(getCookie('epi') === getCookie('preepi')){
+					var iniPage = getCookie('page'), 
 					iniDetail = getCookie('detail'), 
 					iniScroll = getCookie('scroll');
 			}else{
@@ -111,13 +112,16 @@
 
 			if(iniDetail && iniDetail !== '0'){
 				var detailId = document.querySelectorAll(self.moreBtnClass)[self.cur].getAttribute('data-id');
+
 				self.move = 0;
 				self.move2 = 0;
 				self.floatToggle(detailId, 'open');
 			}
 
 			if(iniScroll){
-				document.querySelectorAll(self.detailClass)[self.cur].scrollTop = iniScroll;
+				var curDetail = document.querySelectorAll(self.detailClass)[self.cur];
+				curDetail.scrollTop = iniScroll;
+				lazyLoad(curDetail);
 			}
 		}, 
 

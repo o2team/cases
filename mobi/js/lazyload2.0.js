@@ -39,15 +39,13 @@ function lazyLoad(context){
             xVisible,
             yVisible;
 
-            // console.log(elem, elemOffsetX, elemOffsetY);
         if(elemOffsetY <= winOffsetY){
             if(elemOffsetY + elemHeight >= winOffsetY){
                 yVisible = true;
             }
         }else if(elemOffsetY >= winOffsetY){
             if(elemOffsetY <= winOffsetY + viewHeight){
-                yVisible = true;
-            }
+                yVisible = true;            }
         }
 
         if(elemOffsetX <= winOffsetX){
@@ -77,6 +75,7 @@ function lazyLoad(context){
     }
 
     $win.bind('scroll', checkImage);
+    context.addEventListener('scroll', checkImage);
     $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
     $win.bind('touchend', checkImage);
@@ -111,7 +110,7 @@ function lazyLoad(context){
                 var uid = getUid(el[0]);
                 el.css({
                     'background-color': '#fff',
-                    'opacity': 0,
+                    'opacity': 1,
                     '-webkit-transition': 'opacity .2s',
                     'transition': 'opacity .2s'
                 });
@@ -124,4 +123,6 @@ function lazyLoad(context){
 
         el.unbind('load');
     }
+
+    setTimeout(function(){checkImage();}, 200);
 };
