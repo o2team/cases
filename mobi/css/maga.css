@@ -138,6 +138,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 		    .ar_full_tit a{color: #333;}
 		    .ar_full_sub{font-size: 0.768rem;color: #333;line-height:0.682667rem;font-weight: normal;}
 		    .ar_full p{font-size: 0.768rem;line-height:1.2rem;color: #666;margin-bottom: 0.7rem;}
+		    .ar_full strong{color:#000000;}
 		    .ar_full a{color:#389EFF;}
 
 	.ar_nav{display:none;position: absolute;bottom:1.05rem;left: 50%;-webkit-transform:translateX(-50%);}
