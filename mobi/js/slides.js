@@ -97,17 +97,17 @@
 				self.cur = iniPage - 1;
 				self.pageSet(self.cur);
 				self.slideWrap.setAttribute('class', 'ar_wrap no_transition');
-				for(var i=0; i<self.secNum; i++){
-					lazyLoad(document.querySelectorAll('.ar_sec_wrap')[i]);
-				}
+				// for(var i=0; i<self.secNum; i++){
+				// 	lazyLoad(document.querySelectorAll('.ar_sec_wrap')[i]);
+				// }
 				setTimeout(function(){
 					self.slideWrap.setAttribute('class', 'ar_wrap');
 				}, 100);
 			}else{
 				self.pageSet(self.cur);
-				for(var i=0; i<self.secNum; i++){
-					lazyLoad(document.querySelectorAll('.ar_sec_wrap')[i]);
-				}
+				// for(var i=0; i<self.secNum; i++){
+				// 	lazyLoad(document.querySelectorAll('.ar_sec_wrap')[i]);
+				// }
 			}
 
 			if(iniDetail && iniDetail !== '0'){
