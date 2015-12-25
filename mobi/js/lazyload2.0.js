@@ -75,8 +75,10 @@ function lazyLoad(context){
     }
 
     $win.bind('scroll', checkImage);
-    context.addEventListener('scroll', checkImage);
-    $win.bind('resize', checkImage);
+    if(context){
+        context.addEventListener('scroll', checkImage);
+    }
+        $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
     $win.bind('touchend', checkImage);
 
