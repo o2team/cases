@@ -49,7 +49,6 @@
 						<img alt="{{case.title}}" src="{{case.image}}" />
 					</a>
 					<div class="ar_cnt" data-id="{{case._id}}">
-
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
 						<h3 class="ar_tit"><a href="{{case.url}}" ng-bind-html="case.title"></a><span class="ar_type ar_type_{{case.type[1].id}}">{{case.type[1].name}}</span></h3>
 						<div class="ar_aside">
@@ -62,7 +61,11 @@
 						</div>
 						<div class="ar_analysis">
 							<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
-							<p class="ar_more">查看更多<p>
+							<p class="ar_more">
+								<span></span>
+								<span></span>
+								<span></span>
+							<p>
 						</div>
 					</div>
 					<!-- 点赞 -->
@@ -70,6 +73,7 @@
 						<i class="ar_love_icon"></i><span class="ar_love_num">120</span>
 					</a>
 				</div>
+
 				<div class="ar_mask mask_hide" id="{{case._id}}" style="display:none;">
 					<div class="mask"></div>
 					<a href="javascript:;" class="ar_full_close" data-id="{{case._id}}">&times;</a>
@@ -90,7 +94,7 @@
 	    </div>
 		<!-- E：文字模式 -->
 		<!-- S：滑动导航 -->
-		<ul class="ar_nav"></ul>
+		<ul class="ar_nav hide"></ul>
 		<!-- E：滑动导航 -->
 		<!-- S：切换视图 -->
 		<div class="ar_shake"></div>
