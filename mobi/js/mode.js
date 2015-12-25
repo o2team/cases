@@ -1,27 +1,23 @@
 // author: EC
-// last modify: 2015-12-20 13:36
+// last modify: 2015-12-25 16:50
 
 	var Mode = {
-		mode: document.querySelector('.choose'), 
-		picMode: 'ch_pic', 
-		textMode: 'ch_text', 
-		secWrap: document.querySelector('.article'), 
-		secWrapClass: 'page article', 
-		shakeIco: document.querySelector('.ar_shake'), 
-		modeVal: 1, 
-		sound: 'img/sound.mp3', 
-
+		mode: document.querySelector('.choose'), //视图选择浮层
+		picMode: 'ch_pic', //图片模式类名
+		textMode: 'ch_text', //文字模式类名
+		secWrap: document.querySelector('.article'), //设置类容器
+		secWrapClass: 'page article', //容器原类名
+		shakeIco: document.querySelector('.ar_shake'), //摇一摇提示图标
+		modeVal: 1, //模式值，{1:文字, 0:图片}
+		sound: 'img/sound.mp3', //切换模式音频地址
 
 		init: function(){
 			var self = this, 
 				picBtn = document.querySelector('.' + self.picMode), 
 				textBtn = document.querySelector('.' + self.textMode), 
-				modeCookie = self.getCookie('mode');
+				modeCookie = getCookie('mode');
 
-			self.audio = new Audio();
-			self.audio.src = self.sound;
-			self.audio.autoplay = false;
-			self.audio.preload = true;
+			self.setAudio();
 
 			if(modeCookie==='0' || modeCookie==='1'){
 				var modeString = '';
@@ -49,6 +45,16 @@
 
 		}, 
 
+		// 设置切换音频
+		setAudio: function(){
+			var self = this;
+			self.audio = new Audio();
+			self.audio.src = self.sound;
+			self.audio.autoplay = false;
+			self.audio.preload = true;
+		}, 
+
+		// 设置视图模式
 		setMode: function(modeString){
 			var self = this, 
 				modeClass = self.mode.getAttribute('class'); 
@@ -62,15 +68,12 @@
 				self.mode.style.display = 'none';
 			}, 400);
 
-			document.cookie = "mode=" + self.modeVal;
+			setCookie("mode", self.modeVal);
 
 			self.shakeIco.setAttribute('class', 'ar_shake ar_shaking');
-			// setTimeout(function(){
-			// 	self.shakeIco.style.opacity = 0;
-			// }, 300000);
-
 		}, 
 
+		// 摇动手机
 		shaking: function(){
 			var self = this;
 
@@ -104,16 +107,6 @@
 						}
 					}
 				}, false);
-			}
-		}, 
-
-		getCookie: function(name){
-			var arr,reg = new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-			if(arr = document.cookie.match(reg)){
-				return unescape(arr[2]);
-			}
-			else{
-				return null;
 			}
 		}
 	}

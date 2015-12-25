@@ -1,55 +1,61 @@
 // author: EC
-// last modify: 2015-12-19 17:57
+// last modify: 2015-12-25 13:16
 
 var cases = angular.module('cases', ['ngRoute']), 
 	data = [], 
-	qrIdPre = 'caseqc_', 
+	// qrIdPre = 'caseqc_', 
 	h5type = [{"name": "其他", "id": 0}, 
 		{"name": "游戏", "id": 1}, 
 		{"name": "短片", "id": 2}, 
 		{"name": "翻页动画", "id": 3}, 
-		{"name": "多屏互动", "id": 4}], 
-	indexHref = 'maga.html', 
-	beforeHref = 'mail.html?vol=', 
-	cover = document.querySelector('.cover'), 
-	coverLoaded = 'page cover loaded', 
-	sec = '.ar_sec', 
-	indexLi = '.li_cover', 
-	indexCover = document.querySelector('.fcover'), 
-	indexCoverLoaded = 'page fcover loaded', 
-	magaBox = document.getElementById('magazines'), 
-	indexBox = document.getElementById('index');
+		{"name": "多屏互动", "id": 4}], //案例类型表
+	indexHref = 'maga.html', //索引地址
+	beforeHref = 'mail.html?vol=', //3期及以前地址
+	$cover = document.querySelector('.cover'), //期刊封面钩子
+	coverLoaded = 'page cover loaded', //加载完毕期刊封面类名
+	sec = '.ar_sec', //每屏内容类
+	indexLi = '.li_cover', //索引项类
+	$indexCover = document.querySelector('.fcover'), //索引封面
+	indexCoverLoaded = 'page fcover loaded', //加载完毕索引封面类名
+	$magaBox = document.getElementById('magazines'), //期刊容器
+	$indexBox = document.getElementById('index'); //索引容器
 
 cases.controller('casesList', function($scope, $http, $sce){
-	$scope.vol = GetQueryString('vol');
-	$scope.prevol = $scope.nextvol = 0;
+	$scope.vol = GetQueryString('vol'); //期数
+	
+	//设置期数cookie
+	var s, preepi = (s = getCookie('epi')) ? s: '';
+	setCookie('preepi', preepi);
+	setCookie('epi', $scope.vol);
 
+	//字符串转html代码
 	parseHtml = function(array){
 		for(var p=0; p<array.length; p++){
 			array[p] = $sce.trustAsHtml(array[p]);
 		}
 	}
 
+	//跳转索引
 	document.querySelector('.ar_list').addEventListener('click', function(){
 		location.href = jumpHref(indexHref);
 	});
-
 	document.querySelector('.bc_back').addEventListener('click', function(){
 		location.href = jumpHref(indexHref);
 	});
 
-	window.json2 = function(res){
+	//获取索引信息
+	$http.get('js/vol_maga.js')
+		.success(function(res){
+			json1(res);
+		});
+
+	window.json1 = function(res){
 		var volList = res, 
 			latest = volList[volList.length-1].vol + 3, 
 			before = volList[0].vol - 1,
 			pt, projectTime;
+
 		$scope.volList = volList.reverse();
-
-		$http.get('js/vol.js')
-			.success(function(res){
-				json3(res);
-			});
-
 
 		if($scope.vol){
 			var latestVol = parseInt(latest.vol), 
@@ -57,6 +63,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 			magaSet();
 
+			//最新期
 			if($scope.vol === 'latest'){
 				$scope.vol = latestVol;
 			}
@@ -65,7 +72,8 @@ cases.controller('casesList', function($scope, $http, $sce){
 				location.href = jumpHref(beforeHref+$scope.vol);
 			}
 
-			for(var v=0; v<volList.length; v++){				if(volList[v].vol === parseInt($scope.vol)){
+			for(var v=0; v<volList.length; v++){
+				if(volList[v].vol === parseInt($scope.vol)){
 					$scope.date = volList[v].date;
 					$scope.cover = volList[v].cover;
 					$scope.hexocolor = volList[v].hexocolor;
@@ -77,29 +85,30 @@ cases.controller('casesList', function($scope, $http, $sce){
 			curVol = parseInt($scope.vol);
 			$scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
 			$scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
-		}else{
-			indexSet();
-		}
 	
-		if($scope.prewords){
-			parseHtml($scope.prewords);
-		}
+			if($scope.prewords){
+				parseHtml($scope.prewords);
+			}
 
-		if($scope.date){
-			pt = $scope.date.split('-');
-			projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-			$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json1');
-		}else if(!$scope.date && $scope.vol>latestVol){
-			location.href = jumpHref(indexHref);
+			if($scope.date){
+				pt = $scope.date.split('-');
+				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
+				$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
+			}else if(!$scope.date && $scope.vol>latestVol){
+				location.href = jumpHref(indexHref);
+			}
+		}else{
+			// 获取旧版内容
+			$http.get('js/vol.js')
+				.success(function(res){
+					json3(res);
+				});
+			indexSet();
 		}
 	}
 
-	$http.get('js/vol_maga.js')
-		.success(function(res){
-			json2(res);
-		});
-		
-	window.json1 = function (data) { 
+
+	window.json2 = function (data) { 
 		data = data;
 		$scope.caselist = data.reverse();
 
@@ -135,13 +144,9 @@ cases.controller('casesList', function($scope, $http, $sce){
 				
 				if(bb===($scope.caselist.length+1)){
 					clearInterval(show);
-					// for(var q=0; q<$scope.caselist.length; q++){
-					// 	var qrcode = new QRCode(document.getElementById(qrIdPre+$scope.caselist[q]._id), $scope.caselist[q].url);
-					// }
-					cover.setAttribute('class', coverLoaded);
-					setTimeout(function(){cover.style.display="none";}, 1000);
+					$cover.setAttribute('class', coverLoaded);
+					setTimeout(function(){$cover.style.display="none";}, 1000);
 
-					lazyLoad();
 					Mode.init();
 					Slides.secNum = bb;
 					Slides.init();
@@ -159,10 +164,10 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 				if(bb===$scope.volList.length){
 					clearInterval(show);
-					indexCover.setAttribute('class', indexCoverLoaded);
-					setTimeout(function(){indexCover.style.display="none";}, 1000);
+					$indexCover.setAttribute('class', indexCoverLoaded);
+					setTimeout(function(){$indexCover.style.display="none";}, 1000);
 
-					lazyLoad();
+					lazyLoad(document.getElementById('index'));
 				}
 		});}, 1000);
 	}
@@ -184,16 +189,18 @@ function jumpHref(jumpPath){
 	return p;
 }
 
+//索引设置
 function indexSet(){
-	magaBox.style.display = 'none';
-	indexBox.style.display = 'block';
-	indexBox.style.transform = 'translateY(0)';
-	indexBox.style.webkitTransform = 'translateY(0)';
+	$magaBox.style.display = 'none';
+	$indexBox.style.display = 'block';
+	$indexBox.style.transform = 'translateY(0)';
+	$indexBox.style.webkitTransform = 'translateY(0)';
 }
 
+//期刊设置
 function magaSet(){
-	magaBox.style.display = 'block';
-	indexBox.style.display = 'none';
-	magaBox.style.transform = 'translateY(0)';
-	magaBox.style.webkitTransform = 'translateY(0)';
+	$magaBox.style.display = 'block';
+	$indexBox.style.display = 'none';
+	$magaBox.style.transform = 'translateY(0)';
+	$magaBox.style.webkitTransform = 'translateY(0)';
 }
