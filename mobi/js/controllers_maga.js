@@ -158,18 +158,17 @@ cases.controller('casesList', function($scope, $http, $sce){
 		var volList2 = res.reverse();
 		$scope.volList.push.apply($scope.volList, volList2);
 
-		setTimeout(function(){
-			var show = setInterval(function(){
-				var bb = document.querySelectorAll(indexLi).length;
+		var show = setInterval(function(){
+			var bb = document.querySelectorAll(indexLi).length;
 
-				if(bb===$scope.volList.length){
-					clearInterval(show);
-					$indexCover.setAttribute('class', indexCoverLoaded);
-					setTimeout(function(){$indexCover.style.display="none";}, 1000);
+			if(bb===$scope.volList.length){
+				clearInterval(show);
+				$indexCover.setAttribute('class', indexCoverLoaded);
+				setTimeout(function(){$indexCover.style.display="none";}, 1000);
 
-					lazyLoad(document.getElementById('index'));
-				}
-		});}, 1000);
+				lazyLoad(document.getElementById('index'));
+			}
+		});
 	}
 });
 
