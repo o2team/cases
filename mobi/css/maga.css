@@ -79,6 +79,11 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	.ar_sec{width:100%;position:relative;background-position:center;background-size:auto 100%;}
 	.ar_sec:after{width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(0,0,0,0.5);content:"";}
 	.ar_sec_wrap{position:absolute;width:14.3147rem; overflow: hidden;top:0;bottom: 0; background-color: #fff;margin: 2.55rem 0;border-radius: 0.2rem;z-index:5;left:50%;-webkit-transform: translateX(-50%);-webkit-transition:all ease .8s;transition:all ease .8s;}
+
+.prev .ar_sec_wrap{-webkit-transform: translate(-50%,4rem);opacity: 0.3;}
+/*.prev .ar_sec_wrap:after{content:"";width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(0,0,0,0.5);z-index:10;-webkit-transition:all ease 1s;transition:all ease 1s;}*/
+.next .ar_sec_wrap{-webkit-transform: translate(-50%,-4rem);opacity: 0.8;}
+
 		.ar_img{width:100%;padding-top:47.462%;position:relative;display:block;background:url(../img/demo.png) no-repeat center;background-size:200% auto;overflow:hidden;}
 			.ar_img img{width:100%;position:absolute;top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);}
 		.ar_cnt{padding:0 0.45rem;}
@@ -134,10 +139,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 		    .ar_full p{font-size: 0.768rem;color: #666;margin-bottom: 0.341333rem;}
 		    .ar_full a{color:#389EFF;}
 
-	.ar_nav{position: absolute;bottom:1.05rem;left: 50%;-webkit-transform:translateX(-50%);}
-		.ar_nav li{display: inline-block;width: 0.25rem;height: 0.25rem;border: 0.1rem #fff solid;border-radius: 50%;margin-right: 0.1rem;}
-		.ar_nav li:last-child{margin-right: 0;}
-		.ar_nav li.cur{background-color: #fff;}
+	.ar_nav{display:none;position: absolute;bottom:1.05rem;left: 50%;-webkit-transform:translateX(-50%);}
 
 	/*shake修改 by Yetty 12.23*/
 	/*.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}*/

@@ -2,7 +2,7 @@
 // last modify: 2015-12-25 16:50
 
 	var Slides = {
-		index: document.querySelector('.ar_nav'), 
+		// index: document.querySelector('.ar_nav'), 
 		bar: document.querySelector('.ar_tool'), 
 		secNum: 1, 
 		cur: 0, 
@@ -63,8 +63,8 @@
 		}, 
 
 		setSize: function(){
-			var self = this, 
-				indexString = '';
+			var self = this;
+				// indexString = '';
 
 			if(getCookie('epi') === getCookie('preepi')){
 					var iniPage = getCookie('page'), 
@@ -86,12 +86,12 @@
 				secItem.style.height = self.winHeight + 'px';
 			}
 
-			for(var i=0; i<self.secNum; i++){
-				indexString += '<li></li>';
-			}
+			// for(var i=0; i<self.secNum; i++){
+			// 	indexString += '<li></li>';
+			// }
 
-			self.index.innerHTML = indexString;
-			self.index.childNodes[self.cur].setAttribute('class', 'cur');
+			// self.index.innerHTML = indexString;
+			// self.index.childNodes[self.cur].setAttribute('class', 'cur');
 
 			if(iniPage && iniPage !== '0'){
 				self.cur = iniPage - 1;
@@ -163,18 +163,18 @@
 		}, 
 
 		pageSet: function(cur){
-			var self = this, 
-				indexLi = self.index.childNodes;
+			var self = this;
+				// indexLi = self.index.childNodes;
 
 			self.slideWrap.style.transform = 'translateY(-' + self.cur * self.winHeight + 'px)';
 			self.slideWrap.style.webkitTransform = 'translateY(-' + self.cur * self.winHeight + 'px)';
 
-			for(var i=0; i<indexLi.length; i++){
-				if(i===self.cur){
-					indexLi[i].setAttribute('class', 'cur');
-				}else{
-					indexLi[i].setAttribute('class', '');
-				}
+			for(var i=0; i<self.secNum; i++){
+				// if(i===self.cur){
+				// 	indexLi[i].setAttribute('class', 'cur');
+				// }else{
+				// 	indexLi[i].setAttribute('class', '');
+				// }
 
 				if(i===(self.cur-1)){
 					document.querySelectorAll(self.secClass)[i].setAttribute('class', 'ar_sec prev');
@@ -193,13 +193,13 @@
 
 			if(action === 'open'){
 				document.getElementById(id).style.display = 'block';
-				self.index.style.display = 'none';
+				// self.index.style.display = 'none';
 				self.bar.style.display = 'none';
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_show');
 				lazyLoad(document.getElementById(id));
 			}else if(action === 'close'){
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_hide');
-				self.index.style.display = 'block';
+				// self.index.style.display = 'block';
 				setTimeout(function(){
 					document.getElementById(id).style.display = 'none';
 					self.bar.style.display = 'block';
