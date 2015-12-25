@@ -89,12 +89,12 @@
 
 				window.addEventListener('devicemotion', function(){
 					if(!modified){
-						var acceleration =event.accelerationIncludingGravity;
-						self.shakeIco.style.display = 'none';
-						//将传感值赋给acceleration
+						var acceleration =event.accelerationIncludingGravity;						//将传感值赋给acceleration
 						x = acceleration.x;
 						y = acceleration.y;
 						if(x*x + y*y > speed) {
+							self.shakeIco.style.display = 'none';
+
 							var curMode = self.modeVal;
 							modified = 1;
 							if(curMode === 1){
