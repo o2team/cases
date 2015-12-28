@@ -68,8 +68,6 @@ function lazyLoad(context){
                 lazySrc = obj.lazySrc, 
                 eleSrc = iElement.attr('src');
 
-            console.log(eleSrc);
-
             if(isVisible(iElement) && !eleSrc){
                 iElement.attr('src', lazySrc)
                     .css({'opacity': 1});
