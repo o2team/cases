@@ -52,10 +52,11 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 	window.json1 = function(){
 		var volList = volMaga, 
-			latest = volList[volList.length-1].vol + 3, 
+			latest = volList[volList.length-1].vol, 
 			before = volList[0].vol - 1,
 			pt, projectTime, 
 			random = Math.random();
+			console.log(latest);
 
 		$scope.volList = volList.reverse();
 
@@ -67,7 +68,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 			//最新期
 			if($scope.vol === 'latest'){
-				$scope.vol = latestVol;
+				$scope.vol = latest;
 			}
 
 			if($scope.vol <= before){
