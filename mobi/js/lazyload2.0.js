@@ -65,22 +65,37 @@ function lazyLoad(context){
         Object.keys(elements).forEach(function(key){
             var obj = elements[key],
                 iElement = obj.iElement,
-                lazySrc = obj.lazySrc;
+                lazySrc = obj.lazySrc, 
+                eleSrc = iElement.attr('src');
 
-            if(isVisible(iElement)){
+            console.log(eleSrc);
+
+            if(isVisible(iElement) && !eleSrc){
                 iElement.attr('src', lazySrc)
                     .css({'opacity': 1});
             }
         });
     }
 
-    $win.bind('scroll', checkImage);
-    if(context){
-        context.addEventListener('scroll', checkImage);
+    function setImgSize(){
+        Object.keys(elements).forEach(function(key){
+            var obj = elements[key], 
+                iElement = obj.iElement, 
+                oriW = iElement.attr('data-width') ? iElement.attr('data-width') : 0, 
+                oriH = iElement.attr('data-height') ? iElement.attr('data-height') : 0, 
+                ratio = oriW && oriH ? oriW/oriH : 0, 
+                curW = iElement[0].width, 
+                curH = ratio ? Math.ceil(curW*ratio) : 0;
+
+            if(curH){
+                iElement.css({'height': curH + 'px'});
+            }
+        });
     }
-        $win.bind('resize', checkImage);
+
+    $win.bind('scroll', checkImage);
+    $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
-    $win.bind('touchend', checkImage);
 
     function onLoad(){
         var $el = angular.element(this),
@@ -101,13 +116,19 @@ function lazyLoad(context){
 
     for(var i=0; i<imgArr.length; i++){
         var el = angular.element(imgArr[i]), 
-            src = imgArr[i].getAttribute('lazy-src');
+            src = imgArr[i].getAttribute('lazy-src'), 
+            oriW = el.attr('data-width') ? parseFloat(el.attr('data-width')) : 0, 
+            oriH = el.attr('data-height') ? parseFloat(el.attr('data-height')) : 0, 
+            ratio = oriW && oriH ? oriH/oriW : 0, 
+            curW = el[0].width, 
+            curH = ratio ? Math.ceil(curW*ratio) : 0;
 
         el.bind('load', onLoad);
 
         if(src){
             if(isVisible(el)){
-                el.attr('src', src);
+                el.attr('src', src)
+                    .css('opacity', 1);
             }else{
                 var uid = getUid(el[0]);
                 el.css({
@@ -120,6 +141,9 @@ function lazyLoad(context){
                     iElement: el, 
                     lazySrc: src
                 };
+            }
+            if(curH){
+                el.css('height', curH + 'px');
             }
         }
 
