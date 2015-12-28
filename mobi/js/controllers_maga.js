@@ -45,18 +45,17 @@ cases.controller('casesList', function($scope, $http, $sce){
 	});
 
 	//获取索引信息
-	$http.get('js/vol_maga.js')
-		.success(function(res){
-			json1(res);
-		});
+	// $http.get('js/vol_maga.js')
+	// 	.success(function(res){
+	// 		json1(res);
+	// 	});
 
-	window.json1 = function(res){
-		var volList = res, 
+	window.json1 = function(){
+		var volList = volMaga, 
 			latest = volList[volList.length-1].vol + 3, 
 			before = volList[0].vol - 1,
 			pt, projectTime, 
 			random = Math.random();
-			console.log(random);
 
 		$scope.volList = volList.reverse();
 
@@ -114,7 +113,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 			indexSet();
 		}
 	}
-
+	json1();
 
 	window.json2 = function (data) { 
 		data = data;
