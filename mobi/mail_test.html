@@ -26,7 +26,7 @@
 
 		<section class="mail_sec" ng-repeat="case in caselist" id="{{case._id}}">
 			<h3 class="title"><a href="{{case.url}}" ng-bind-html="case.title"></a></h3>
-			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /><span id="caseqc_{{case._id}}" class="qrcode"></span></a>
+			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" lazy-src="{{case.image}}" /><span id="caseqc_{{case._id}}" class="qrcode"></span></a>
 			<div class="aside_wrap">
 				<ul class="attr_list">
 					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
@@ -39,12 +39,13 @@
 			</div>
 
 			<div class="cont">
-				<h4 class="subtitle">创意分析</h4>
+				<h4 class="subtitle">案例简介</h4>
 				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
 			</div>
 			<div class="cont">
-				<h4 class="subtitle">技术分析</h4>
-				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+				<h4 class="subtitle">深层剖析</h4>
+				<p class="aside" style="">还有好多好多字和好多好多图，看起来好累的，快扫头部二维码，移动端阅读更轻松哦～</p>
+				<!-- <p ng-repeat="para in case.links" ng-bind-html="para.url"></p> -->
 			</div>
 		</section>
 
@@ -52,7 +53,7 @@
 			<div class="wanted">
 				<div class="wanted_words">
 					<p><strong>HI! </strong>我们是凹凸实验室 <span>H5品鉴小分队</span></p>
-					<p class="aside">爷～谈钱俗～来我们组织添添人气呗～</p>
+					<p class="aside">把我们收藏进微信～随时随地点开看～</p>
 				</div>
 				<div class="wanted_qrcode">
 					<img src="img/o2team_qrcode_temp.png" alt="O2team">
@@ -64,7 +65,7 @@
 			<a ng-show="prevol>0" href="?vol={{prevol}}">上一期</a>
 			<a ng-show="nextvol>0" href="?vol={{nextvol}}">下一期</a>
 		</div>
-		<a href="index.html" class="back">往期回顾</a>
+		<a href="maga.html" class="back">往期回顾</a>
 	</article>
 	<div class="loading">
 		<div><i></i><i></i><i></i></div>

@@ -25,6 +25,20 @@
 			self.setSize();
 
 			document.body.addEventListener('touchmove', self.noMove, false);
+			window.onresize = function(){
+				self.winWidth = document.documentElement.clientWidth;
+				self.winHeight = document.documentElement.clientHeight;
+
+				self.slideBox.style.width =	self.slideWrap.style.width = self.winWidth + 'px';
+				self.slideBox.style.height = self.winHeight + 'px';
+				self.slideWrap.style.height = self.winHeight * self.secNum + 'px';
+
+				for(var i=0; i<self.secNum; i++){
+					var secItem = document.querySelectorAll(self.secClass)[i];
+					secItem.style.width = self.winWidth + 'px';
+					secItem.style.height = self.winHeight + 'px';
+				}
+			};
 
 			self.slideWrap.addEventListener('touchstart', function(e){
 				self.startPos = e.changedTouches[0].clientY;

@@ -18,7 +18,8 @@ var cases = angular.module('cases', ['ngRoute']),
 	$indexCover = document.querySelector('.fcover'), //索引封面
 	indexCoverLoaded = 'page fcover loaded', //加载完毕索引封面类名
 	$magaBox = document.getElementById('magazines'), //期刊容器
-	$indexBox = document.getElementById('index'); //索引容器
+	$indexBox = document.getElementById('index'), //索引容器
+	aotuBlue = ['A2C0F9', '6190e8']; //凹凸蓝
 
 cases.controller('casesList', function($scope, $http, $sce){
 	$scope.vol = GetQueryString('vol'); //期数
@@ -53,7 +54,9 @@ cases.controller('casesList', function($scope, $http, $sce){
 		var volList = res, 
 			latest = volList[volList.length-1].vol + 3, 
 			before = volList[0].vol - 1,
-			pt, projectTime;
+			pt, projectTime, 
+			random = Math.random();
+			console.log(random);
 
 		$scope.volList = volList.reverse();
 
@@ -76,7 +79,12 @@ cases.controller('casesList', function($scope, $http, $sce){
 				if(volList[v].vol === parseInt($scope.vol)){
 					$scope.date = volList[v].date;
 					$scope.cover = volList[v].cover;
-					$scope.hexocolor = volList[v].hexocolor;
+					if(random<0.1){
+						$scope.hexocolor = aotuBlue;
+					}else{
+						$scope.hexocolor = volList[v].hexocolor;
+
+					}
 					if(!!volList[v].prewords && volList[v].prewords!==""){
 						$scope.prewords = volList[v].prewords.split('\n');
 					}
