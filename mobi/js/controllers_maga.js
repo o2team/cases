@@ -56,7 +56,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 			before = volList[0].vol - 1,
 			pt, projectTime, 
 			random = Math.random();
-			console.log(latest);
+			// random = 0.03;
 
 		$scope.volList = volList.reverse();
 
