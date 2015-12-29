@@ -4,11 +4,13 @@
 function lazyLoad(context){
     var doc = document,
         body = doc.body,
-        win = window,
+        win = window, 
+        winDoc = win.document.documentElement, 
         $win = angular.element(win),
         uid = 0,
         elements = {}, 
-        imgArr = [];
+        imgArr = [], 
+        curW = winDoc.clientWidth - (1.28 * parseFloat(winDoc.style.fontSize));
 
     function getUid(el){
         return el.__uid || (el.__uid = ('' + (++uid)));
@@ -75,22 +77,6 @@ function lazyLoad(context){
         });
     }
 
-    function setImgSize(){
-        Object.keys(elements).forEach(function(key){
-            var obj = elements[key], 
-                iElement = obj.iElement, 
-                oriW = iElement.attr('data-width') ? iElement.attr('data-width') : 0, 
-                oriH = iElement.attr('data-height') ? iElement.attr('data-height') : 0, 
-                ratio = oriW && oriH ? oriW/oriH : 0, 
-                curW = iElement[0].width, 
-                curH = ratio ? Math.ceil(curW*ratio) : 0;
-
-            if(curH){
-                iElement.css({'height': curH + 'px'});
-            }
-        });
-    }
-
     $win.bind('scroll', checkImage);
     $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
@@ -118,7 +104,6 @@ function lazyLoad(context){
             oriW = el.attr('data-width') ? parseFloat(el.attr('data-width')) : 0, 
             oriH = el.attr('data-height') ? parseFloat(el.attr('data-height')) : 0, 
             ratio = oriW && oriH ? oriH/oriW : 0, 
-            curW = el[0].width, 
             curH = ratio ? Math.ceil(curW*ratio) : 0;
 
         el.bind('load', onLoad);
