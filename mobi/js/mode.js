@@ -7,7 +7,7 @@
 		textMode: 'ch_text', //文字模式类名
 		secWrap: document.querySelector('.article'), //设置类容器
 		secWrapClass: 'page article', //容器原类名
-		shakeIco: document.querySelector('.ar_shake'), //摇一摇提示图标
+		// shakeIco: document.querySelector('.ar_shake'), //摇一摇提示图标
 		modeVal: 1, //模式值，{1:文字, 0:图片}
 		sound: 'img/sound.mp3', //切换模式音频地址
 
@@ -70,11 +70,11 @@
 
 			setCookie("mode", self.modeVal);
 
-			self.shakeIco.setAttribute('class', 'ar_shake ar_shaking');
+			// self.shakeIco.setAttribute('class', 'ar_shake ar_shaking');
 
-			setTimeout(function(){
-				self.shakeIco.style.display = 'none';
-			}, 5000);
+			// setTimeout(function(){
+			// 	self.shakeIco.style.display = 'none';
+			// }, 5000);
 		}, 
 
 		// 摇动手机
@@ -93,7 +93,7 @@
 						x = acceleration.x;
 						y = acceleration.y;
 						if(x*x + y*y > speed) {
-							self.shakeIco.style.display = 'none';
+							// self.shakeIco.style.display = 'none';
 
 							var curMode = self.modeVal;
 							modified = 1;

@@ -59,13 +59,18 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 
 /*=========choose==========*/
 .choose{border: solid 0.362667rem;box-sizing:border-box;}
-	.ch_ask{position: absolute; font-size: 1.92rem;line-height: 1.92rem;width: 1.92rem;top: 4.05333rem;left: 50%;-webkit-transform:translateX(-50%);color: #fff;text-align: center;}
-	.ch_item{position: absolute;display: block;width: 4.56533rem;height: 3.072rem;padding-top: 4.77867rem; bottom: 4.82133rem;font-size: 1.45067rem;line-height: 1.536rem;color: #fff;}
+	.ch_ask{position: absolute; font-size: 1.92rem;line-height: 1.92rem;width: 1.92rem;top: 3.05333rem;left: 50%;-webkit-transform:translateX(-50%);color: #fff;text-align: center;}
+	.ch_item{position: absolute;display: block;width: 4.56533rem;height: 3.072rem;padding-top: 4.77867rem; bottom: 6.82133rem;font-size: 1.45067rem;line-height: 1.536rem;color: #fff;}
 		.ch_item_icon{display: inline-block;height: 1.38667rem;margin-left:0.213333rem;}
 	.ch_pic{left: 1.83467rem;}
 		.ch_pic .ch_item_icon{width:1.25867rem;}
 	.ch_text{right: 1.83467rem;}
 		.ch_text .ch_item_icon{width:1.36533rem;}
+	.ch_aside{width:100%;position:absolute;left:50%;bottom:1.1rem;font-size:1.024rem;text-align:center;color:#FFFFFF;-webkit-transform:translateX(-50%);transform:translateX(-50%);}
+		.ch_aside span{display:block;}
+		/*.ch_aside i{border:1px solid #FFFFFF;padding:0 2px;margin-right:2px;}*/
+		.aside_txt1{font-size:0.6826rem;}
+		.aside_txt2{font-size:0.5973rem;}
 
 /*=========article==========*/
 .article{position:relative;overflow:hidden;}
@@ -137,7 +142,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	100%{opacity:1;}
 }
 
-		    .ar_full_tit{font-size: 1.06667rem; margin-top:32px;line-height: 1; padding:0.35rem 0;font-weight: normal;}
+		    .ar_full_tit{font-size: 1.06667rem; margin-top:1.7rem;line-height: 1; padding:0.35rem 0;font-weight: normal;}
 		    .ar_full_tit a{color: #333;}
 		    .ar_full_sub{font-size: 0.768rem;color: #999;line-height:0.682667rem;font-weight: normal;}
 		    .ar_full p{font-size: 0.768rem;line-height:1.2rem;color: #666;margin-bottom: 0.7rem;}
@@ -149,9 +154,9 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	.ar_nav{display:none;position: absolute;bottom:1.05rem;left: 50%;-webkit-transform:translateX(-50%);}
 
 	/*shake修改 by Yetty 12.23*/
-	/*.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}*/
+	/*.ar_shake{position: absolute;width: 3.584rem;height: 2.51733rem;right: 0.3rem;bottom: 1.05rem;z-index: 6;}
 	.ar_shake{position: absolute;width: 3.584rem;height: 1.70667rem;right: 0.3rem;bottom: 1.83467rem;z-index: 6;opacity:0.7;}
-	.ar_shake:after{content: "";display: block;position: absolute;width: 3.584rem;height: 1.28rem;left: 0;top:1.216rem;}
+	.ar_shake:after{content: "";display: block;position: absolute;width: 3.584rem;height: 1.28rem;left: 0;top:1.216rem;}*/
 
 		/*.ar_shaking{-webkit-transform-origin:105% 150%;-webkit-animation:shakingScale ease 1s;}
 @-webkit-keyframes shakingScale{
