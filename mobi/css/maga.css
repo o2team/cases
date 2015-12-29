@@ -126,7 +126,10 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	60%, 100%{opacity:1;-webkit-transform:scaleX(1.2) scaleY(1.6);}
 }
 
-		.ar_full_close{width:100%;text-indent:0.5rem;font-size: 24px;line-height: 32px;color: #000;position:absolute;top:0;left:0;z-index:3;background:#FFFFFF;border-bottom: 1px solid #ddd;}
+		.ar_full_close{width:100%;height:1.7rem;font:0/0 a;position:absolute;top:0;left:0;z-index:3;background:#FFFFFF;border-bottom: 1px solid #ddd;opacity:0.9;}
+			.ar_full_close:before, .ar_full_close:after{width:1.28rem;height:1px;background:#BDBDBD;position:absolute;content:"";top:50%;right:0.3rem;}
+			.ar_full_close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg);}
+			.ar_full_close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg);}
 		.ar_full{height:100%;position: relative;overflow-x:hidden;overflow-y:scroll;background-color: #fff;padding:0 0.64rem 0.64rem;z-index:2;-webkit-overflow-scrolling:touch;}
 			.mask_show .ar_full_close, .mask_show .ar_full{-webkit-animation:textShow ease 1s;animation:textShow ease 1s;}
 @-webkit-keyframes textShow{
