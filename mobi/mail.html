@@ -38,12 +38,17 @@
 				</ul>
 			</div>
 
-			<div class="cont">
+			<!-- <div class="cont">
 				<h4 class="subtitle">创意分析</h4>
 				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
 			</div>
 			<div class="cont">
 				<h4 class="subtitle">技术分析</h4>
+				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+			</div> -->
+
+			<div class="cont">
+				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
 				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
 			</div>
 		</section>
