@@ -70,8 +70,8 @@
 						</div>
 					</div>
 					<!-- 点赞 -->
-					<a href="javascript:;" class="ar_love loved" style="display:none;">
-						<i class="ar_love_icon"></i><span class="ar_love_num">120</span>
+					<a href="javascript:;" class="ar_love{{case.likeClass}}" data-key="{{case._id}}" data-index="{{case.index}}">
+						<i class="ar_love_icon"></i><span class="ar_love_num">{{case.like}}</span>
 					</a>
 				</div>
 
@@ -87,8 +87,12 @@
 				</div>
 	        </section>
 	        <section class="ar_sec">
-	        	<div class="ar_sec_wrap">
+	        	<div class="ar_sec_wrap bcover">
 					<div class="bc_qr"><img src="http://jdc.jd.com/h5/case/img/o2team_qrcode_temp.png" alt="凹凸实验室" /></div>
+					<div class="bc_words">
+						<p>喜欢吗？喜欢你就扫扫我</p>
+						<p>让我静静地躺在你的会话列表里</p>
+					</div>
 					<a class="bc_back" href="#">往期回顾</a>
 				</div>
 	        </section>
@@ -105,7 +109,7 @@
 </div>
 <div class="wrap" id="index" style="display:none;">
 	<!-- S：封面 -->
-	<div class="page fcover" style="background-color:#FE4C4A;border-color:#AF004D;">
+	<div class="page fcover">
     	<div class="fc_logo"></div>
     	<h2 class="fc_tit">精品案例赏析</h2>
     	<a class="fc_btn" href="javascript:;"></a>
@@ -121,6 +125,7 @@
 	        	<div class="li_cover_info">
 	        		<p class="li_cover_vol">第{{item.vol}}期</p>
 	        		<p class="li_cover_date">{{item.date}}</p>
+	        		<!-- <p class="li_cover_prewords">{{item.prewords}}</p> -->
 	        	</div>
     		</a>
     	</li>

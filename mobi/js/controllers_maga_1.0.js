@@ -8,22 +8,21 @@ var cases = angular.module('cases', ['ngRoute']),
 		{"name": "游戏", "id": 1}, 
 		{"name": "短片", "id": 2}, 
 		{"name": "翻页动画", "id": 3}, 
-		{"name": "多屏互动", "id": 4}], 			//案例类型表
-	indexHref = 'maga.html', 					//索引地址
-	$cover = document.querySelector('.cover'), 	//期刊封面钩子
-	coverLoaded = 'page cover loaded', 			//加载完毕期刊封面类名
-	sec = '.ar_sec', 							//每屏内容类
-	indexLi = '.li_cover', 						//索引项类
+		{"name": "多屏互动", "id": 4}], //案例类型表
+	indexHref = 'maga.html', //索引地址
+	beforeHref = 'mail.html?vol=', //3期及以前地址
+	$cover = document.querySelector('.cover'), //期刊封面钩子
+	coverLoaded = 'page cover loaded', //加载完毕期刊封面类名
+	sec = '.ar_sec', //每屏内容类
+	indexLi = '.li_cover', //索引项类
 	$indexCover = document.querySelector('.fcover'), //索引封面
-	indexCoverLoaded = 'page fcover loaded', 	//加载完毕索引封面类名
+	indexCoverLoaded = 'page fcover loaded', //加载完毕索引封面类名
 	$magaBox = document.getElementById('magazines'), //期刊容器
 	$indexBox = document.getElementById('index'), //索引容器
-	likeClass = '.ar_love', 					//点赞类名
-	indexJumpClass = ['.ar_list', '.bc_back'], 	//索引页入口按钮类名
-	aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
+	likeClass = '.ar_love', //点赞类名
+	aotuBlue = ['A2C0F9', '6190e8']; //凹凸蓝
 
 cases.controller('casesList', function($scope, $http, $sce){
-	var indexJumpNum = indexJumpClass.length;
 	$scope.vol = GetQueryString('vol'); //期数
 	
 	//设置期数cookie
@@ -39,11 +38,18 @@ cases.controller('casesList', function($scope, $http, $sce){
 	}
 
 	//跳转索引
-	for(var i=0; i<indexJumpNum; i++){
-		document.querySelector(indexJumpClass[i]).addEventListener('click', function(){
-			location.href = jumpHref(indexHref);
-		});
-	}
+	document.querySelector('.ar_list').addEventListener('click', function(){
+		location.href = jumpHref(indexHref);
+	});
+	document.querySelector('.bc_back').addEventListener('click', function(){
+		location.href = jumpHref(indexHref);
+	});
+
+	//获取索引信息
+	// $http.get('js/vol_maga.js')
+	// 	.success(function(res){
+	// 		json1(res);
+	// 	});
 
 	window.json1 = function(){
 		var volList = volMaga, 
@@ -66,34 +72,47 @@ cases.controller('casesList', function($scope, $http, $sce){
 				$scope.vol = latest;
 			}
 
-			curVol = parseInt($scope.vol);
+			if($scope.vol <= before){
+				location.href = jumpHref(beforeHref+$scope.vol);
+			}
 
-			volList.forEach(function(item){
-				if(item.vol === curVol){
-					$scope.date = item.date;
-					$scope.cover = item.cover;
-					$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
+			for(var v=0; v<volList.length; v++){
+				if(volList[v].vol === parseInt($scope.vol)){
+					$scope.date = volList[v].date;
+					$scope.cover = volList[v].cover;
+					if(random<0.1){
+						$scope.hexocolor = aotuBlue;
+					}else{
+						$scope.hexocolor = volList[v].hexocolor;
 
-					if(!!item.prewords && item.prewords!==""){
-						$scope.prewords = item.prewords.split('\n');
-						parseHtml($scope.prewords);
+					}
+					if(!!volList[v].prewords && volList[v].prewords!==""){
+						$scope.prewords = volList[v].prewords.split('\n');
 					}
 				}
-			});
-
-			// $scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
-			// $scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
+			}
+			curVol = parseInt($scope.vol);
+			$scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
+			$scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
+	
+			if($scope.prewords){
+				parseHtml($scope.prewords);
+			}
 
 			if($scope.date){
 				pt = $scope.date.split('-');
 				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-				console.log(projectTime);
 				$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 			}else if(!$scope.date && $scope.vol>latestVol){
 				location.href = jumpHref(indexHref);
 			}
 		}else{
-			indexSet($scope);
+			// 获取旧版内容
+			$http.get('js/vol.js')
+				.success(function(res){
+					json3(res);
+				});
+			indexSet();
 		}
 	}
 	json1();
@@ -102,61 +121,59 @@ cases.controller('casesList', function($scope, $http, $sce){
 		var likeObj = [], 
 			likeArr = [];
 		data = data;
-		$cl = $scope.caselist = data.reverse();
+		$scope.caselist = data.reverse();
+		var itemNum = $scope.caselist.length;
 
-		$cl.forEach(function(item){
-			var key = item._id;
-			item.index = i;
-			item.vd = item.vd.split(',');
-			item.fe=item.fe.split(',');
-			item.title=$sce.trustAsHtml(item.title);
+		for(var i=0; i<itemNum; i++){
+			var key = $scope.caselist[i]._id;
+			$scope.caselist[i].index=i;
+			$scope.caselist[i].vd=$scope.caselist[i].vd.split(',');
+			$scope.caselist[i].fe=$scope.caselist[i].fe.split(',');
+			$scope.caselist[i].title=$sce.trustAsHtml($scope.caselist[i].title);
 
-			item.fe.forEach(function(feItem, idx, arr){
-				var rate = "", star = "★", 
-					starNum = parseInt(feItem);
-
-				for(var k=0; k<starNum; k++){
-					rate += star;
+			for(var j=0; j<$scope.caselist[i].fe.length; j++){
+				var rate = "", star = "★";
+				for(var k=0; k<parseInt($scope.caselist[i].fe[j]); k++){
+					rate+=star;
 				}
-				item.fe[idx] = rate;
-			});
-
-			item.desc=item.desc.split('\n');
-			h5type.forEach(function(type){
-				if(item.type[1].name===type.name){
-					item.type[1].id = type.id;
+				$scope.caselist[i].fe[j]=rate;
+			}
+			$scope.caselist[i].desc=$scope.caselist[i].desc.split('\n');
+			for(var t=0; t<h5type.length; t++){
+				if($scope.caselist[i].type[1].name===h5type[t].name){
+					$scope.caselist[i].type[1].id = h5type[t].id;
 				}
-			});
-
-			item.desc.forEach(parseHtml);
-			item.links.forEach(parseHtml);
-
-			parseHtml(item.desc);
-			item.links.forEach(function(para){
-				para.url = $sce.trustAsHtml(para.url);
-			});
+			}
+			/*$scope.caselist[i].desc.forEach(parseHtml);
+			$scope.caselist[i].links.forEach(parseHtml);*/
+			parseHtml($scope.caselist[i].desc);
+			for(var u=0; u<$scope.caselist[i].links.length; u++){
+				$scope.caselist[i].links[u].url = $sce.trustAsHtml($scope.caselist[i].links[u].url);
+			}
 
 			$http.get('http://aotu.jd.com/common/api/up/count?key='+key)
 				.success((function (key) {
 					return function(res){
-						var count = res.count ? res.count : '';
-						$cl.forEach(function(item){
+						var count = res.count ? res.count : '', 
+							likeNum, liked;
+						for(var i=0; i<itemNum; i++){
+							var item = $scope.caselist[i];
 							if(key === item._id){
 								item.like = count;
 								if(localStorage.getItem(key)){
 									item.likeClass = ' loved';
 								}
 							}
-						});
+						}
 					};
 			})(key));
-		});
+		}
 
 		setTimeout(function(){
 			var show = setInterval(function(){
 				var bb = document.querySelectorAll(sec).length;
 				
-				if(bb===($cl.length+1)){
+				if(bb===($scope.caselist.length+1)){
 					clearInterval(show);
 					$cover.setAttribute('class', coverLoaded);
 					setTimeout(function(){$cover.style.display="none";}, 1000);
@@ -173,7 +190,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 								.then(function(res){
 									var msg = res.data.msg, 
 										s, 
-										count = (s = $cl[likeIndex].like) ? s : 0;
+										count = (s = $scope.caselist[likeIndex].like) ? s : 0;
 									if(msg === "点赞成功"){
 										self.setAttribute('class', 'ar_love loved');
 										localStorage.setItem(key, 1);
@@ -186,7 +203,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 											count = 0;
 										}
 									}
-									$cl[likeIndex].like = count;
+									$scope.caselist[likeIndex].like = count;
 								});
 						});
 					}
@@ -196,6 +213,23 @@ cases.controller('casesList', function($scope, $http, $sce){
 					Slides.init();
 				}
 		});}, 1000);
+	}
+
+	window.json3 = function(res){
+		var volList2 = res.reverse();
+		$scope.volList.push.apply($scope.volList, volList2);
+
+		var show = setInterval(function(){
+			var bb = document.querySelectorAll(indexLi).length;
+
+			if(bb===$scope.volList.length){
+				clearInterval(show);
+				$indexCover.setAttribute('class', indexCoverLoaded);
+				setTimeout(function(){$indexCover.style.display="none";}, 1000);
+
+				lazyLoad(document.getElementById('index'));
+			}
+		});
 	}
 });
 
@@ -216,22 +250,11 @@ function jumpHref(jumpPath){
 }
 
 //索引设置
-function indexSet($scope){
+function indexSet(){
 	$magaBox.style.display = 'none';
 	$indexBox.style.display = 'block';
 	$indexBox.style.transform = 'translateY(0)';
 	$indexBox.style.webkitTransform = 'translateY(0)';
-	var show = setInterval(function(){
-		var bb = document.querySelectorAll(indexLi).length;
-
-		if(bb===$scope.volList.length){
-			clearInterval(show);
-			$indexCover.setAttribute('class', indexCoverLoaded);
-			setTimeout(function(){$indexCover.style.display="none";}, 1000);
-
-			lazyLoad(document.getElementById('index'));
-		}
-	});
 }
 
 //期刊设置
