@@ -117,13 +117,17 @@
 	<!-- E：封面 -->
 	<!-- S：往期回顾 -->
     <ul class="page list" style="display:;">
+    	<li class="li_hd">
+    		<span class="maga_logo"></span>
+			<div class="maga_header"><strong>拇指期刊</strong></div>
+    	</li>
     	<li class="li_item clear">
     		<!-- <p class="li_month">2015年</p> -->
     		<a class="li_cover" href="?vol={{item.vol}}" ng-repeat="item in volList">
     			<img class="li_cover_img" lazy-src="{{item.cover}}" />
     			<div class="li_cover_mask"></div>
 	        	<div class="li_cover_info">
-	        		<p class="li_cover_vol">第{{item.vol}}期</p>
+	        		<p class="li_cover_vol">{{item.vol}}</p>
 	        		<p class="li_cover_date">{{item.date}}</p>
 	        		<!-- <p class="li_cover_prewords">{{item.prewords}}</p> -->
 	        	</div>
@@ -171,7 +175,7 @@
 
 
 	/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share_2.0.png',100,100,location.href,shareTitle,shareText);
+		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
 
 	/*统计*/
 		var _hmt = _hmt || [];
