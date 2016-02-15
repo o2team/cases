@@ -95,7 +95,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 /*.prev .ar_sec_wrap:after{content:"";width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(0,0,0,0.5);z-index:10;-webkit-transition:all ease 1s;transition:all ease 1s;}*/
 .next .ar_sec_wrap{-webkit-transform: translate(-50%,-4rem);opacity: 0.8;}
 
-		.ar_img{width:100%;padding-top:47.462%;position:relative;display:block;background:url(../img/demo.png) no-repeat center;background-size:200% auto;overflow:hidden;}
+		.ar_img{width:100%;padding-top:47.462%;position:relative;display:block;background:#E8E8E8 url(../img/thumb.png) no-repeat center;background-size:20% auto;overflow:hidden;}
 			.ar_img img{width:100%;position:absolute;top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%);}
 		.ar_cnt{padding:0 0.45rem;}
 			.ar_tit{position: relative;font-size: 0.768rem;font-weight: normal;margin-top: 0.554667rem;line-height: 0.768rem;}

@@ -1,5 +1,5 @@
 // author: EC
-// last modify: 2015-12-25 13:16
+// last modify: 2016-2-11 12:48
 
 var cases = angular.module('cases', ['ngRoute']), 
 	data = [], 
@@ -22,8 +22,66 @@ var cases = angular.module('cases', ['ngRoute']),
 	indexJumpClass = ['.ar_list', '.bc_back'], 	//索引页入口按钮类名
 	aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
 
-cases.controller('casesList', function($scope, $http, $sce){
-	var indexJumpNum = indexJumpClass.length;
+
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+
+// 期刊链接处理
+function jumpHref(jumpPath){
+	var p = location.pathname, 
+		pArr = p.split('/');
+	pArr.pop();
+	p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+	return p;
+}
+
+// 索引设置
+function indexSet($scope){
+	$magaBox.style.display = 'none';
+	$indexBox.style.display = 'block';
+	$indexBox.style.transform = 'translateY(0)';
+	$indexBox.style.webkitTransform = 'translateY(0)';
+	var show = setInterval(function(){
+		var bb = document.querySelectorAll(indexLi).length;
+
+		if(bb===$scope.volList.length){
+			clearInterval(show);
+			$indexCover.setAttribute('class', indexCoverLoaded);
+			setTimeout(function(){$indexCover.style.display="none";}, 1000);
+
+			lazyLoad(document.getElementById('index'));
+		}
+	});
+}
+
+// 索引添加单击事件
+function coverClick(item) {
+	document.querySelector(item).addEventListener('click', function(){
+		location.href = jumpHref(indexHref);
+	});
+}
+
+// 期刊设置
+function magaSet(){
+	$magaBox.style.display = 'block';
+	$indexBox.style.display = 'none';
+	$magaBox.style.transform = 'translateY(0)';
+	$magaBox.style.webkitTransform = 'translateY(0)';
+}
+
+// 期刊加载完毕
+function magaLoaded() {
+	$cover.setAttribute('class', coverLoaded);
+	setTimeout(function(){$cover.style.display="none";}, 1000);
+}
+
+// 控制器
+cases.controller('casesList', function($scope, $http, $sce) {
 	$scope.vol = GetQueryString('vol'); //期数
 	
 	//设置期数cookie
@@ -32,18 +90,49 @@ cases.controller('casesList', function($scope, $http, $sce){
 	setCookie('epi', $scope.vol);
 
 	//字符串转html代码
-	parseHtml = function(array){
-		for(var p=0; p<array.length; p++){
-			array[p] = $sce.trustAsHtml(array[p]);
+	var parseHtml = function(item) {
+		return $sce.trustAsHtml(item);
+	};
+
+	// 点赞初始化
+	var likeInit = function(total) {
+		for(var i=0; i<total; i++){
+			var likeEle = document.querySelectorAll(likeClass)[i];
+
+			likeEle.addEventListener('click', function(e){
+				var self = this, 
+					key = self.getAttribute('data-key'), 
+					likeIndex = self.getAttribute('data-index');
+				likePull(key, likeIndex, self);
+			});
 		}
 	}
 
-	//跳转索引
-	for(var i=0; i<indexJumpNum; i++){
-		document.querySelector(indexJumpClass[i]).addEventListener('click', function(){
-			location.href = jumpHref(indexHref);
-		});
+	// 点赞数据拉取
+	var likePull = function (key, likeIndex, self){
+		$http.post('http://aotu.jd.com/common/api/up',{key: key})
+			.then(function(res){
+				var msg = res.data.msg, 
+					s, 
+					count = (s = $cl[likeIndex].like) ? s : 0;
+				if(msg === "点赞成功"){
+					self.setAttribute('class', 'ar_love loved');
+					localStorage.setItem(key, 1);
+					count ++;
+				}else if(msg === "取消点赞成功"){
+					self.setAttribute('class', 'ar_love');
+					localStorage.removeItem(key);
+					count --;
+					if(count<0){
+						count = 0;
+					}
+				}
+				$cl[likeIndex].like = count;
+			});
 	}
+
+	//跳转索引
+	indexJumpClass.map(coverClick);
 
 	window.json1 = function(){
 		var volList = volMaga, 
@@ -57,7 +146,19 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 		if($scope.vol){
 			var latestVol = parseInt(latest.vol), 
-				curVol;
+				curVol, 
+				coverSet = function (item){
+					if(item.vol === curVol){
+						$scope.date = item.date;
+						$scope.cover = item.cover;
+						$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
+
+						if(!!item.prewords && item.prewords!==""){
+							var prewordsCont = item.prewords.split('\n');
+							$scope.prewords = prewordsCont.map(parseHtml);
+						}
+					}
+				};
 
 			magaSet();
 
@@ -68,21 +169,7 @@ cases.controller('casesList', function($scope, $http, $sce){
 
 			curVol = parseInt($scope.vol);
 
-			volList.forEach(function(item){
-				if(item.vol === curVol){
-					$scope.date = item.date;
-					$scope.cover = item.cover;
-					$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
-
-					if(!!item.prewords && item.prewords!==""){
-						$scope.prewords = item.prewords.split('\n');
-						parseHtml($scope.prewords);
-					}
-				}
-			});
-
-			// $scope.prevol = (curVol - 1)<=0?0:(curVol - 1);
-			// $scope.nextvol = (curVol + 1)>latestVol?0:curVol + 1;
+			volList.forEach(coverSet);
 
 			if($scope.date){
 				pt = $scope.date.split('-');
@@ -104,50 +191,47 @@ cases.controller('casesList', function($scope, $http, $sce){
 		data = data;
 		$cl = $scope.caselist = data.reverse();
 
-		$cl.forEach(function(item){
+		$cl.forEach(function(item, idx){
 			var key = item._id;
-			item.index = i;
+			item.index = idx;
 			item.vd = item.vd.split(',');
 			item.fe=item.fe.split(',');
-			item.title=$sce.trustAsHtml(item.title);
+			item.title=parseHtml(item.title);
 
-			item.fe.forEach(function(feItem, idx, arr){
+			item.fe.forEach(function(feItem, idx2, arr){
 				var rate = "", star = "★", 
 					starNum = parseInt(feItem);
 
 				for(var k=0; k<starNum; k++){
 					rate += star;
 				}
-				item.fe[idx] = rate;
+				item.fe[idx2] = rate;
 			});
 
-			item.desc=item.desc.split('\n');
+			var descCont=item.desc.split('\n');
 			h5type.forEach(function(type){
 				if(item.type[1].name===type.name){
 					item.type[1].id = type.id;
 				}
 			});
 
-			item.desc.forEach(parseHtml);
-			item.links.forEach(parseHtml);
-
-			parseHtml(item.desc);
-			item.links.forEach(function(para){
-				para.url = $sce.trustAsHtml(para.url);
-			});
+			item.desc = descCont.map(parseHtml);
+			var linksCont = item.links.map(function(para){return para.url;});
+			item.links = linksCont.map(parseHtml);
 
 			$http.get('http://aotu.jd.com/common/api/up/count?key='+key)
 				.success((function (key) {
 					return function(res){
-						var count = res.count ? res.count : '';
-						$cl.forEach(function(item){
-							if(key === item._id){
-								item.like = count;
-								if(localStorage.getItem(key)){
-									item.likeClass = ' loved';
+						var count = res.count ? res.count : '', 
+							setlike = function (item){
+								if(key === item._id){
+									item.like = count;
+									if(localStorage.getItem(key)){
+										item.likeClass = ' loved';
+									}
 								}
-							}
-						});
+							};
+						$cl.forEach(setlike);
 					};
 			})(key));
 		});
@@ -158,38 +242,9 @@ cases.controller('casesList', function($scope, $http, $sce){
 				
 				if(bb===($cl.length+1)){
 					clearInterval(show);
-					$cover.setAttribute('class', coverLoaded);
-					setTimeout(function(){$cover.style.display="none";}, 1000);
+					magaLoaded();
 
-					for(var i=0; i<bb-1; i++){
-						var likeEle = document.querySelectorAll(likeClass)[i];
-
-						likeEle.addEventListener('click', function(e){
-							var self = this, 
-								key = self.getAttribute('data-key'), 
-								likeIndex = self.getAttribute('data-index');
-							
-							$http.post('http://aotu.jd.com/common/api/up',{key: key})
-								.then(function(res){
-									var msg = res.data.msg, 
-										s, 
-										count = (s = $cl[likeIndex].like) ? s : 0;
-									if(msg === "点赞成功"){
-										self.setAttribute('class', 'ar_love loved');
-										localStorage.setItem(key, 1);
-										count ++;
-									}else if(msg === "取消点赞成功"){
-										self.setAttribute('class', 'ar_love');
-										localStorage.removeItem(key);
-										count --;
-										if(count<0){
-											count = 0;
-										}
-									}
-									$cl[likeIndex].like = count;
-								});
-						});
-					}
+					likeInit(bb-1);
 
 					Mode.init();
 					Slides.secNum = bb;
@@ -198,46 +253,3 @@ cases.controller('casesList', function($scope, $http, $sce){
 		});}, 1000);
 	}
 });
-
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null)return  unescape(r[2]); return null;
-}
-
-function jumpHref(jumpPath){
-	var p = location.pathname, 
-		pArr = p.split('/');
-	pArr.pop();
-	p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-	return p;
-}
-
-//索引设置
-function indexSet($scope){
-	$magaBox.style.display = 'none';
-	$indexBox.style.display = 'block';
-	$indexBox.style.transform = 'translateY(0)';
-	$indexBox.style.webkitTransform = 'translateY(0)';
-	var show = setInterval(function(){
-		var bb = document.querySelectorAll(indexLi).length;
-
-		if(bb===$scope.volList.length){
-			clearInterval(show);
-			$indexCover.setAttribute('class', indexCoverLoaded);
-			setTimeout(function(){$indexCover.style.display="none";}, 1000);
-
-			lazyLoad(document.getElementById('index'));
-		}
-	});
-}
-
-//期刊设置
-function magaSet(){
-	$magaBox.style.display = 'block';
-	$indexBox.style.display = 'none';
-	$magaBox.style.transform = 'translateY(0)';
-	$magaBox.style.webkitTransform = 'translateY(0)';
-}
