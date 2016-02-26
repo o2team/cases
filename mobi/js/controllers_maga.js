@@ -30,16 +30,6 @@ function GetQueryString(name)
      if(r!=null)return  unescape(r[2]); return null;
 }
 
-// 测试是否支持webp
-function canUseWebP() {
-	var elem = document.createElement('canvas');
-	if(!!(elem.getContext && elem.getContext('2d'))){
-		return true;
-	}else{
-		return false;
-	}
-}
-
 // 期刊链接处理
 function jumpHref(jumpPath){
 	var p = location.pathname, 
@@ -162,12 +152,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 				coverSet = function (item){
 					if(item.vol === curVol){
 						$scope.date = item.date;
-						if(canUseWebP()){
-							$scope.cover = item.coverwebp;
-						}else{
-							$scope.cover = item.cover;
-						}
-						
+						$scope.cover = item.cover;
 						$scope.covers = item.covers;
 						$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
 
