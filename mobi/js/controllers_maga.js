@@ -116,11 +116,13 @@ cases.controller('casesList', function($scope, $http, $sce) {
 					s, 
 					count = (s = $cl[likeIndex].like) ? s : 0;
 				if(msg === "点赞成功"){
-					self.setAttribute('class', 'ar_love loved');
+					$cl[likeIndex].likeClass = ' loved';
+					// self.setAttribute('class', 'ar_love loved');
 					localStorage.setItem(key, 1);
 					count ++;
 				}else if(msg === "取消点赞成功"){
-					self.setAttribute('class', 'ar_love');
+					$cl[likeIndex].likeClass = '';
+					// self.setAttribute('class', 'ar_love');
 					localStorage.removeItem(key);
 					count --;
 					if(count<0){

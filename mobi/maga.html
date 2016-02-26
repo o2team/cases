@@ -83,6 +83,12 @@
 						<div class="ar_full_analysis">
 							<p ng-repeat="para in case.links" ng-bind-html="para"></p>
 						</div>
+
+						<!-- 点赞 -->
+						<a href="javascript:;" class="ar_love{{case.likeClass}}" data-key="{{case._id}}" data-index="{{case.index}}">
+							<div class="ar_love_wrap"><i class="ar_love_icon"></i><span class="ar_love_num">{{case.like}}</span></div>
+							<div class="ar_love_txt">喜欢你就戳</div>
+						</a>
 					</div>
 				</div>
 	        </section>
