@@ -127,7 +127,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 						count = 0;
 					}
 				}
-				$cl[likeIndex].like = count;
+				$cl[likeIndex].like = count ? count : '';
 			});
 	}
 
