@@ -247,7 +247,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 					clearInterval(show);
 					magaLoaded();
 
-					likeInit(bb-1);
+					likeInit((bb-1)*2);
 
 					Mode.init();
 					Slides.secNum = bb;
