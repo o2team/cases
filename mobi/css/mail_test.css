@@ -12,12 +12,29 @@ a { text-decoration: none; color: #666;}
 body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
   font-family: Helvetica, STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial; line-height: 1.5; color: #666;background:#eeeeee;}
 
-.wrap{margin:50px 50px 0;background:#FFFFFF;position:relative;}
+@font-face {
+	font-family: 'fzltxh';
+	src:
+	  url('../img/fzltxh.TTF') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
 
-.header{width:100%;height:96px;background:#6190e8;padding-top:24px;margin-bottom:20px;position:relative;}
-	.header h1{line-height:40px;font-size:30px;font-weight:bold;color:#6190e8;position:relative;padding-left:20px;}
-		.header h1 i{width:140px;height:55px;position:absolute;top:50%;left:20px;margin-top:-17px;background:url(../img/maga_title.png) no-repeat top center;background-size:100% auto;}
-	.header h2{line-height:24px;display:inline-block;font-size:14px;padding-left:22px;color:#FFFFFF;border-radius:3px;opacity:0.5;}
+@font-face {
+	font-family: 'fzlth';
+	src:
+	  url('../img/fzlth.TTF') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.wrap{margin:50px;background:#FFFFFF;position:relative;}
+	.prewrap, .mail_sec{font-family:"fzlth";}
+
+.header{width:100%;height:92px;background:#6190e8;padding-top:32px;margin-bottom:20px;position:relative;}
+	.header h1{line-height:55px;font-size:30px;font-weight:bold;color:#6190e8;position:relative;padding-left:20px;}
+		.header h1 i{width:188px;height:62px;position:absolute;top:0;left:38px;background:url(../img/title_160229.png) no-repeat top center;background-size:100% auto;}
+	.header h2{line-height:24px;font-size:12px;color:#FFFFFF;border-radius:3px;opacity:0.5;position:absolute;top:44px;left:128px;}
 
 	.prewrap{min-height:178px;position:relative;padding-left:154px;}
 		.page_qrcode{width:145px;position:absolute;top:0;left:20px;}
