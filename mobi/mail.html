@@ -12,7 +12,7 @@
 <body>
 	<article class="wrap" ng-show="vol > 0">
 		<header class="header">
-			<h1>H5精品案例赏析<i></i></h1>
+			<h1>拇指期刊<i></i></h1>
 			<h2>{{date}} 第{{vol}}期</h2>
 		</header>
 
@@ -38,38 +38,22 @@
 				</ul>
 			</div>
 
-			<!-- <div class="cont">
-				<h4 class="subtitle">创意分析</h4>
+			<div class="cont">
+				<h4 class="subtitle">案例简介</h4>
 				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
 			</div>
 			<div class="cont">
-				<h4 class="subtitle">技术分析</h4>
-				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
-			</div> -->
-
-			<div class="cont">
-				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
-				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+				<h4 class="subtitle">深层剖析</h4>
+				<p class="aside" style="">还有好多好多字和好多好多图，看起来好累的，快扫头部二维码，移动端阅读更轻松哦～</p>
+				<!-- <p ng-repeat="para in case.links" ng-bind-html="para.url"></p> -->
 			</div>
 		</section>
-
-		<!-- <footer class="footer">
-			<div class="wanted">
-				<div class="wanted_words">
-					<p><strong>HI! </strong>我们是JDC的H5品鉴小分队</p>
-					<p class="aside">爷～赏点钱呗～</p>
-				</div>
-				<div class="wanted_qrcode">
-					<img src="img/wanted_qrcode_200_temp.png" alt="O2team">
-				</div>
-			</div>		
-		</footer> -->
 
 		<footer class="footer">
 			<div class="wanted">
 				<div class="wanted_words">
 					<p><strong>HI! </strong>我们是凹凸实验室 <span>H5品鉴小分队</span></p>
-					<p class="aside">爷～谈钱俗～来我们组织添添人气呗～</p>
+					<p class="aside">把我们收藏进微信～随时随地点开看～</p>
 				</div>
 				<div class="wanted_qrcode">
 					<img src="img/o2team_qrcode_temp.png" alt="O2team">
@@ -77,10 +61,10 @@
 			</div>		
 		</footer>
 
-		<!-- <div class="switch_vol">
+		<div class="switch_vol">
 			<a ng-show="prevol>0" href="?vol={{prevol}}">上一期</a>
 			<a ng-show="nextvol>0" href="?vol={{nextvol}}">下一期</a>
-		</div> -->
+		</div>
 		<a href="maga.html" class="back">往期回顾</a>
 	</article>
 	<div class="loading">
@@ -93,22 +77,14 @@
 	<script src="js/qrcode.min.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/vol.js"></script>
-	<script>
-		var vol = GetQueryString('vol')?GetQueryString('vol'):0;
-		
-		/*分享*/
-			wxShare('http://jdc.jd.com/h5/case/img/share_2.0.png',100,100,location.href,'H5 精品案例赏析-第'+vol+'期','凹凸实验室－H5品鉴小分队为您奉上热腾腾的精品案例赏析');
-		var pageQrcode = new QRCode(document.getElementById('pageQrcode'), location.href);
+	<script>		
+		var shareHrefArr = location.pathname.split('/'), 
+			shareHref = '';
+		shareHrefArr.pop();
+		shareHref = shareHrefArr.join('/');
 
+		var pageQrcode = new QRCode(document.getElementById('pageQrcode'), location.origin + shareHref + '/maga.html' + location.search);
 
-		/*统计*/
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
 	</script>
 </body>
 </html>

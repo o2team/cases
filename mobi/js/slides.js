@@ -12,6 +12,7 @@
 		closeBtnClass: '.ar_full_close',
 		detailClass: '.ar_full', 
 		secClass: '.ar_sec', 
+		frontshade: '.frontshade', 	// 防点透遮罩层
 
 		winWidth: document.documentElement.clientWidth, 
 		winHeight: document.documentElement.clientHeight, 
@@ -58,6 +59,8 @@
 						self.move2 = 0;
 						self.floatToggle(id, 'open');
 						setCookie('detail', 1);
+						document.querySelector(self.frontshade).style.display = 'block';
+						setTimeout(function(){document.querySelector(self.frontshade).style.display = 'none'}, 1000);
 					}
 				});
 				document.querySelectorAll(self.closeBtnClass)[i].addEventListener('touchend', function(){
