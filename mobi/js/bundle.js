@@ -48,10 +48,12 @@
 	// last modify: 2016-2-11 12:48
 
 	var volMaga = __webpack_require__(1).volMaga();
-	var vol = __webpack_require__(2).vol();
-	var lazyLoad = __webpack_require__(4).lazyLoad;
-	var Slides = __webpack_require__(5).Slides();
-	var setShare = __webpack_require__(6).setShare;
+	var vol = __webpack_require__(2).vol();	//获取当前期数
+	var lazyLoad = __webpack_require__(4).lazyLoad;	//图片预加载
+	var Slides = __webpack_require__(5).Slides();	//页面滑动
+	var setShare = __webpack_require__(6).setShare;	//设置分享参数
+	var jumpHref = __webpack_require__(8).jumpHref;	// 索引添加单击事件
+	var coverClick = __webpack_require__(9).coverClick;	// 索引添加单击事件
 
 	var cases = angular.module('cases', ['ngRoute']), 
 		data = [], 
@@ -75,16 +77,6 @@
 		aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
 
 
-	// 期刊链接处理
-	function jumpHref(jumpPath){
-		var p = location.pathname, 
-			pArr = p.split('/');
-		pArr.pop();
-		p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-		return p;
-	}
-
 	// 索引设置
 	function indexSet($scope){
 		$magaBox.style.display = 'none';
@@ -101,13 +93,6 @@
 
 				lazyLoad(document.getElementById('index'));
 			}
-		});
-	}
-
-	// 索引添加单击事件
-	function coverClick(item) {
-		document.querySelector(item).addEventListener('click', function(){
-			location.href = jumpHref(indexHref);
 		});
 	}
 
@@ -236,7 +221,13 @@
 			var likeObj = [], 
 				likeArr = [];
 			data = data;
-			$cl = $scope.caselist = data.reverse();
+			$cl = $scope.caselist = data.sort(function(a, b){
+				if(a._id < b._id){
+					return -1;
+				}else {
+					return 0;
+				}
+			});
 
 			$cl.forEach(function(item, idx){
 				var key = item._id;
@@ -257,8 +248,8 @@
 
 				var descCont=item.desc.split('\n');
 				h5type.forEach(function(type){
-					if(item.type.name===type.name){
-						item.type.id = type.id;
+					if(item.type[1].name===type.name){
+						item.type[1].id = type.id;
 					}
 				});
 
@@ -315,7 +306,7 @@
 			{"vol": 4, "date": "2015-12-28", "prewords": "新年新气象～（是不是有点早", "cover": "images/cover/4.jpg", "covers":"images/cover/4_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "做梦都在打牌牌刷钱钱", "shareText": "新年新气象～（是不是有点早"}, 
 			{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
 			{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
-			{"vol": 7, "date": "2016-03-28", "prewords": "现在给智商充值还来得及", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}
+			{"vol": 7, "date": "2016-03-28", "prewords": "文青入门手册", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}
 		];
 
 		return volMaga;
@@ -341,7 +332,6 @@
 	exports.GetQueryString = function (name){
 	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	     var r = window.location.search.substr(1).match(reg);
-	     console.log(r);
 	     if(r!=null)return  unescape(r[2]); return null;
 	}
 
@@ -729,7 +719,7 @@
 	var wxShare = __webpack_require__(7).wxShare();
 	var GetQueryString = __webpack_require__(3).GetQueryString;
 
-	exports.setShare = function(){
+	exports.setShare = function(){ //设置分享参数
 		var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
 			shareTitle = "H5精品案例赏析", 
 			shareText = "凹凸实验室品鉴小分队奉上", 
@@ -820,6 +810,30 @@
 		return wxShare;
 	}
 		
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var jumpHref = __webpack_require__(8).jumpHref;
+	exports.coverClick = function (item){ // 索引添加单击事件
+		document.querySelector(item).addEventListener('click', function(){
+			location.href = jumpHref(indexHref);
+		});
+	}
 
 /***/ }
 /******/ ]);

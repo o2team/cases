@@ -175,7 +175,13 @@ cases.controller('casesList', function($scope, $http, $sce) {
 		var likeObj = [], 
 			likeArr = [];
 		data = data;
-		$cl = $scope.caselist = data.reverse();
+		$cl = $scope.caselist = data.sort(function(a, b){
+			if(a._id < b._id){
+				return -1;
+			}else {
+				return 0;
+			}
+		});
 
 		$cl.forEach(function(item, idx){
 			var key = item._id;
