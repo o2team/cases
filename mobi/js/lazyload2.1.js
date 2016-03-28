@@ -1,7 +1,7 @@
 // author: EC
 // last modify: 2015-12-25 13:16
 
-exports.lazyLoad = function (context){
+function lazyLoad(context){
     var doc = document,
         body = doc.body,
         win = window, 
@@ -81,11 +81,17 @@ exports.lazyLoad = function (context){
     $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
 
-    function onLoad(){
-        var $el = angular.element(this),
-            uid = getUid($el);
+    function onLoad(el, ctx){
+        var $el = angular.element(ctx),
+            uid = getUid($el),
+            oriW = $el[0].width, 
+            oriH = $el[0].height,
+            ratio = oriH/oriW,
+            curH = Math.ceil(curW*ratio);
 
-        $el.css('opacity', 1);
+        el.css('opacity', 1);
+
+        curH && el.css('height', curH + 'px');
 
         if(elements.hasOwnProperty(uid)){
             delete elements[uid];
@@ -98,15 +104,15 @@ exports.lazyLoad = function (context){
         imgArr = doc.getElementsByTagName('img');
     }
 
-    for(var i=0; i<imgArr.length; i++){
-        var el = angular.element(imgArr[i]), 
-            src = imgArr[i].getAttribute('lazy-src'), 
-            oriW = el.attr('data-width') ? parseFloat(el.attr('data-width')) : 0, 
-            oriH = el.attr('data-height') ? parseFloat(el.attr('data-height')) : 0, 
-            ratio = oriW && oriH ? oriH/oriW : 0, 
-            curH = ratio ? Math.ceil(curW*ratio) : 0;
+    Array.prototype.forEach.call(imgArr, function(item, idx){
+        var el = angular.element(item), 
+            src = item.getAttribute('lazy-src'), 
+            imgtemp = document.createElement('img');
 
-        el.bind('load', onLoad);
+        imgtemp.onload = function(){
+            onLoad(el, this);
+        };
+        imgtemp.src = src;
 
         if(src){
             if(isVisible(el)){
@@ -125,13 +131,47 @@ exports.lazyLoad = function (context){
                     lazySrc: src
                 };
             }
-            if(curH){
-                el.css('height', curH + 'px');
-            }
         }
+    });
+    // for(var i=0; i<imgArr.length; i++){
+    //     var el = angular.element(imgArr[i]), 
+    //         src = imgArr[i].getAttribute('lazy-src'), 
+    //         imgtemp = document.createElement('img');
 
-        el.unbind('load');
-    }
+
+    //         // src = imgArr[i].getAttribute('lazy-src'), 
+    //         // oriW = el.attr('data-width') ? parseFloat(el.attr('data-width')) : 0, 
+    //         // oriH = el.attr('data-height') ? parseFloat(el.attr('data-height')) : 0, 
+    //         // ratio = oriW && oriH ? oriH/oriW : 0, 
+    //         // curH = ratio ? Math.ceil(curW*ratio) : 0;
+
+    //     imgtemp.onload = function(){
+    //         onLoad(el, this);
+    //     };
+    //     imgtemp.src = src;
+
+    //     if(src){
+    //         if(isVisible(el)){
+    //             el.attr('src', src)
+    //                 .css('opacity', 1);
+    //         }else{
+    //             var uid = getUid(el[0]);
+    //             el.css({
+    //                 'background-color': '#fff',
+    //                 'opacity': 1,
+    //                 '-webkit-transition': 'opacity .2s',
+    //                 'transition': 'opacity .2s'
+    //             });
+    //             elements[uid] = {
+    //                 iElement: el, 
+    //                 lazySrc: src
+    //             };
+    //         }
+    //         // if(curH){
+    //         //     el.css('height', curH + 'px');
+    //         // }
+    //     }
+    // }
 
     setTimeout(function(){checkImage();}, 200);
 };

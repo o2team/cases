@@ -156,32 +156,11 @@
 <div class="frontshade"></div>
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
-	<script src="js/share.js"></script>
-	<script src="js/vol_maga.js"></script>
-	<script src="js/controllers_maga.js"></script>
+	<script src="js/bundle.js"></script>
 	<script src="js/index_ctrl.js"></script>
-	<script src="js/lazyload2.0.js"></script>
-	<script src="js/slides.js"></script>
 	<script src="js/mode.js"></script>
 	<script src="js/setcookie.js"></script>
 <script>
-	var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
-		shareTitle = "H5精品案例赏析", 
-		shareText = "凹凸实验室品鉴小分队奉上";
-	for(var i=0; i<volMaga.length; i++){
-		if(volMaga[i].vol === parseInt(vol)){
-			if(volMaga[i].shareTitle){
-				shareTitle = volMaga[i].shareTitle;
-			}
-			if(volMaga[i].shareText){
-				shareText = volMaga[i].shareText;
-			}
-		}
-	}
-
-	/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
-
 	/*统计*/
 		var _hmt = _hmt || [];
 		(function() {

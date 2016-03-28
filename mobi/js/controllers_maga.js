@@ -1,6 +1,12 @@
 // author: EC
 // last modify: 2016-2-11 12:48
 
+var volMaga = require('./vol_maga').volMaga();
+var vol = require('./getVol').vol();
+var lazyLoad = require('./lazyload2.0.js').lazyLoad;
+var Slides = require('./slides').Slides();
+var setShare = require('./setShare').setShare;
+
 var cases = angular.module('cases', ['ngRoute']), 
 	data = [], 
 	// qrIdPre = 'caseqc_', 
@@ -22,13 +28,6 @@ var cases = angular.module('cases', ['ngRoute']),
 	indexJumpClass = ['.ar_list', '.bc_back'], 	//索引页入口按钮类名
 	aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
 
-
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null)return  unescape(r[2]); return null;
-}
 
 // 期刊链接处理
 function jumpHref(jumpPath){
@@ -177,7 +176,6 @@ cases.controller('casesList', function($scope, $http, $sce) {
 			if($scope.date){
 				pt = $scope.date.split('-');
 				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-				console.log(projectTime);
 				$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 			}else if(!$scope.date && $scope.vol>latestVol){
 				location.href = jumpHref(indexHref);
@@ -213,8 +211,8 @@ cases.controller('casesList', function($scope, $http, $sce) {
 
 			var descCont=item.desc.split('\n');
 			h5type.forEach(function(type){
-				if(item.type[1].name===type.name){
-					item.type[1].id = type.id;
+				if(item.type.name===type.name){
+					item.type.id = type.id;
 				}
 			});
 
@@ -255,4 +253,6 @@ cases.controller('casesList', function($scope, $http, $sce) {
 				}
 		});}, 1000);
 	}
+
+	setShare();
 });

@@ -1,6 +1,8 @@
 	/**
 	* 微信分享
 	*/
+
+exports.wxShare = function (){	
 	var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
 	    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 	        WeixinJSBridge.on('menu:share:timeline', function(argv){
@@ -57,5 +59,8 @@
 	        });
 
 	    })
-
 	}
+
+	return wxShare;
+}
+	
