@@ -1,7 +1,7 @@
 var wxShare = require('./share').wxShare();
 var GetQueryString = require('./GetQueryString').GetQueryString;
 
-exports.setShare = function(){
+exports.setShare = function(){ //设置分享参数
 	var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
 		shareTitle = "H5精品案例赏析", 
 		shareText = "凹凸实验室品鉴小分队奉上", 

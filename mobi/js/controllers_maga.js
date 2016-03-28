@@ -2,10 +2,12 @@
 // last modify: 2016-2-11 12:48
 
 var volMaga = require('./vol_maga').volMaga();
-var vol = require('./getVol').vol();
-var lazyLoad = require('./lazyload2.0.js').lazyLoad;
-var Slides = require('./slides').Slides();
-var setShare = require('./setShare').setShare;
+var vol = require('./getVol').vol();	//获取当前期数
+var lazyLoad = require('./lazyload2.0.js').lazyLoad;	//图片预加载
+var Slides = require('./slides').Slides();	//页面滑动
+var setShare = require('./setShare').setShare;	//设置分享参数
+var jumpHref = require('./jumpHref').jumpHref;	// 索引添加单击事件
+var coverClick = require('./coverClick').coverClick;	// 索引添加单击事件
 
 var cases = angular.module('cases', ['ngRoute']), 
 	data = [], 
@@ -29,16 +31,6 @@ var cases = angular.module('cases', ['ngRoute']),
 	aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
 
 
-// 期刊链接处理
-function jumpHref(jumpPath){
-	var p = location.pathname, 
-		pArr = p.split('/');
-	pArr.pop();
-	p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-	return p;
-}
-
 // 索引设置
 function indexSet($scope){
 	$magaBox.style.display = 'none';
@@ -55,13 +47,6 @@ function indexSet($scope){
 
 			lazyLoad(document.getElementById('index'));
 		}
-	});
-}
-
-// 索引添加单击事件
-function coverClick(item) {
-	document.querySelector(item).addEventListener('click', function(){
-		location.href = jumpHref(indexHref);
 	});
 }
 
@@ -211,8 +196,8 @@ cases.controller('casesList', function($scope, $http, $sce) {
 
 			var descCont=item.desc.split('\n');
 			h5type.forEach(function(type){
-				if(item.type.name===type.name){
-					item.type.id = type.id;
+				if(item.type[1].name===type.name){
+					item.type[1].id = type.id;
 				}
 			});
 
