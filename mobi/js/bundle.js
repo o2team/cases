@@ -47,13 +47,13 @@
 	// author: EC
 	// last modify: 2016-2-11 12:48
 
-	var volMaga = __webpack_require__(1).volMaga();
+	var volMaga = __webpack_require__(6).volMaga();
 	var vol = __webpack_require__(2).vol();	//获取当前期数
 	var lazyLoad = __webpack_require__(4).lazyLoad;	//图片预加载
 	var Slides = __webpack_require__(5).Slides();	//页面滑动
-	var setShare = __webpack_require__(6).setShare;	//设置分享参数
-	var jumpHref = __webpack_require__(8).jumpHref;	// 索引添加单击事件
-	var coverClick = __webpack_require__(9).coverClick;	// 索引添加单击事件
+	var setShare = __webpack_require__(9).setShare;	//设置分享参数
+	var jumpHref = __webpack_require__(10).jumpHref;	// 索引添加单击事件
+	var coverClick = __webpack_require__(11).coverClick;	// 索引添加单击事件
 
 	var cases = angular.module('cases', ['ngRoute']), 
 		data = [], 
@@ -295,26 +295,7 @@
 	});
 
 /***/ },
-/* 1 */
-/***/ function(module, exports) {
-
-	exports.volMaga = function(){
-		var volMaga = [
-			{"vol": 1, "date": "2015-10-26", "prewords": "专治灵感枯竭、技术盲症候群", "cover": "images/cover/vol_1.jpg", "covers":"images/cover/vol_1_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "开刊号请多指教［鞠躬］", "shareText": "专治灵感枯竭、技术盲症候群"}, 
-			{"vol": 2, "date": "2015-11-9", "prewords": "近水楼台先得月", "cover": "images/cover/vol_2.jpg", "covers":"images/cover/vol_2_s.jpg", "hexocolor": ["C3BFD5", "495B81"], "shareTitle": "哗，6个案例个个精彩绝伦", "shareText": "还真的有周杰伦"}, 
-			{"vol": 3, "date": "2015-11-23", "prewords": "双十一，真·热（sàng）火（xīn）朝（bìng）天（kuáng）", "cover": "images/cover/3.png", "covers":"images/cover/3_s.png", "hexocolor": ["FE4C4A", "AF004D"], "shareTitle": "双十一特刊：去京东找你妹亲一口［羞涩脸］", "shareText": "看完这些H5再买买买"}, 
-			{"vol": 4, "date": "2015-12-28", "prewords": "新年新气象～（是不是有点早", "cover": "images/cover/4.jpg", "covers":"images/cover/4_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "做梦都在打牌牌刷钱钱", "shareText": "新年新气象～（是不是有点早"}, 
-			{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
-			{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
-			{"vol": 7, "date": "2016-03-28", "prewords": "文青入门手册", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}
-		];
-
-		return volMaga;
-	}
-
-
-
-/***/ },
+/* 1 */,
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -714,31 +695,23 @@
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	var wxShare = __webpack_require__(7).wxShare();
-	var GetQueryString = __webpack_require__(3).GetQueryString;
+	exports.volMaga = function(){
+		var volMaga = [
+			{"vol": 1, "date": "2015-10-26", "prewords": "专治灵感枯竭、技术盲症候群", "cover": "images/cover/vol_1.jpg", "covers":"images/cover/vol_1_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "开刊号请多指教［鞠躬］", "shareText": "专治灵感枯竭、技术盲症候群"}, 
+			{"vol": 2, "date": "2015-11-9", "prewords": "近水楼台先得月", "cover": "images/cover/vol_2.jpg", "covers":"images/cover/vol_2_s.jpg", "hexocolor": ["C3BFD5", "495B81"], "shareTitle": "哗，6个案例个个精彩绝伦", "shareText": "还真的有周杰伦"}, 
+			{"vol": 3, "date": "2015-11-23", "prewords": "双十一，真·热（sàng）火（xīn）朝（bìng）天（kuáng）", "cover": "images/cover/3.png", "covers":"images/cover/3_s.png", "hexocolor": ["FE4C4A", "AF004D"], "shareTitle": "双十一特刊：去京东找你妹亲一口［羞涩脸］", "shareText": "看完这些H5再买买买"}, 
+			{"vol": 4, "date": "2015-12-28", "prewords": "新年新气象～（是不是有点早", "cover": "images/cover/4.jpg", "covers":"images/cover/4_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "做梦都在打牌牌刷钱钱", "shareText": "新年新气象～（是不是有点早"}, 
+			{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
+			{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
+			{"vol": 7, "date": "2016-03-28", "prewords": "文青入门手册", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}
+		];
 
-	exports.setShare = function(){ //设置分享参数
-		var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
-			shareTitle = "H5精品案例赏析", 
-			shareText = "凹凸实验室品鉴小分队奉上", 
-			volMaga = __webpack_require__(1).volMaga();
-			
-		volMaga.forEach(function(item, idx){
-			if(item.vol === parseInt(vol)){
-				if(item.shareTitle){
-					shareTitle = item.shareTitle;
-				}
-				if(item.shareText){
-					shareText = item.shareText;
-				}
-			}
-		});
-
-		/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
+		return volMaga;
 	}
+
+
 
 /***/ },
 /* 7 */
@@ -812,7 +785,36 @@
 		
 
 /***/ },
-/* 8 */
+/* 8 */,
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var wxShare = __webpack_require__(7).wxShare();
+	var GetQueryString = __webpack_require__(3).GetQueryString;
+
+	exports.setShare = function(){ //设置分享参数
+		var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
+			shareTitle = "H5精品案例赏析", 
+			shareText = "凹凸实验室品鉴小分队奉上", 
+			volMaga = __webpack_require__(6).volMaga();
+			
+		volMaga.forEach(function(item, idx){
+			if(item.vol === parseInt(vol)){
+				if(item.shareTitle){
+					shareTitle = item.shareTitle;
+				}
+				if(item.shareText){
+					shareText = item.shareText;
+				}
+			}
+		});
+
+		/*分享*/
+		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
+	}
+
+/***/ },
+/* 10 */
 /***/ function(module, exports) {
 
 	exports.jumpHref = function(jumpPath){ // 期刊链接处理
@@ -825,10 +827,10 @@
 	}
 
 /***/ },
-/* 9 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var jumpHref = __webpack_require__(10).jumpHref;
 	exports.coverClick = function (item){ // 索引添加单击事件
 		document.querySelector(item).addEventListener('click', function(){
 			location.href = jumpHref(indexHref);
