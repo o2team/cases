@@ -1,6 +1,7 @@
 // author: EC
 // last modify: 2015-12-25 16:50
-
+var lazyLoad = require('./lazyload2.0.js').lazyLoad;
+exports.Slides = function(){
 	var Slides = {
 		// index: document.querySelector('.ar_nav'), 
 		bar: document.querySelector('.ar_tool'), 
@@ -224,3 +225,6 @@
 			}
 		}
 	};
+	return Slides;
+}
+	

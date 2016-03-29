@@ -1,44 +1,32 @@
 // author: EC
 // last modify: 2016-2-11 12:48
 
+var volMaga = require('./vol_maga').volMaga();
+var vol = require('./getVol').vol();	//获取当前期数
+var lazyLoad = require('./lazyload2.0.js').lazyLoad;	//图片预加载
+var Slides = require('./slides').Slides();	//页面滑动
+var setShare = require('./setShare').setShare;	//设置分享参数
+var jumpHref = require('./jumpHref').jumpHref;	// 索引添加单击事件
+var coverClick = require('./coverClick').coverClick;	// 索引添加单击事件
+var config = require('./config').config();	//配置文件
+
 var cases = angular.module('cases', ['ngRoute']), 
-	data = [], 
+	data = config.data, 
 	// qrIdPre = 'caseqc_', 
-	h5type = [{"name": "其他", "id": 0}, 
-		{"name": "游戏", "id": 1}, 
-		{"name": "短片", "id": 2}, 
-		{"name": "翻页动画", "id": 3}, 
-		{"name": "多屏互动", "id": 4}], 			//案例类型表
-	indexHref = 'maga.html', 					//索引地址
-	$cover = document.querySelector('.cover'), 	//期刊封面钩子
-	coverLoaded = 'page cover loaded', 			//加载完毕期刊封面类名
-	sec = '.ar_sec', 							//每屏内容类
-	indexLi = '.li_cover', 						//索引项类
-	$indexCover = document.querySelector('.fcover'), //索引封面
-	indexCoverLoaded = 'page fcover loaded', 	//加载完毕索引封面类名
-	$magaBox = document.getElementById('magazines'), //期刊容器
-	$indexBox = document.getElementById('index'), //索引容器
-	likeClass = '.ar_love', 					//点赞类名
-	indexJumpClass = ['.ar_list', '.bc_back'], 	//索引页入口按钮类名
-	aotuBlue = ['A2C0F9', '6190e8']; 			//凹凸蓝
+	h5type = config.h5type, 			//案例类型表
+	indexHref = config.indexHref, 					//索引地址
+	$cover = config.$cover, 	//期刊封面钩子
+	coverLoaded = config.coverLoaded, 			//加载完毕期刊封面类名
+	sec = config.sec, 							//每屏内容类
+	indexLi = config.indexLi, 						//索引项类
+	$indexCover = config.$indexCover, //索引封面
+	indexCoverLoaded = config.indexCoverLoaded, 	//加载完毕索引封面类名
+	$magaBox = config.$magaBox, //期刊容器
+	$indexBox = config.$indexBox, //索引容器
+	likeClass = config.likeClass, 					//点赞类名
+	indexJumpClass = config.indexJumpClass, 	//索引页入口按钮类名
+	aotuBlue = config.autoBlue; 			//凹凸蓝
 
-
-function GetQueryString(name)
-{
-     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-     var r = window.location.search.substr(1).match(reg);
-     if(r!=null)return  unescape(r[2]); return null;
-}
-
-// 期刊链接处理
-function jumpHref(jumpPath){
-	var p = location.pathname, 
-		pArr = p.split('/');
-	pArr.pop();
-	p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-	return p;
-}
 
 // 索引设置
 function indexSet($scope){
@@ -56,13 +44,6 @@ function indexSet($scope){
 
 			lazyLoad(document.getElementById('index'));
 		}
-	});
-}
-
-// 索引添加单击事件
-function coverClick(item) {
-	document.querySelector(item).addEventListener('click', function(){
-		location.href = jumpHref(indexHref);
 	});
 }
 
@@ -177,7 +158,6 @@ cases.controller('casesList', function($scope, $http, $sce) {
 			if($scope.date){
 				pt = $scope.date.split('-');
 				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-				console.log(projectTime);
 				$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 			}else if(!$scope.date && $scope.vol>latestVol){
 				location.href = jumpHref(indexHref);
@@ -192,7 +172,13 @@ cases.controller('casesList', function($scope, $http, $sce) {
 		var likeObj = [], 
 			likeArr = [];
 		data = data;
-		$cl = $scope.caselist = data.reverse();
+		$cl = $scope.caselist = data.sort(function(a, b){
+			if(a._id < b._id){
+				return -1;
+			}else {
+				return 0;
+			}
+		});
 
 		$cl.forEach(function(item, idx){
 			var key = item._id;
@@ -255,4 +241,6 @@ cases.controller('casesList', function($scope, $http, $sce) {
 				}
 		});}, 1000);
 	}
+
+	setShare();
 });

@@ -156,27 +156,35 @@
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
 	<script src="js/share.js"></script>
-	<script src="js/vol_maga_test.js"></script>
-	<script src="js/controllers_maga.js"></script>
+	<!-- <script src="js/controllers_maga.js"></script> -->
+	<script src="js/bundle.js"></script>
 	<script src="js/index_ctrl.js"></script>
-	<script src="js/lazyload2.0.js"></script>
-	<script src="js/slides.js"></script>
+	<!-- <script src="js/lazyload2.0.js"></script> -->
+	<!-- <script src="js/slides.js"></script> -->
 	<script src="js/mode.js"></script>
 	<script src="js/setcookie.js"></script>
 <script>
-	var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
-		shareTitle = "H5精品案例赏析", 
-		shareText = "凹凸实验室品鉴小分队奉上";
-	for(var i=0; i<volMaga.length; i++){
-		if(volMaga[i].vol === parseInt(vol)){
-			if(volMaga[i].shareTitle){
-				shareTitle = volMaga[i].shareTitle;
-			}
-			if(volMaga[i].shareText){
-				shareText = volMaga[i].shareText;
-			}
-		}
-	}
+	// var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
+	// 	// wxShare = require(./js/share).wxShare, 
+	// 	shareTitle = "H5精品案例赏析", 
+	// 	shareText = "凹凸实验室品鉴小分队奉上", 
+	// 	volMaga = document.createElement('script');
+	// volMaga.src = 'js/vol_maga_test.js';
+
+	// volMaga.onload = function(){
+	// 	for(var i=0; i<volMaga.length; i++){
+	// 		if(volMaga[i].vol === parseInt(vol)){
+	// 			if(volMaga[i].shareTitle){
+	// 				shareTitle = volMaga[i].shareTitle;
+	// 			}
+	// 			if(volMaga[i].shareText){
+	// 				shareText = volMaga[i].shareText;
+	// 			}
+	// 		}
+	// 	}
+	// };
+	// document.getElementsByTagName('head')[0].appendChild(volMaga);
+
 
 
 	/*分享*/

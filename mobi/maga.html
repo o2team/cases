@@ -54,20 +54,16 @@
 						<h3 class="ar_tit"><a href="{{case.url}}" ng-bind-html="case.title"></a><span class="ar_type ar_type_{{case.type[1].id}}">{{case.type[1].name}}</span></h3>
 						<div class="ar_aside">
 							<ul class="ar_attr">
-								<li class="ar_tag">标签：<span ng-repeat="tags in case.vd">{{tags}}</span></li>	
+								<li class="ar_tag"><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
 								<li><strong>需求背景：</strong>{{case.type[2].name}}</li>	
-								<li><strong>创意指数：</strong><span class="ar_star"><i>{{case.fe[0]}}</i></span></li>
-								<li><strong>实现难度：</strong><span class="ar_star"><i>{{case.fe[1]}}</i></span></li>
+								<li class="ar_stars"><strong>创意指数：</strong><span class="ar_star"><i>{{case.fe[0]}}</i></span></li>
+								<li class="ar_stars"><strong>实现难度：</strong><span class="ar_star"><i>{{case.fe[1]}}</i></span></li>
 							</ul>
 						</div>
 						<div class="ar_analysis">
 							<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
-							<p class="ar_more">↑ 猛戳进入深层剖析…… ↑
-								<span></span>
-								<span></span>
-								<span></span>
-							</p>
 						</div>
+						<p class="ar_more">↑ 猛戳进入深层剖析…… ↑</p>
 					</div>
 					<!-- 点赞 -->
 					<a href="javascript:;" class="ar_love{{case.likeClass}}" data-key="{{case._id}}" data-index="{{case.index}}">
@@ -156,32 +152,11 @@
 <div class="frontshade"></div>
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
-	<script src="js/share.js"></script>
-	<script src="js/vol_maga.js"></script>
-	<script src="js/controllers_maga.js"></script>
+	<script src="js/bundle.js"></script>
 	<script src="js/index_ctrl.js"></script>
-	<script src="js/lazyload2.0.js"></script>
-	<script src="js/slides.js"></script>
 	<script src="js/mode.js"></script>
 	<script src="js/setcookie.js"></script>
 <script>
-	var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
-		shareTitle = "H5精品案例赏析", 
-		shareText = "凹凸实验室品鉴小分队奉上";
-	for(var i=0; i<volMaga.length; i++){
-		if(volMaga[i].vol === parseInt(vol)){
-			if(volMaga[i].shareTitle){
-				shareTitle = volMaga[i].shareTitle;
-			}
-			if(volMaga[i].shareText){
-				shareText = volMaga[i].shareText;
-			}
-		}
-	}
-
-	/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
-
 	/*统计*/
 		var _hmt = _hmt || [];
 		(function() {
