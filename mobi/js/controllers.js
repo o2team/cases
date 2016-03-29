@@ -67,7 +67,13 @@ cases.controller('casesList', function($scope, $http, $sce){
 		
 	window.json1 = function (data) { 
 		data = data;
-		$scope.caselist = data.reverse();
+		$scope.caselist = data.sort(function(a, b){
+			if(a._id < b._id){
+				return -1;
+			}else {
+				return 0;
+			}
+		});
 
 		for(var i=0; i<$scope.caselist.length; i++){
 			$scope.caselist[i].vd=$scope.caselist[i].vd.split(',');
