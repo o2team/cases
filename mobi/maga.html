@@ -178,7 +178,7 @@
 		function pc(){
 			var nav = 'ontouchstart' in window;
 			if(!nav){
-				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href);
+				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href+'&origin=pc');
 				document.getElementById('pcCover').style.display='block';
 			}
 		}
