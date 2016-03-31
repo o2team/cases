@@ -176,7 +176,7 @@
 		})();
 	!function(x){
 		function pc(){
-			var nav = 'touchstart' in document.documentElement;
+			var nav = 'ontouchstart' in window;
 			if(!nav){
 				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href);
 				document.getElementById('pcCover').style.display='block';

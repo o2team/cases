@@ -202,7 +202,7 @@
 				volList.forEach(coverSet);
 
 				if($scope.date){
-					var mobile = 'touchstart' in document.documentElement;
+					var mobile = 'ontouchstart' in window;
 					pt = $scope.date.split('-');
 					projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
 					
