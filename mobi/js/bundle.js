@@ -179,9 +179,9 @@
 					coverSet = function (item){
 						if(item.vol === curVol){
 							$scope.date = item.date;
+							$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
 							$scope.cover = item.cover;
 							$scope.covers = item.covers;
-							$scope.hexocolor = random < 0.1 ? aotuBlue : item.hexocolor;
 
 							if(!!item.prewords && item.prewords!==""){
 								var prewordsCont = item.prewords.split('\n');
@@ -202,9 +202,11 @@
 				volList.forEach(coverSet);
 
 				if($scope.date){
+					var mobile = 'touchstart' in document.documentElement;
 					pt = $scope.date.split('-');
 					projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
-					$http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
+					
+					mobile && $http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 				}else if(!$scope.date && $scope.vol>latestVol){
 					location.href = jumpHref(indexHref);
 				}

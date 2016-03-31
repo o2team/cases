@@ -150,12 +150,21 @@
 </div>
 <div class="loading"></div>
 <div class="frontshade"></div>
+<div class="pc_cover" id="pcCover">
+	<div id="thumbmaga_pc" class="qrcode"></div>
+	<div class="pc_cover_aside">
+		<p>手机上阅读体验最佳</p>
+		<p><a href="http://aotu.io/cases/mobi/mail.html?vol={{vol}}">我不管，我就要用电脑看</a></p>
+	</div>
+</div>
+
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
 	<script src="js/bundle.js"></script>
 	<script src="js/index_ctrl.js"></script>
 	<script src="js/mode.js"></script>
 	<script src="js/setcookie.js"></script>
+	<script src="js/qrcode.min.js"></script>
 <script>
 	/*统计*/
 		var _hmt = _hmt || [];
@@ -165,7 +174,16 @@
 		  var s = document.getElementsByTagName("script")[0]; 
 		  s.parentNode.insertBefore(hm, s);
 		})();
-
+	!function(x){
+		function pc(){
+			var nav = 'touchstart' in document.documentElement;
+			if(!nav){
+				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href);
+				document.getElementById('pcCover').style.display='block';
+			}
+		}
+		pc();
+	}(window);
 </script>
 </body>
 </html>
