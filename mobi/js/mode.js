@@ -66,7 +66,7 @@
 			self.mode.setAttribute('class', modeClass + ' loaded');
 			setTimeout(function(){
 				self.mode.style.display = 'none';
-			}, 400);
+			}, 800);
 
 			setCookie("mode", self.modeVal);
 
