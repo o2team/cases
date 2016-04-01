@@ -71,7 +71,7 @@
 		$indexBox = config.$indexBox, //索引容器
 		likeClass = config.likeClass, 					//点赞类名
 		indexJumpClass = config.indexJumpClass, 	//索引页入口按钮类名
-		aotuBlue = config.autoBlue; 			//凹凸蓝
+		aotuBlue = config.aotuBlue; 			//凹凸蓝
 
 
 	// 索引设置
@@ -168,8 +168,8 @@
 				latest = volList[volList.length-1].vol, 
 				before = volList[0].vol - 1,
 				pt, projectTime, 
-				random = Math.random();
-				// random = 0.03;
+				// random = Math.random();
+				random = 0.03;
 
 			$scope.volList = volList.reverse();
 
