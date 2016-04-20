@@ -178,7 +178,18 @@
 		function pc(){
 			var nav = 'ontouchstart' in window;
 			if(!nav){
-				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href+'&origin=pc');
+				var qrcodeCont = document.getElementById('thumbmaga_pc');
+				var vol = qrcodeCont.getAttribute('data-vol');
+				var href = location.href;
+				var variable = href.split('?');
+				var suffix, qrcode;
+				if(variable[1] && variable[1] != ""){
+					suffix = '&origin=pc';
+				}else{
+					suffix = '?origin=pc';
+				}
+				qrcode = new QRCode(qrcodeCont, href+suffix);
+				console.log(href+suffix);
 				document.getElementById('pcCover').style.display='block';
 			}
 		}
