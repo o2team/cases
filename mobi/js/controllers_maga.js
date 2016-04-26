@@ -201,7 +201,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 
 			var descCont=item.desc.split('\n');
 			h5type.forEach(function(type){
-				if(item.type[1].name===type.name){
+				if(item.type[1] && item.type[1].name===type.name){
 					item.type[1].id = type.id;
 				}
 			});
