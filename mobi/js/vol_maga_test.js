@@ -6,7 +6,8 @@ exports.volMaga = function(){
 		{"vol": 4, "date": "2015-12-28", "prewords": "新年新气象～（是不是有点早", "cover": "images/cover/4.jpg", "covers":"images/cover/4_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "做梦都在打牌牌刷钱钱", "shareText": "新年新气象～（是不是有点早"}, 
 		{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
 		{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
-		{"vol": 7, "date": "2016-03-28", "prewords": "现在给智商充值还来得及", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}
+		{"vol": 7, "date": "2016-03-28", "prewords": "现在给智商充值还来得及", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺段子即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}, 
+		{"vol": 8, "date": "2016-04-26", "prewords": "CSS3动画开发指南", "cover": "images/cover/vol_8.jpg", "covers":"images/cover/vol_8_s.jpg", "hexocolor": ["29a9df", "0170ba"], "shareTitle": "专治CSS3动画技术盲", "shareText": "小编不想推送案例并向你扔了一系列深度剖析文"}
 	];
 
 	return volMaga;
