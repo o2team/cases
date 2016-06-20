@@ -160,7 +160,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 				pt = $scope.date.split('-');
 				projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
 				
-				mobile && $http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
+				mobile && $http.jsonp('https://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 			}else if(!$scope.date && $scope.vol>latestVol){
 				location.href = jumpHref(indexHref);
 			}
