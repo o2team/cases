@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html ng-app="index" ng-controller="iList">
+<head>
+	<meta charset="utf-8" />
+	<title>svg_test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/setpage.css">
+	<script>
+	    !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
+	</script>
+	<style>
+	.main{
+	  stroke-dasharray: 855;
+	  stroke-dashoffset: 855;
+	  fill: rgba(0,0,0,0);
+	  -webkit-animation: dash 1s linear forwards,fill 0.5s 1s linear forwards;
+	}
+	@-webkit-keyframes dash{
+	  to {
+	    stroke-dashoffset: 0;
+	  }
+	}
+	@-webkit-keyframes fill{
+	  to {
+	  	fill: #fff;
+	  }
+	}
+	.eye_l,
+	.eye_r{
+		-webkit-transform: scale(1,0);
+		transform-origin: 36.25% 60%;
+	  	-webkit-animation: eye 0.5s 1.5s 2 forwards;
+	}
+	@-webkit-keyframes eye{
+	  to {
+		-webkit-transform: scale(1,1);
+	  }
+	}
+	.line_t,
+	.line_b{
+		opacity: 0;
+		-webkit-transform: translateY(20px);
+	}
+	.line_t{
+	  	-webkit-animation: line 0.5s 2s forwards;
+	}
+	.line_b{
+	  	-webkit-animation: line 0.5s 1.5s forwards;
+	}
+	@-webkit-keyframes line{
+	  to {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	  }
+	}
+
+	</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">    
+	<symbol viewBox="0 0 320 320" id="main">
+	    <title>main</title>
+	    <path stroke="#ffffff" transform="translate(-26, -47)" stroke-width="1"  fill-rule="evenodd" d="M318.065511,367 C317.771291,284.936704 296.833013,218.530485 274.62589,180.097449 C231.984105,139.986751 133.07137,139.680396 90.3603029,180.097449 C56.6429567,225.193716 50.5005061,307.220868 50.4073076,367 C50.5736085,366.57158 317.771291,365.86955 318.065511,367 Z M183.986649,175.877768 C145.522687,175.877771 107.107737,183.868534 95.2692807,202.999995 C76.740156,232.943868 80.7032002,321.209552 136.499646,336.900442 C160.362548,343.611088 200.837955,354.366358 238.70934,336.900442 C276.580724,319.434527 287.044226,225.325016 264.618269,202.999989 C246.61623,183.343357 222.450611,175.877766 183.986649,175.877768 Z"></path>
+	</symbol>
+	<symbol viewBox="0 0 320 320" id="eye_l">
+	    <title>eye</title>
+   		<g stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(-26, -47)" fill="#ffffff">
+            <ellipse cx="141.439739" cy="241.078054" rx="9.26751191" ry="17.3262179"></ellipse>
+    	</g>
+	</symbol>
+	<symbol viewBox="0 0 320 320" id="eye_r">
+	    <title>eye</title>
+   		<g stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(58, -47)" fill="#ffffff">
+            <ellipse cx="141.439739" cy="241.078054" rx="9.26751191" ry="17.3262179"></ellipse>
+    	</g>
+	</symbol>
+	<symbol viewBox="0 0 320 320" id="line_b">
+	    <title>line_b</title>
+    	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <g stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-dasharray="187,439">
+            	<ellipse transform="translate(161.236409, 138.102574) rotate(-147) translate(-184.236409, -184.102574) " cx="184.236409" cy="184.102574" rx="89.0276963" ry="91.2822368"></ellipse>
+	        </g>
+	    </g>
+	</symbol>
+	<symbol viewBox="0 0 320 320" id="line_t">
+	    <title>line_t</title>
+	    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+	        <g stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-dasharray="327,431">
+	            <ellipse transform="translate(161.236409, 138.102574) rotate(-147) translate(-184.236409, -184.102574) " cx="184.236409" cy="184.102574" rx="128.718267" ry="131.977933"></ellipse>
+	        </g>
+	    </g>
+    </symbol>
+</svg>
+
+<svg width="320px" height="320px" viewBox="0 0 320 320">
+    <use xlink:href="#main" class="main"/>
+    <use xlink:href="#eye_l" class="eye_l"/>
+    <use xlink:href="#eye_r" class="eye_r"/>
+    <use xlink:href="#line_t" class="line_t"/>
+    <use xlink:href="#line_b" class="line_b"/>
+</svg>
+
+</body>
+</html>
