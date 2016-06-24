@@ -14,35 +14,39 @@
 </head>
 <body id="magaList">
 	<div class="setpage">
-		<div class="case">
+		<div class="case" @scroll="onScroll">
 			<ul class="case_list">
 				<li class="case_item case_lastest">
-					<div class="case_item_info">
-						<img class="case_item_img" v-bind:src="latest.cover" alt="{{latest.prewords}}" />
-						<div class="case_lastest_tit">
-							<h2 class="tit">{{latest.prewords}}</h2>
-							<h3 class="subtit">vol.{{latest.vol}}</h3>
+					<a href="{{latestUrl}}">
+						<div class="case_item_info">
+							<img class="case_item_img" v-bind:src="latest.cover" alt="{{latest.prewords}}" />
+							<div class="case_lastest_tit">
+								<h2 class="tit">{{latest.prewords}}</h2>
+								<h3 class="subtit">vol.{{latest.vol}}</h3>
+							</div>
+							<div class="case_item_mark">最新</div>
 						</div>
-						<div class="case_item_mark">最新</div>
-					</div>
+					</a>
 				</li>
 
 				<li v-for="item in list" class="case_item">
-					<div class="case_item_info">
-						<img class="case_item_img" v-bind:src="item.image" alt="" />
-						<div class="case_item_tag">
-							<a href="javascript:;" class="type" v-if="item.type[0]">{{item.type[0]}}</a>
-							<a href="javascript:;" class="type" v-if="item.type[1]">{{item.type[1]}}</a>
-							<a href="javascript:;" class="team" v-if="item.vd[0]">{{item.vd[0]}}</a>
-							<a href="javascript:;" class="technology" v-if="item.fe[2]">{{item.fe[2]}}</a>
+					<a href="{{item.url}}">
+						<div class="case_item_info">
+							<img class="case_item_img" v-bind:src="item.image" alt="" />
+							<div class="case_item_star">
+								<span>创意指数：{{item.magaStar[0]}}</span>
+								<span>实现难度：{{item.magaStar[1]}}</span>
+							</div>
 						</div>
-						<div class="case_item_star">
-							<span>创意指数：{{item.magaStar[0]}}</span>
-							<span>实现难度：{{item.magaStar[1]}}</span>
-						</div>
-						<!-- <div class="case_item_love loved"></div> -->
 						<div class="case_item_mark" v-show="item.links">精选</div>
+					</a>
+					<div class="case_item_tag">
+						<a href="javascript:;" v-if="item.type[0]"><span class="case_item_tag_txt type">{{item.type[0]}}</span></a>
+						<a href="javascript:;" v-if="item.type[1]"><span class="case_item_tag_txt team">{{item.type[1]}}</span></a>
+						<a href="javascript:;" v-if="item.vd[0]"><span class="case_item_tag_txt technology">{{item.vd[0]}}</span></a>
+						<a href="javascript:;" v-if="item.fe[2]"><span class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
 					</div>
+					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
 					<div class="case_item_cnt">
 						<h2 class="case_item_tit">{{item.title}}</h2>
 						<p class="case_item_analysis" v-show="item.links">
@@ -52,7 +56,7 @@
 					</div>
 				</li>
 			</ul>
-			<div class="case_load">
+			<div class="case_load" data-page="{{curPage}}">
 				<div class="case_load_logo">
 					<span class="eye eye_l"></span>
 					<span class="eye eye_r"></span>

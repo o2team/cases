@@ -60,7 +60,9 @@
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
 	var setData = __webpack_require__(3).setData;
 	var volMaga = __webpack_require__(4).volMaga();
-	var pageLoad = __webpack_require__(5).pageLoad;
+	var throttle = __webpack_require__(15).throttle;
+	var pageLoadFunc = __webpack_require__(5).pageLoad;
+	var jumpHref = __webpack_require__(6).jumpHref;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
@@ -71,23 +73,27 @@
 
 			dataRev = setData(dataRev);
 			dataTemp = dataRev.slice(0, patch);
+
 		var vue = new Vue({
 			el: '#magaList', 
 			data: {
 				keyword: '', 
 				keywords: [], 
 				list: dataTemp, 
-				latest: latestVol
+				latest: latestVol, 
+				curPage: 1
 			}, 
 			computed: {
+				latestUrl: function(){
+					return jumpHref('maga.html?vol='+this.latest.vol);
+				}
 			}, 
 			methods: {
 				onScroll: function(e){
-					console.log(1);
+					throttle(pageLoadFunc, 200, 500, this, e)();
 				}, 
-				pageLoad: function(e){
-					var target = e.target, 
-						page = parseInt(target.getAttribute('data-page')), 
+				pageLoad: function(){
+					var page = this.curPage, 
 						end = 0,
 						total = dataCont.length;
 
@@ -96,13 +102,15 @@
 					if(end > total) {
 						end = total;
 						page = Math.ceil(total / patch);
-						target.style.display = 'none';
+						// target.style.display = 'none';
 					}
-					target.setAttribute('data-page', page);
+					this.curPage = page;
 					this.list = dataRev.slice(0, end);
 				}, 
 				search: function(e){
 					var text = this.keyword.split(' ');
+
+					this.curPage = 0;
 
 					dataCont = dataRev.filter(function(item, idx){
 						var boo = 0, 
@@ -152,7 +160,6 @@
 				}
 			}
 		});
-		pageLoad();
 	}
 
 /***/ },
@@ -246,12 +253,64 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	exports.pageLoad = function(){
-		var $sel = document.body;
+	exports.pageLoad = function(e){
+		var $knot = document.querySelector('.case_load'), 
+			winHeight = window.screen.availHeight, 
+			knotPos = $knot.offsetTop, 
+			scrollPos = e.target.scrollTop;
 
-		document.addEventListener('scroll', function(e){
-			console.log(1);
-		})
+			if(scrollPos + winHeight + 10 >= knotPos){
+				this.pageLoad();
+			}else{
+				return;
+			}
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ function(module, exports) {
+
+	exports.throttle = function (func, wait, mustRun, vue, events){
+		var timeout, 
+			startTime = new Date();
+
+
+		return function() {
+			var context = vue, 
+				args = events, 
+				curTime = new Date();
+
+			clearTimeout(timeout);
+			// 如果达到了规定的触发时间间隔，触发handler
+			if(curTime - startTime >= mustRun){
+				func.apply(context, events);
+				startTime = curTime;
+			//没达到触发间隔，重新设定定时器
+			}else{
+				timeout = setTimeout(func.bind(context, events), wait);
+			}
+		};
 	};
 
 /***/ }

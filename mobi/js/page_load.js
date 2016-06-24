@@ -1,7 +1,12 @@
-exports.pageLoad = function(){
-	var $sel = document.body;
+exports.pageLoad = function(e){
+	var $knot = document.querySelector('.case_load'), 
+		winHeight = window.screen.availHeight, 
+		knotPos = $knot.offsetTop, 
+		scrollPos = e.target.scrollTop;
 
-	document.addEventListener('scroll', function(e){
-		console.log(1);
-	})
+		if(scrollPos + winHeight + 10 >= knotPos){
+			this.pageLoad();
+		}else{
+			return;
+		}
 };

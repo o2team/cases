@@ -1,7 +1,9 @@
 var removeHTMLTag = require('./remove_html_tag').removeHTMLTag;
 var setData = require('./set_data').setData;
 var volMaga = require('./vol_maga').volMaga();
-var pageLoad = require('./page_load').pageLoad;
+var throttle = require('./throttle').throttle;
+var pageLoadFunc = require('./page_load').pageLoad;
+var jumpHref = require('./jumpHref').jumpHref;
 
 exports.processData = function(data){
 	var dataRev = data.reverse(), 
@@ -12,23 +14,27 @@ exports.processData = function(data){
 
 		dataRev = setData(dataRev);
 		dataTemp = dataRev.slice(0, patch);
+
 	var vue = new Vue({
 		el: '#magaList', 
 		data: {
 			keyword: '', 
 			keywords: [], 
 			list: dataTemp, 
-			latest: latestVol
+			latest: latestVol, 
+			curPage: 1
 		}, 
 		computed: {
+			latestUrl: function(){
+				return jumpHref('maga.html?vol='+this.latest.vol);
+			}
 		}, 
 		methods: {
 			onScroll: function(e){
-				console.log(1);
+				throttle(pageLoadFunc, 200, 500, this, e)();
 			}, 
-			pageLoad: function(e){
-				var target = e.target, 
-					page = parseInt(target.getAttribute('data-page')), 
+			pageLoad: function(){
+				var page = this.curPage, 
 					end = 0,
 					total = dataCont.length;
 
@@ -37,13 +43,15 @@ exports.processData = function(data){
 				if(end > total) {
 					end = total;
 					page = Math.ceil(total / patch);
-					target.style.display = 'none';
+					// target.style.display = 'none';
 				}
-				target.setAttribute('data-page', page);
+				this.curPage = page;
 				this.list = dataRev.slice(0, end);
 			}, 
 			search: function(e){
 				var text = this.keyword.split(' ');
+
+				this.curPage = 0;
 
 				dataCont = dataRev.filter(function(item, idx){
 					var boo = 0, 
@@ -93,5 +101,4 @@ exports.processData = function(data){
 			}
 		}
 	});
-	pageLoad();
 }
