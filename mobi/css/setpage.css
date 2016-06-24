@@ -118,7 +118,6 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	border-radius: 18px;
 	color: rgba(255,255,255,0.8);
 	background: rgba(0,0,0,0.5);
-	background-size: 100% 18px;
 }
 .case_item_star{
 	position: absolute;
