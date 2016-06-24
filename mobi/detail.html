@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html ng-app="index" ng-controller="iList">
+<head>
+	<meta charset="utf-8" />
+	<title>拇指期刊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/detail.css">
+<script>
+    !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
+</script>
+</head>
+<body>
+	<div class="detail">
+		<div class="detail_main">				
+			<div class="detail_info">
+				<img class="detail_img" src="http://jdc.jd.com/h5/imagespool/1453706495138.png" alt="" />
+				<div class="detail_tag">
+					<a href="javascript:;" class="type">案例类型</a>
+					<a href="javascript:;" class="team">出品团队</a>
+					<a href="javascript:;" class="technology">相关技术</a>
+				</div>
+				<div class="detail_star">
+					<span>创意指数：★★★★★</span>
+					<span>实现难度：★★★★★</span>
+				</div>
+				<div class="detail_love loved"></div>
+			</div>
+			<div class="detail_cnt">
+				<h2 class="detail_tit">标题哟标题哟标题哟标题哟</h2>
+				<div class="detail_analysis">
+					<p><span class="ar_full_sub">《原标题原标题原标题原标题原标题》</span></p>
+					</p>
+					<p>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀</p>
+					<p>
+						<div class="quote">引用呀引用呀引用呀引用呀aa引用呀引用呀引用呀引用呀引用呀引用呀</div>
+					</p>
+					<p>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀</p>
+					<p><h3>二级标题呀二级标题呀</h3></p>
+					<p>
+						<div class="img"><img src="http://jdc.jd.com/h5/case/images/20160328/doubanspirite1/douban1_0.png" /></div>
+					</p>
+					<p>
+						<div class="figurecapture">图片来源：<a href="">《图片来源图片来源》</a></div>
+					</p>
+					<p><h3>二级标题呀二级标题呀</h3></p>
+					<p>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀<a href="">链接链接链接</a>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀</p>
+					<p>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀<a href="">链接链接链接</a>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀</p>
+					<p><h3>二级标题呀二级标题呀</h3></p>
+					<p>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀<a href="">链接链接链接</a>分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀</p>
+					<p><div class="author">（小编：Yetty）</div></p>
+				</div>
+			</div>
+		</div>
+		<a href="javascript:;" class="detail_btn">
+		</a>
+		<a href="javascript:;" class="detail_curvol">vol.7</a>
+	</div>
+	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+	<script type="text/javascript">
+	// var detail = {
+	// 	menuBtn: document.querySelector(".detail_btn"),
+	// 	curVol: document.querySelector(".detail_curvol"),
+	// 	detail: document.querySelector(".detail"),
+	// 	addClass: function(ele,cls) { 
+	// 		if (!this.hasClass(ele,cls)) ele.className += " " +cls; 
+	// 	},
+	// 	removeClass: function(ele,cls) { 
+	// 		if (this.hasClass(ele,cls)) { 
+	// 			var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)'); 
+	// 			ele.className=ele.className.replace(reg,''); 
+	// 		} 
+	// 	},
+	// 	init: function(){
+	// 		this.detail.addEventListener("touchmove",function(){
+	// 			console.log(event.changedTouches[0].clientX,event.changedTouches[0].clientY);
+	// 		})
+	// 	}
+	// }
+	// detail.init();
+	</script>
+</body>
+</html>
