@@ -48,13 +48,13 @@
 	// last modify: 2016-2-11 12:48
 
 	var volMaga = __webpack_require__(4).volMaga();
-	var vol = __webpack_require__(7).vol();	//获取当前期数
-	var lazyLoad = __webpack_require__(9).lazyLoad;	//图片预加载
-	var Slides = __webpack_require__(10).Slides();	//页面滑动
-	var setShare = __webpack_require__(11).setShare;	//设置分享参数
-	var jumpHref = __webpack_require__(6).jumpHref;	// 索引添加单击事件
-	var coverClick = __webpack_require__(13).coverClick;	// 索引添加单击事件
-	var config = __webpack_require__(14).config();	//配置文件
+	var vol = __webpack_require__(8).vol();	//获取当前期数
+	var lazyLoad = __webpack_require__(10).lazyLoad;	//图片预加载
+	var Slides = __webpack_require__(11).Slides();	//页面滑动
+	var setShare = __webpack_require__(12).setShare;	//设置分享参数
+	var jumpHref = __webpack_require__(7).jumpHref;	// 索引添加单击事件
+	var coverClick = __webpack_require__(14).coverClick;	// 索引添加单击事件
+	var config = __webpack_require__(15).config();	//配置文件
 
 	var cases = angular.module('cases', ['ngRoute']), 
 		data = config.data, 
@@ -319,7 +319,8 @@
 
 /***/ },
 /* 5 */,
-/* 6 */
+/* 6 */,
+/* 7 */
 /***/ function(module, exports) {
 
 	exports.jumpHref = function(jumpPath){ // 期刊链接处理
@@ -332,10 +333,10 @@
 	}
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var GetQueryString = __webpack_require__(8).GetQueryString;
+	var GetQueryString = __webpack_require__(9).GetQueryString;
 
 	exports.vol = function(){
 		var vol = GetQueryString('vol')?GetQueryString('vol'):0;
@@ -343,7 +344,7 @@
 	}
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	exports.GetQueryString = function (name){
@@ -353,7 +354,7 @@
 	}
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	// author: EC
@@ -495,12 +496,12 @@
 	};
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// author: EC
 	// last modify: 2015-12-25 16:50
-	var lazyLoad = __webpack_require__(9).lazyLoad;
+	var lazyLoad = __webpack_require__(10).lazyLoad;
 	exports.Slides = function(){
 		var Slides = {
 			// index: document.querySelector('.ar_nav'), 
@@ -730,11 +731,11 @@
 		
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var wxShare = __webpack_require__(12).wxShare();
-	var GetQueryString = __webpack_require__(8).GetQueryString;
+	var wxShare = __webpack_require__(13).wxShare();
+	var GetQueryString = __webpack_require__(9).GetQueryString;
 
 	exports.setShare = function(){ //设置分享参数
 		var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
@@ -758,7 +759,7 @@
 	}
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 		/**
@@ -829,11 +830,11 @@
 		
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jumpHref = __webpack_require__(6).jumpHref;
-	var indexHref = __webpack_require__(14).config().indexHref;
+	var jumpHref = __webpack_require__(7).jumpHref;
+	var indexHref = __webpack_require__(15).config().indexHref;
 	exports.coverClick = function (item){ // 索引添加单击事件
 		document.querySelector(item).addEventListener('click', function(){
 			location.href = jumpHref(indexHref);
@@ -841,7 +842,7 @@
 	}
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	exports.config = function(){

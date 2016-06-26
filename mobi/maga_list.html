@@ -41,9 +41,9 @@
 						<div class="case_item_mark" v-show="item.links">精选</div>
 					</a>
 					<div class="case_item_tag">
-						<a href="javascript:;" v-if="item.type[0]"><span class="case_item_tag_txt type">{{item.type[0]}}</span></a>
-						<a href="javascript:;" v-if="item.type[1]"><span class="case_item_tag_txt team">{{item.type[1]}}</span></a>
-						<a href="javascript:;" v-if="item.vd[0]"><span class="case_item_tag_txt technology">{{item.vd[0]}}</span></a>
+						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-category="classify">{{item.type[0]}}</span></a>
+						<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-category="classify">{{item.type[1]}}</span></a>
+						<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-category="keywords">{{item.vd[0]}}</span></a>
 						<a href="javascript:;" v-if="item.fe[2]"><span class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
 					</div>
 					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->

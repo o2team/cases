@@ -1,19 +1,21 @@
 var removeHTMLTag = require('./remove_html_tag').removeHTMLTag;
 var setData = require('./set_data').setData;
 var volMaga = require('./vol_maga').volMaga();
+var category = require('./category').category();
 var throttle = require('./throttle').throttle;
 var pageLoadFunc = require('./page_load').pageLoad;
 var jumpHref = require('./jumpHref').jumpHref;
+var dataFilter = require('./search').dataFilter;
 
 exports.processData = function(data){
 	var dataRev = data.reverse(), 
-		dataCont = dataRev, 
+		dataCont = [], 
 		patch = 5, 
 		dataTemp = [], 
 		latestVol = volMaga.pop();
 
-		dataRev = setData(dataRev);
-		dataTemp = dataRev.slice(0, patch);
+		dataCont = setData(dataRev);
+		dataTemp = dataCont.slice(0, patch);
 
 	var vue = new Vue({
 		el: '#magaList', 
@@ -22,11 +24,53 @@ exports.processData = function(data){
 			keywords: [], 
 			list: dataTemp, 
 			latest: latestVol, 
-			curPage: 1
+			curPage: 1, 
+			catObj: category
 		}, 
 		computed: {
 			latestUrl: function(){
 				return jumpHref('maga.html?vol='+this.latest.vol);
+			}, 
+			dataHolder: function(){
+				var temp = [];
+				dataRev.forEach(function(item, idx){
+					var itemTemp = {
+							classify: '', 
+							desc: '', 
+							keywords: '', 
+							grade: '', 
+							pre: '', 
+							title: ''
+						};
+					for(var key in item){
+						switch(key) {
+							case "type":
+								item[key].forEach(function(type, tidx){
+									if(typeof type == 'string'){
+										itemTemp.classify += type + ' ';
+									}
+								});
+								break;
+							case "vd":
+								itemTemp.keywords = item[key].join(',');
+								break;
+							case "fe": 
+								itemTemp.grade = item[key].join(',');
+								break;
+							case "desc": 
+								itemTemp.pre = item[key];
+								break;
+							case "title": 
+								itemTemp.title = item[key];
+								break;
+						}
+
+					}
+
+					temp.push(itemTemp);
+				});
+
+				return temp;
 			}
 		}, 
 		methods: {
@@ -46,57 +90,22 @@ exports.processData = function(data){
 					// target.style.display = 'none';
 				}
 				this.curPage = page;
-				this.list = dataRev.slice(0, end);
+				this.list = dataCont.slice(0, end);
 			}, 
 			search: function(e){
-				var text = this.keyword.split(' ');
+				var self = this,
+					s,  
+					cat = (s = e.target.getAttribute('data-category')) ? s : '';
+					text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
 
-				this.curPage = 0;
+				self.curPage = 0;
 
 				dataCont = dataRev.filter(function(item, idx){
-					var boo = 0, 
-						itemTemp = {
-							type: '', 
-							desc: '', 
-							keywords: '', 
-							grade: '', 
-							pre: ''
-						};
-					for(var key in item){
-						switch(key) {
-							case "type":
-								item[key].forEach(function(type, tidx){
-									if(tidx > 0){
-										itemTemp.type += type.name;
-									}
-								});
-								break;
-							case "vd":
-								itemTemp.keywords = item[key].join(',');
-								break;
-							case "fe": 
-								itemTemp.grade = item[key].join(',');
-								break;
-							case "desc": 
-								itemTemp.pre = item[key];
-								break;
-							case "title": 
-								itemTemp.title = item[key];
-								break;
-						}
-					}
-					for(var key in itemTemp){
-						text.forEach(function(ai, aidx){
-							var re = new RegExp(ai, "i");
-								reg = itemTemp[key].search(re) > 0 ? 1 : 0;
-							boo = boo || reg;
-						});
-					}
+					return dataFilter(self.dataHolder[idx], text, cat);
+					});
 
-					return boo;
-				});
+				self.list = dataTemp = dataCont.slice(0, patch);
 
-				this.list = dataTemp = dataCont.slice(0, patch);
 				set.hideMenu();
 			}
 		}

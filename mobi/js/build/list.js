@@ -60,19 +60,21 @@
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
 	var setData = __webpack_require__(3).setData;
 	var volMaga = __webpack_require__(4).volMaga();
-	var throttle = __webpack_require__(15).throttle;
-	var pageLoadFunc = __webpack_require__(5).pageLoad;
-	var jumpHref = __webpack_require__(6).jumpHref;
+	var category = __webpack_require__(17).category();
+	var throttle = __webpack_require__(5).throttle;
+	var pageLoadFunc = __webpack_require__(6).pageLoad;
+	var jumpHref = __webpack_require__(7).jumpHref;
+	var dataFilter = __webpack_require__(16).dataFilter;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
-			dataCont = dataRev, 
+			dataCont = [], 
 			patch = 5, 
 			dataTemp = [], 
 			latestVol = volMaga.pop();
 
-			dataRev = setData(dataRev);
-			dataTemp = dataRev.slice(0, patch);
+			dataCont = setData(dataRev);
+			dataTemp = dataCont.slice(0, patch);
 
 		var vue = new Vue({
 			el: '#magaList', 
@@ -81,11 +83,53 @@
 				keywords: [], 
 				list: dataTemp, 
 				latest: latestVol, 
-				curPage: 1
+				curPage: 1, 
+				catObj: category
 			}, 
 			computed: {
 				latestUrl: function(){
 					return jumpHref('maga.html?vol='+this.latest.vol);
+				}, 
+				dataHolder: function(){
+					var temp = [];
+					dataRev.forEach(function(item, idx){
+						var itemTemp = {
+								classify: '', 
+								desc: '', 
+								keywords: '', 
+								grade: '', 
+								pre: '', 
+								title: ''
+							};
+						for(var key in item){
+							switch(key) {
+								case "type":
+									item[key].forEach(function(type, tidx){
+										if(typeof type == 'string'){
+											itemTemp.classify += type + ' ';
+										}
+									});
+									break;
+								case "vd":
+									itemTemp.keywords = item[key].join(',');
+									break;
+								case "fe": 
+									itemTemp.grade = item[key].join(',');
+									break;
+								case "desc": 
+									itemTemp.pre = item[key];
+									break;
+								case "title": 
+									itemTemp.title = item[key];
+									break;
+							}
+
+						}
+
+						temp.push(itemTemp);
+					});
+
+					return temp;
 				}
 			}, 
 			methods: {
@@ -105,57 +149,22 @@
 						// target.style.display = 'none';
 					}
 					this.curPage = page;
-					this.list = dataRev.slice(0, end);
+					this.list = dataCont.slice(0, end);
 				}, 
 				search: function(e){
-					var text = this.keyword.split(' ');
+					var self = this,
+						s,  
+						cat = (s = e.target.getAttribute('data-category')) ? s : '';
+						text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
 
-					this.curPage = 0;
+					self.curPage = 0;
 
 					dataCont = dataRev.filter(function(item, idx){
-						var boo = 0, 
-							itemTemp = {
-								type: '', 
-								desc: '', 
-								keywords: '', 
-								grade: '', 
-								pre: ''
-							};
-						for(var key in item){
-							switch(key) {
-								case "type":
-									item[key].forEach(function(type, tidx){
-										if(tidx > 0){
-											itemTemp.type += type.name;
-										}
-									});
-									break;
-								case "vd":
-									itemTemp.keywords = item[key].join(',');
-									break;
-								case "fe": 
-									itemTemp.grade = item[key].join(',');
-									break;
-								case "desc": 
-									itemTemp.pre = item[key];
-									break;
-								case "title": 
-									itemTemp.title = item[key];
-									break;
-							}
-						}
-						for(var key in itemTemp){
-							text.forEach(function(ai, aidx){
-								var re = new RegExp(ai, "i");
-									reg = itemTemp[key].search(re) > 0 ? 1 : 0;
-								boo = boo || reg;
-							});
-						}
+						return dataFilter(self.dataHolder[idx], text, cat);
+						});
 
-						return boo;
-					});
+					self.list = dataTemp = dataCont.slice(0, patch);
 
-					this.list = dataTemp = dataCont.slice(0, patch);
 					set.hideMenu();
 				}
 			}
@@ -253,44 +262,6 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	exports.pageLoad = function(e){
-		var $knot = document.querySelector('.case_load'), 
-			winHeight = window.screen.availHeight, 
-			knotPos = $knot.offsetTop, 
-			scrollPos = e.target.scrollTop;
-
-			if(scrollPos + winHeight + 10 >= knotPos){
-				this.pageLoad();
-			}else{
-				return;
-			}
-	};
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	exports.jumpHref = function(jumpPath){ // 期刊链接处理
-		var p = location.pathname, 
-			pArr = p.split('/');
-		pArr.pop();
-		p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-		return p;
-	}
-
-/***/ },
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */
-/***/ function(module, exports) {
-
 	exports.throttle = function (func, wait, mustRun, vue, events){
 		var timeout, 
 			startTime = new Date();
@@ -311,6 +282,108 @@
 				timeout = setTimeout(func.bind(context, events), wait);
 			}
 		};
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	exports.pageLoad = function(e){
+		var $knot = document.querySelector('.case_load'), 
+			winHeight = window.screen.availHeight, 
+			knotPos = $knot.offsetTop, 
+			scrollPos = e.target.scrollTop;
+
+			if(scrollPos + winHeight + 10 >= knotPos){
+				this.pageLoad();
+			}else{
+				return;
+			}
+	};
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */
+/***/ function(module, exports) {
+
+	exports.dataFilter = function(data, keywords, category){
+		var keys = typeof keywords == 'string' ? keywords.split(' ') : keywords, 
+			boo = 0, 
+			dataTemp = {};
+
+		if(typeof data == 'string'){
+			dataTemp.text = data;
+			data = dataTemp;
+		}
+
+		if(typeof data == 'array'){
+			data.forEach(function(item, idx){
+				if(typeof item == 'string'){
+					dataTemp['text' + idx] = item;
+				}else if(item[0]){
+					dataTemp['text' + idx] = item.join(',');
+				}else{
+					console.log('the type of data is no suitable to filter');
+				}
+			});
+			data = dataTemp;
+		}
+
+		for(var key in data){
+			if(!category || (category && category == key)){
+				keys.forEach(function(ai, aidx){
+					var re = new RegExp(ai, "i");
+						reg = data[key].search(re) >= 0 ? 1 : 0;
+
+					boo = boo || reg;
+				});
+			}
+		}
+		
+		return boo;
+	}
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	exports.category = function(){
+		var category = [
+			{name: '其他', cat: 'classify'}, 
+			{name: '游戏', cat: 'classify'}, 
+			{name: '短片', cat: 'classify'}, 
+			{name: '翻页动画', cat: 'classify'}, 
+			{name: '多屏互动', cat: 'classify'}, 
+			{name: '活动运营', cat: 'classify'}, 
+			{name: '产品介绍', cat: 'classify'}, 
+			{name: '游戏互动', cat: 'classify'}, 
+			{name: '品牌宣传', cat: 'classify'}, 
+			{name: '总结报告', cat: 'classify'}, 
+			{name: '邀请函', cat: 'classify'}, 
+			{name: '豆瓣', cat: 'keywords'}
+		];
+
+		return category;
 	};
 
 /***/ }
