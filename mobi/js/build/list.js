@@ -60,11 +60,11 @@
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
 	var setData = __webpack_require__(3).setData;
 	var volMaga = __webpack_require__(4).volMaga();
-	var category = __webpack_require__(17).category();
-	var throttle = __webpack_require__(5).throttle;
-	var pageLoadFunc = __webpack_require__(6).pageLoad;
-	var jumpHref = __webpack_require__(7).jumpHref;
-	var dataFilter = __webpack_require__(16).dataFilter;
+	var category = __webpack_require__(5).category();
+	var throttle = __webpack_require__(6).throttle;
+	var pageLoadFunc = __webpack_require__(7).pageLoad;
+	var jumpHref = __webpack_require__(8).jumpHref;
+	var dataFilter = __webpack_require__(9).dataFilter;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
@@ -159,11 +159,21 @@
 
 					self.curPage = 0;
 
-					dataCont = dataRev.filter(function(item, idx){
-						return dataFilter(self.dataHolder[idx], text, cat);
-						});
+					if(cat !== 'all'){
+						dataCont = dataRev.filter(function(item, idx){
+							return dataFilter(self.dataHolder[idx], text, cat);
+							});
 
-					self.list = dataTemp = dataCont.slice(0, patch);
+						dataTemp = dataCont.slice(0, patch);
+					}else {
+						dataRev.forEach(function(item, idx){
+							dataCont[idx] = item;
+						});
+						dataTemp = dataCont.slice(0, patch);
+					}
+
+
+					self.list = dataTemp;
 
 					set.hideMenu();
 				}
@@ -262,6 +272,33 @@
 /* 5 */
 /***/ function(module, exports) {
 
+	exports.category = function(){
+		var category = [
+			{name: '其他', cat: 'classify'}, 
+			{name: '游戏', cat: 'classify'}, 
+			{name: '短片', cat: 'classify'}, 
+			{name: '翻页动画', cat: 'classify'}, 
+			{name: '多屏互动', cat: 'classify'}, 
+			{name: '活动运营', cat: 'classify'}, 
+			{name: '产品介绍', cat: 'classify'}, 
+			{name: '游戏互动', cat: 'classify'}, 
+			{name: '品牌宣传', cat: 'classify'}, 
+			{name: '总结报告', cat: 'classify'}, 
+			{name: '邀请函', cat: 'classify'}, 
+			{name: '豆瓣', cat: 'keywords'}, 
+			{name: 'W', cat: 'keywords'}, 
+			{name: '腾讯', cat: 'keywords'}, 
+			{name: '大众点评', cat: 'keywords'}, 
+			{name: 'JDC', cat: 'keywords'}
+		];
+
+		return category;
+	};
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
 	exports.throttle = function (func, wait, mustRun, vue, events){
 		var timeout, 
 			startTime = new Date();
@@ -285,7 +322,7 @@
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	exports.pageLoad = function(e){
@@ -302,7 +339,7 @@
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	exports.jumpHref = function(jumpPath){ // 期刊链接处理
@@ -315,15 +352,7 @@
 	}
 
 /***/ },
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
+/* 9 */
 /***/ function(module, exports) {
 
 	exports.dataFilter = function(data, keywords, category){
@@ -362,29 +391,6 @@
 		
 		return boo;
 	}
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	exports.category = function(){
-		var category = [
-			{name: '其他', cat: 'classify'}, 
-			{name: '游戏', cat: 'classify'}, 
-			{name: '短片', cat: 'classify'}, 
-			{name: '翻页动画', cat: 'classify'}, 
-			{name: '多屏互动', cat: 'classify'}, 
-			{name: '活动运营', cat: 'classify'}, 
-			{name: '产品介绍', cat: 'classify'}, 
-			{name: '游戏互动', cat: 'classify'}, 
-			{name: '品牌宣传', cat: 'classify'}, 
-			{name: '总结报告', cat: 'classify'}, 
-			{name: '邀请函', cat: 'classify'}, 
-			{name: '豆瓣', cat: 'keywords'}
-		];
-
-		return category;
-	};
 
 /***/ }
 /******/ ]);

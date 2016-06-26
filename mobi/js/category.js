@@ -11,7 +11,11 @@ exports.category = function(){
 		{name: '品牌宣传', cat: 'classify'}, 
 		{name: '总结报告', cat: 'classify'}, 
 		{name: '邀请函', cat: 'classify'}, 
-		{name: '豆瓣', cat: 'keywords'}
+		{name: '豆瓣', cat: 'keywords'}, 
+		{name: 'W', cat: 'keywords'}, 
+		{name: '腾讯', cat: 'keywords'}, 
+		{name: '大众点评', cat: 'keywords'}, 
+		{name: 'JDC', cat: 'keywords'}
 	];
 
 	return category;

@@ -100,11 +100,21 @@ exports.processData = function(data){
 
 				self.curPage = 0;
 
-				dataCont = dataRev.filter(function(item, idx){
-					return dataFilter(self.dataHolder[idx], text, cat);
-					});
+				if(cat !== 'all'){
+					dataCont = dataRev.filter(function(item, idx){
+						return dataFilter(self.dataHolder[idx], text, cat);
+						});
 
-				self.list = dataTemp = dataCont.slice(0, patch);
+					dataTemp = dataCont.slice(0, patch);
+				}else {
+					dataRev.forEach(function(item, idx){
+						dataCont[idx] = item;
+					});
+					dataTemp = dataCont.slice(0, patch);
+				}
+
+
+				self.list = dataTemp;
 
 				set.hideMenu();
 			}

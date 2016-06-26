@@ -73,20 +73,9 @@
 					<a href="javascript:;" class="menu_search_btn" v-on:click="search"></a>
 				</div>
 				<ul class="menu_list">
-					<li class="menu_item">全部案例</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li><li class="menu_item cur">关于我们</li>
+					<li class="menu_item" data-category="all" v-on:click="search">全部案例</li>
+					<li class="menu_item" v-for="keyword in catObj" v-on:click="search" data-category="{{keyword.cat}}">{{keyword.name}}</li>
+					<li class="menu_item cur">关于我们</li>
 				</ul>
 			</div>
 			<div class="menu_mask" style="display:none"></div>
