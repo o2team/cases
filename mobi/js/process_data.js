@@ -113,7 +113,7 @@ exports.processData = function(data){
 					dataTemp = dataCont.slice(0, patch);
 				}
 
-
+				this.keywords = (typeof text == 'string') ? [text] : text;
 				self.list = dataTemp;
 
 				set.hideMenu();
