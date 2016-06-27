@@ -16,18 +16,41 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	width: 16rem;
 	height: 100%;
 }
+.sresult{
+	/*
+	background: rgba(97, 144, 232, 0.8);
+	color: #fff;*/
+	font-size: 14px;
+	line-height: 26px;
+	padding: 0 10px;
+}
+.sresult span{
+	color: #6190e8;
+	margin: 0 3px;
+}
+.sresult a{
+	color: #6190e8;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 2px;
+	height: 20px;
+	padding: 0 3px;
+	line-height: 20px;
+	border: 1px solid #6190e8;
+}
 .case{
 	position: absolute;
 	width: 16rem;
 	height: 100%;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
-	background: #f6f6f6;
+	background: #fff;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+	padding-top: 10px; 
 }
 .case_list{
-	padding: 10px 0;
+	padding-bottom: 20px;
 }
 .case_item{
 	position: relative;
@@ -299,6 +322,29 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 }
 .btn span:nth-child(3){
 	top: 23px;
+}
+.top{
+	position: fixed;
+	width: 36px;
+	height: 36px;
+	bottom: 10px;
+	right: 10px;
+	border-radius: 50%;
+	background: rgba(97, 144, 232, 0.8);
+	z-index: 9;
+}
+.top:after{
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+    top: 14px;
+    left: 50%;
+    margin-left: -6px;
+	border: 2px solid #fff;
+	border-color: #fff transparent transparent #fff;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 .menu{
 	position: fixed;
