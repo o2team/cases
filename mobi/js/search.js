@@ -1,5 +1,5 @@
 exports.dataFilter = function(data, keywords, category){
-	var keys = typeof keywords == 'string' ? keywords.split(' ') : keywords, 
+	var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[keywords.search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
 		boo = 0, 
 		dataTemp = {};
 
@@ -15,7 +15,7 @@ exports.dataFilter = function(data, keywords, category){
 			}else if(item[0]){
 				dataTemp['text' + idx] = item.join(',');
 			}else{
-				console.log('the type of data is no suitable to filter');
+				console.log('the type of data is not suitable to filter');
 			}
 		});
 		data = dataTemp;

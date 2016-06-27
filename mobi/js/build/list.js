@@ -65,13 +65,15 @@
 	var pageLoadFunc = __webpack_require__(7).pageLoad;
 	var jumpHref = __webpack_require__(8).jumpHref;
 	var dataFilter = __webpack_require__(9).dataFilter;
+	var gqs = __webpack_require__(11).GetQueryString;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
 			dataCont = [], 
 			patch = 5, 
 			dataTemp = [], 
-			latestVol = volMaga.pop();
+			latestVol = volMaga.pop(), 
+			detailId = gqs('id');
 
 			dataCont = setData(dataRev);
 			dataTemp = dataCont.slice(0, patch);
@@ -84,12 +86,14 @@
 				list: dataTemp, 
 				latest: latestVol, 
 				curPage: 1, 
-				catObj: category
+				catObj: category, 
+				detailId: detailId
 			}, 
 			computed: {
 				latestUrl: function(){
 					return jumpHref('maga.html?vol='+this.latest.vol);
 				}, 
+
 				dataHolder: function(){
 					var temp = [];
 					dataRev.forEach(function(item, idx){
@@ -97,7 +101,8 @@
 								classify: '', 
 								desc: '', 
 								keywords: '', 
-								grade: '', 
+								grade_creativity: '', 
+								grade_difficulty: '', 
 								pre: '', 
 								title: ''
 							};
@@ -114,7 +119,8 @@
 									itemTemp.keywords = item[key].join(',');
 									break;
 								case "fe": 
-									itemTemp.grade = item[key].join(',');
+									itemTemp.grade_creativity = item[key][0];
+									itemTemp.grade_difficulty = item[key][1];
 									break;
 								case "desc": 
 									itemTemp.pre = item[key];
@@ -129,6 +135,18 @@
 						temp.push(itemTemp);
 					});
 
+					return temp;
+				}, 
+
+				detailObj: function(){
+					var temp = {};
+					dataRev.forEach(function(item, idx){
+						if(item._id == detailId) {
+							for(var key in item){
+								temp[key] = item[key];
+							}
+						}
+					});
 					return temp;
 				}
 			}, 
@@ -154,8 +172,10 @@
 				search: function(e){
 					var self = this,
 						s,  
-						cat = (s = e.target.getAttribute('data-category')) ? s : '';
+						cat = (s = e.target.getAttribute('data-category')) ? s : '', 
 						text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
+
+					this.list = [];
 
 					self.curPage = 0;
 
@@ -172,10 +192,11 @@
 						dataTemp = dataCont.slice(0, patch);
 					}
 
-
+					this.keywords = (typeof text == 'string') ? [text] : text;
 					self.list = dataTemp;
 
 					set.hideMenu();
+					set.toTop();
 				}
 			}
 		});
@@ -197,13 +218,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
+	var jumpHref = __webpack_require__(8).jumpHref;
 
 	exports.setData = function(data){
 		data.forEach(function(item, idx){
 			for(var key in item){
 				switch(key){
 					case "_id": 
-						data[idx].magaDetail = ''+'?id=' + item[key];
+						data[idx].magaDetail = jumpHref('maga_detail.html?id=' + item[key]);
 						break;
 					case "type": 
 						var temp = item[key];
@@ -219,8 +241,8 @@
 						item[key].forEach(function(url, uidx){
 							temp += url.url;
 						});
-						data[idx][key] = removeHTMLTag(temp);
-						temp = data[idx][key];
+						data[idx].linkText = removeHTMLTag(temp);
+						temp = data[idx].linkText;
 						data[idx].magaLinkShort = temp.split('').splice(0, 200).join('') + '...';
 						break;
 					case "vd":
@@ -285,6 +307,8 @@
 			{name: '品牌宣传', cat: 'classify'}, 
 			{name: '总结报告', cat: 'classify'}, 
 			{name: '邀请函', cat: 'classify'}, 
+			{name: '创意指数5星', cat: 'grade_creativity'}, 
+			{name: '实现难度5星', cat: 'grade_difficulty'}, 
 			{name: '豆瓣', cat: 'keywords'}, 
 			{name: 'W', cat: 'keywords'}, 
 			{name: '腾讯', cat: 'keywords'}, 
@@ -356,7 +380,7 @@
 /***/ function(module, exports) {
 
 	exports.dataFilter = function(data, keywords, category){
-		var keys = typeof keywords == 'string' ? keywords.split(' ') : keywords, 
+		var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[keywords.search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
 			boo = 0, 
 			dataTemp = {};
 
@@ -372,7 +396,7 @@
 				}else if(item[0]){
 					dataTemp['text' + idx] = item.join(',');
 				}else{
-					console.log('the type of data is no suitable to filter');
+					console.log('the type of data is not suitable to filter');
 				}
 			});
 			data = dataTemp;
@@ -390,6 +414,17 @@
 		}
 		
 		return boo;
+	}
+
+/***/ },
+/* 10 */,
+/* 11 */
+/***/ function(module, exports) {
+
+	exports.GetQueryString = function (name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
 	}
 
 /***/ }

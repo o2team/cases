@@ -37,8 +37,8 @@
 								<span>创意指数：{{item.magaStar[0]}}</span>
 								<span>实现难度：{{item.magaStar[1]}}</span>
 							</div>
+							<div class="case_item_mark" v-show="item.links">精选</div>
 						</div>
-						<div class="case_item_mark" v-show="item.links">精选</div>
 					</a>
 					<div class="case_item_tag">
 						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-category="classify">{{item.type[0]}}</span></a>
@@ -167,6 +167,9 @@
 			this.addClass(this.setPage,"menu_show");
  			this.menuMask.style.display = "block";
 		},
+		toTop: function(){
+			this.caseArea.scrollTop = 0;
+		}, 
 		init: function(){
 			var self = this;
 			self.menuBtn.addEventListener("click",function(){

@@ -1,11 +1,12 @@
 var removeHTMLTag = require('./remove_html_tag').removeHTMLTag;
+var jumpHref = require('./jumpHref').jumpHref;
 
 exports.setData = function(data){
 	data.forEach(function(item, idx){
 		for(var key in item){
 			switch(key){
 				case "_id": 
-					data[idx].magaDetail = ''+'?id=' + item[key];
+					data[idx].magaDetail = jumpHref('maga_detail.html?id=' + item[key]);
 					break;
 				case "type": 
 					var temp = item[key];
@@ -21,8 +22,8 @@ exports.setData = function(data){
 					item[key].forEach(function(url, uidx){
 						temp += url.url;
 					});
-					data[idx][key] = removeHTMLTag(temp);
-					temp = data[idx][key];
+					data[idx].linkText = removeHTMLTag(temp);
+					temp = data[idx].linkText;
 					data[idx].magaLinkShort = temp.split('').splice(0, 200).join('') + '...';
 					break;
 				case "vd":

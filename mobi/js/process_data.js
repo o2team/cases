@@ -6,13 +6,15 @@ var throttle = require('./throttle').throttle;
 var pageLoadFunc = require('./page_load').pageLoad;
 var jumpHref = require('./jumpHref').jumpHref;
 var dataFilter = require('./search').dataFilter;
+var gqs = require('./GetQueryString').GetQueryString;
 
 exports.processData = function(data){
 	var dataRev = data.reverse(), 
 		dataCont = [], 
 		patch = 5, 
 		dataTemp = [], 
-		latestVol = volMaga.pop();
+		latestVol = volMaga.pop(), 
+		detailId = gqs('id');
 
 		dataCont = setData(dataRev);
 		dataTemp = dataCont.slice(0, patch);
@@ -25,12 +27,14 @@ exports.processData = function(data){
 			list: dataTemp, 
 			latest: latestVol, 
 			curPage: 1, 
-			catObj: category
+			catObj: category, 
+			detailId: detailId
 		}, 
 		computed: {
 			latestUrl: function(){
 				return jumpHref('maga.html?vol='+this.latest.vol);
 			}, 
+
 			dataHolder: function(){
 				var temp = [];
 				dataRev.forEach(function(item, idx){
@@ -38,7 +42,8 @@ exports.processData = function(data){
 							classify: '', 
 							desc: '', 
 							keywords: '', 
-							grade: '', 
+							grade_creativity: '', 
+							grade_difficulty: '', 
 							pre: '', 
 							title: ''
 						};
@@ -55,7 +60,8 @@ exports.processData = function(data){
 								itemTemp.keywords = item[key].join(',');
 								break;
 							case "fe": 
-								itemTemp.grade = item[key].join(',');
+								itemTemp.grade_creativity = item[key][0];
+								itemTemp.grade_difficulty = item[key][1];
 								break;
 							case "desc": 
 								itemTemp.pre = item[key];
@@ -70,6 +76,18 @@ exports.processData = function(data){
 					temp.push(itemTemp);
 				});
 
+				return temp;
+			}, 
+
+			detailObj: function(){
+				var temp = {};
+				dataRev.forEach(function(item, idx){
+					if(item._id == detailId) {
+						for(var key in item){
+							temp[key] = item[key];
+						}
+					}
+				});
 				return temp;
 			}
 		}, 
@@ -95,8 +113,10 @@ exports.processData = function(data){
 			search: function(e){
 				var self = this,
 					s,  
-					cat = (s = e.target.getAttribute('data-category')) ? s : '';
+					cat = (s = e.target.getAttribute('data-category')) ? s : '', 
 					text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
+
+				this.list = [];
 
 				self.curPage = 0;
 
@@ -117,6 +137,7 @@ exports.processData = function(data){
 				self.list = dataTemp;
 
 				set.hideMenu();
+				set.toTop();
 			}
 		}
 	});
