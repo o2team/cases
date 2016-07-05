@@ -12,105 +12,70 @@
     !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
 </script>
 </head>
-<body>
+<body id="magaList">
 	<div class="setpage">
-		<div class="case">
-		<div class="sresult">找到匹配<a href="javascript:;">技术技术技术<span>&times;</span></a><a href="javascript:;">技术技术技术<span>&times;</span></a><a href="javascript:;">技术技术<span>&times;</span></a>的结果<span>20</span>条：</div>
+		<div class="case" @scroll="onScroll">
 			<ul class="case_list">
 				<li class="case_item case_lastest">
-					<a href="#">
-					<div class="case_item_info">
-						<img class="case_item_img" src="http://jdc.jd.com/h5/case/images/cover/vol_8.jpg" alt="" />
-						<div class="case_lastest_tit">
-							<h2 class="tit">专治CSS3动画技术盲</h2>
-							<h3 class="subtit">vol.8</h3>
+					<a href="{{latestUrl}}">
+						<div class="case_item_info">
+							<img class="case_item_img" v-bind:src="latest.cover" alt="{{latest.prewords}}" />
+							<div class="case_lastest_tit">
+								<h2 class="tit">{{latest.prewords}}</h2>
+								<h3 class="subtit">vol.{{latest.vol}}</h3>
+							</div>
+							<div class="case_item_mark">最新</div>
 						</div>
-						<div class="case_item_mark">最新</div>
-					</div>
 					</a>
 				</li>
-				<li class="case_item case_collection">
-					<a href="#">
+
+				<li v-for="item in list" class="case_item">
+					<a href="{{item.url}}">
 						<div class="case_item_info">
-							<img class="case_item_img" src="http://jdc.jd.com/h5/imagespool/1453706495138.png" alt="" />
+							<img class="case_item_img" v-bind:src="item.image" alt="" />
 							<div class="case_item_star">
-								<span>创意指数：★★★★★</span>
-								<span>实现难度：★★★★★</span>
+								<span>创意指数：{{item.magaStar[0]}}</span>
+								<span>实现难度：{{item.magaStar[1]}}</span>
 							</div>
-							<div class="case_item_mark">精选</div>
+							<div class="case_item_mark" v-show="item.links">精选</div>
 						</div>
 					</a>
 					<div class="case_item_tag">
-						<a href="javascript:;"><span class="case_item_tag_txt type">案例类型</span></a>
-						<a href="javascript:;"><span class="case_item_tag_txt team">出品团队</span></a>
-						<a href="javascript:;"><span class="case_item_tag_txt technology">相关技术</span></a>
+						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-category="classify">{{item.type[0]}}</span></a>
+						<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-category="classify">{{item.type[1]}}</span></a>
+						<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-category="keywords">{{item.vd[0]}}</span></a>
+						<a href="javascript:;" v-if="item.fe[2]"><span class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
 					</div>
-					<a href="javascript:;" class="case_item_love loved"></a>
+					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
 					<div class="case_item_cnt">
-						<h2 class="case_item_tit">标题哟标题哟标题哟标题哟</h2>
-						<p class="case_item_analysis">
-							分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀
+						<h2 class="case_item_tit">{{item.title}}</h2>
+						<p class="case_item_analysis" v-show="item.links">
+							{{item.magaLinkShort}}
 						</p>
-						<a href="#" class="case_item_more">查看完整分析</a>
-					</div>
-				</li>
-				<li class="case_item case_chosen">
-					<a href="#">
-						<div class="case_item_info">
-							<img class="case_item_img" src="http://jdc.jd.com/h5/imagespool/1456216702090.png" alt="" />
-							<div class="case_item_star">
-								<span>创意指数：★★★★★</span>
-								<span>实现难度：★★★</span>
-							</div>
-							<div class="case_item_mark">精选</div>
-						</div>
-					</a>
-					<div class="case_item_tag">
-						<a href="javascript:;"><span class="case_item_tag_txt type">案例类型</span></a>
-						<a href="javascript:;"><span class="case_item_tag_txt team">出品团队</span></a>
-						<a href="javascript:;"><span class="case_item_tag_txt technology">相关技术</span></a>
-					</div>
-					<a href="javascript:;" class="case_item_love loved"></a>
-					<div class="case_item_cnt">
-						<h2 class="case_item_tit">标题哟标题哟标题哟标题哟</h2>
-						<p class="case_item_analysis">
-							分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀分析呀
-						</p>
-						<a href="#" class="case_item_more">查看完整分析</a>
+						<a href="{{item.magaDetail}}" class="case_item_more" data-lid="{{item._id}}" v-show="item.links">查看完整分析</a>
 					</div>
 				</li>
 			</ul>
-<!-- 			<div class="case_load">
+			<div class="case_load" data-page="{{curPage}}">
 				<div class="case_load_logo">
 					<span class="eye eye_l"></span>
 					<span class="eye eye_r"></span>
 					<span class="line line_t"></span>
 					<span class="line line_b"></span>
 				</div>
-			</div> -->
+			</div>
 		</div>
 		<div class="menu">
 			<div class="menu_main">
 				<div class="menu_logo"></div>
 				<div class="menu_search">
-					<input class="menu_search_input" type="text" placeholder="search" />
-					<a href="javascript:;" class="menu_search_btn"></a>
+					<input class="menu_search_input" type="text" placeholder="search" v-model="keyword" vo-on:keyup.enter="search" />
+					<a href="javascript:;" class="menu_search_btn" v-on:click="search"></a>
 				</div>
 				<ul class="menu_list">
-					<li class="menu_item">全部案例</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li><li class="menu_item cur">关于我们</li>
+					<li class="menu_item" data-category="all" v-on:click="search">全部案例</li>
+					<li class="menu_item" v-for="keyword in catObj" v-on:click="search" data-category="{{keyword.cat}}">{{keyword.name}}</li>
+					<li class="menu_item cur">关于我们</li>
 				</ul>
 			</div>
 			<div class="menu_mask" style="display:none"></div>
@@ -120,7 +85,6 @@
 			<span></span>
 			<span></span>
 		</a>
-		<a href="javascript:;" class="top"></a>
 	</div>
 	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
 	<script type="text/javascript">
@@ -203,6 +167,9 @@
 			this.addClass(this.setPage,"menu_show");
  			this.menuMask.style.display = "block";
 		},
+		toTop: function(){
+			this.caseArea.scrollTop = 0;
+		}, 
 		init: function(){
 			var self = this;
 			self.menuBtn.addEventListener("click",function(){
@@ -215,5 +182,9 @@
 
 
 	</script>
+
+	<script src="js/vue.js"></script> 
+	<script src="js/build/list.js"></script>
+	<script src="https://jdc.jd.com/jdccase/jsonp/project?category=app&callback=json2"></script>
 </body>
 </html>

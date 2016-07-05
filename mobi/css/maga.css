@@ -236,7 +236,7 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; backgro
 	.bc_back{position: absolute;text-align: center;width: 8.53333rem;display: inline-block; color: #000;border:1px #000 solid;font-size: 0.554667rem;line-height: 1.28rem; border-radius: 0.64rem;left: 50%;top:75%;z-index:1;background:#FFFFFF;-webkit-transform:translate(-50%,-50%);}
 
 .no_transition{-webkit-transition:none;transition:none;}
-.figurecapture{color:#999;text-align:center;font-size:14px;padding:0 20px;}
+.figurecapture, .figurecaption{color:#999;text-align:center;font-size:14px;padding:0 20px;}
 .quote{color:#666;font-size:14px;line-height:20px;border-left:4px solid #eee;padding:5px 0 5px 10px;}
 .author{text-align:right;color:#999999;}
 .subtitle{text-align:center;color:#000;font-weight:1rem;}

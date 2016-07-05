@@ -1,8 +1,11 @@
 module.exports = {
-	entry: "./controllers_maga.js", 
+	entry: {
+		maga: "./controllers_maga.js", 
+		list: "./controllers_list.js"
+	}, 
 	output: {
-		path: __dirname, 
-		filename: "bundle.js"
+		path: __dirname + '/build', 
+		filename: "[name].js"
 	}, 
 	module: {
 		loaders: [
