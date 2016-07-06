@@ -47,7 +47,7 @@
 	        <section class="ar_sec" ng-repeat="case in caselist" style="background-image:url({{case.image}});">
 	        	<div class="ar_sec_wrap">
 					<a class="ar_img" href="{{case.url}}">
-						<img alt="{{case.title}}" src="{{case.image}}" />
+						<img alt="{{case.title}}" ng-src="{{case.image}}" />
 					</a>
 					<div class="ar_cnt" data-id="{{case._id}}">
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
@@ -155,7 +155,7 @@
 	<div class="pc_cover_aside">
 		<p>手机上阅读体验最佳</p>
 		<p>
-			<a ng-show="!{{vol}}" href="index.html">我不管，我就要用电脑看</a>
+			<a ng-show="{{!vol}}" href="index.html">我不管，我就要用电脑看</a>
 			<a ng-show="{{vol}}" href="mail.html?vol={{vol}}">我不管，我就要用电脑看</a>
 		</p>
 	</div>
