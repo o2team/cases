@@ -59,13 +59,13 @@
 
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
 	var setData = __webpack_require__(3).setData;
-	var volMaga = __webpack_require__(4).volMaga();
-	var category = __webpack_require__(5).category();
-	var throttle = __webpack_require__(6).throttle;
-	var pageLoadFunc = __webpack_require__(7).pageLoad;
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var volMaga = __webpack_require__(5).volMaga();
+	var category = __webpack_require__(6).category();
+	var throttle = __webpack_require__(7).throttle;
+	var pageLoadFunc = __webpack_require__(8).pageLoad;
+	var jumpHref = __webpack_require__(4).jumpHref;
 	var dataFilter = __webpack_require__(9).dataFilter;
-	var gqs = __webpack_require__(11).GetQueryString;
+	var gqs = __webpack_require__(10).GetQueryString;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
@@ -218,7 +218,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var jumpHref = __webpack_require__(4).jumpHref;
 
 	exports.setData = function(data){
 		data.forEach(function(item, idx){
@@ -273,6 +273,19 @@
 /* 4 */
 /***/ function(module, exports) {
 
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
 	exports.volMaga = function(){
 		var volMaga = [
 			{"vol": 1, "date": "2015-10-26", "prewords": "专治灵感枯竭、技术盲症候群", "cover": "images/cover/vol_1.jpg", "covers":"images/cover/vol_1_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "开刊号请多指教［鞠躬］", "shareText": "专治灵感枯竭、技术盲症候群"}, 
@@ -291,7 +304,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	exports.category = function(){
@@ -320,7 +333,7 @@
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	exports.throttle = function (func, wait, mustRun, vue, events){
@@ -346,7 +359,7 @@
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	exports.pageLoad = function(e){
@@ -361,19 +374,6 @@
 				return;
 			}
 	};
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	exports.jumpHref = function(jumpPath){ // 期刊链接处理
-		var p = location.pathname, 
-			pArr = p.split('/');
-		pArr.pop();
-		p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-		return p;
-	}
 
 /***/ },
 /* 9 */
@@ -417,8 +417,7 @@
 	}
 
 /***/ },
-/* 10 */,
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	exports.GetQueryString = function (name){

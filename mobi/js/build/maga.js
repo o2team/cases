@@ -47,12 +47,12 @@
 	// author: EC
 	// last modify: 2016-2-11 12:48
 
-	var volMaga = __webpack_require__(4).volMaga();
-	var vol = __webpack_require__(10).vol();	//获取当前期数
+	var volMaga = __webpack_require__(5).volMaga();
+	var vol = __webpack_require__(11).vol();	//获取当前期数
 	var lazyLoad = __webpack_require__(12).lazyLoad;	//图片预加载
 	var Slides = __webpack_require__(13).Slides();	//页面滑动
 	var setShare = __webpack_require__(14).setShare;	//设置分享参数
-	var jumpHref = __webpack_require__(8).jumpHref;	// 索引添加单击事件
+	var jumpHref = __webpack_require__(4).jumpHref;	// 索引添加单击事件
 	var coverClick = __webpack_require__(16).coverClick;	// 索引添加单击事件
 	var config = __webpack_require__(17).config();	//配置文件
 
@@ -300,6 +300,19 @@
 /* 4 */
 /***/ function(module, exports) {
 
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
 	exports.volMaga = function(){
 		var volMaga = [
 			{"vol": 1, "date": "2015-10-26", "prewords": "专治灵感枯竭、技术盲症候群", "cover": "images/cover/vol_1.jpg", "covers":"images/cover/vol_1_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "开刊号请多指教［鞠躬］", "shareText": "专治灵感枯竭、技术盲症候群"}, 
@@ -318,41 +331,28 @@
 
 
 /***/ },
-/* 5 */,
 /* 6 */,
 /* 7 */,
-/* 8 */
-/***/ function(module, exports) {
-
-	exports.jumpHref = function(jumpPath){ // 期刊链接处理
-		var p = location.pathname, 
-			pArr = p.split('/');
-		pArr.pop();
-		p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-		return p;
-	}
-
-/***/ },
+/* 8 */,
 /* 9 */,
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var GetQueryString = __webpack_require__(11).GetQueryString;
-
-	exports.vol = function(){
-		var vol = GetQueryString('vol')?GetQueryString('vol'):0;
-		return vol;
-	}
-
-/***/ },
-/* 11 */
 /***/ function(module, exports) {
 
 	exports.GetQueryString = function (name){
 	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	     var r = window.location.search.substr(1).match(reg);
 	     if(r!=null)return  unescape(r[2]); return null;
+	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var GetQueryString = __webpack_require__(10).GetQueryString;
+
+	exports.vol = function(){
+		var vol = GetQueryString('vol')?GetQueryString('vol'):0;
+		return vol;
 	}
 
 /***/ },
@@ -737,13 +737,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var wxShare = __webpack_require__(15).wxShare();
-	var GetQueryString = __webpack_require__(11).GetQueryString;
+	var GetQueryString = __webpack_require__(10).GetQueryString;
 
 	exports.setShare = function(){ //设置分享参数
 		var vol = GetQueryString('vol')?GetQueryString('vol'):0, 
 			shareTitle = "H5精品案例赏析", 
 			shareText = "凹凸实验室品鉴小分队奉上", 
-			volMaga = __webpack_require__(4).volMaga();
+			volMaga = __webpack_require__(5).volMaga();
 			
 		volMaga.forEach(function(item, idx){
 			if(item.vol === parseInt(vol)){
@@ -835,7 +835,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var jumpHref = __webpack_require__(4).jumpHref;
 	var indexHref = __webpack_require__(17).config().indexHref;
 	exports.coverClick = function (item){ // 索引添加单击事件
 		document.querySelector(item).addEventListener('click', function(){
