@@ -59,13 +59,13 @@
 
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
 	var setData = __webpack_require__(3).setData;
-	var volMaga = __webpack_require__(4).volMaga();
-	var category = __webpack_require__(5).category();
-	var throttle = __webpack_require__(6).throttle;
-	var pageLoadFunc = __webpack_require__(7).pageLoad;
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var volMaga = __webpack_require__(5).volMaga();
+	var category = __webpack_require__(6).category();
+	var throttle = __webpack_require__(7).throttle;
+	var pageLoadFunc = __webpack_require__(8).pageLoad;
+	var jumpHref = __webpack_require__(4).jumpHref;
 	var dataFilter = __webpack_require__(9).dataFilter;
-	var gqs = __webpack_require__(11).GetQueryString;
+	var gqs = __webpack_require__(10).GetQueryString;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
@@ -218,7 +218,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var removeHTMLTag = __webpack_require__(2).removeHTMLTag;
-	var jumpHref = __webpack_require__(8).jumpHref;
+	var jumpHref = __webpack_require__(4).jumpHref;
 
 	exports.setData = function(data){
 		data.forEach(function(item, idx){
@@ -273,6 +273,19 @@
 /* 4 */
 /***/ function(module, exports) {
 
+	exports.jumpHref = function(jumpPath){ // 期刊链接处理
+		var p = location.pathname, 
+			pArr = p.split('/');
+		pArr.pop();
+		p = location.origin+pArr.join('/')+'/'+jumpPath;
+
+		return p;
+	}
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
 	exports.volMaga = function(){
 		var volMaga = [
 			{"vol": 1, "date": "2015-10-26", "prewords": "专治灵感枯竭、技术盲症候群", "cover": "images/cover/vol_1.jpg", "covers":"images/cover/vol_1_s.jpg", "hexocolor": ["ffcf28", "ff9d02"], "shareTitle": "开刊号请多指教［鞠躬］", "shareText": "专治灵感枯竭、技术盲症候群"}, 
@@ -282,7 +295,8 @@
 			{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
 			{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
 			{"vol": 7, "date": "2016-03-28", "prewords": "文青入门手册", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺梗即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}, 
-			{"vol": 8, "date": "2016-04-26", "prewords": "CSS3动画开发指南", "cover": "images/cover/vol_8.jpg", "covers":"images/cover/vol_8_s.jpg", "hexocolor": ["29a9df", "0170ba"], "shareTitle": "专治CSS3动画技术盲", "shareText": "小编不想推送案例并向你扔了一系列深度剖析文"}
+			{"vol": 8, "date": "2016-04-26", "prewords": "CSS3动画开发指南", "cover": "images/cover/vol_8.jpg", "covers":"images/cover/vol_8_s.jpg", "hexocolor": ["29a9df", "0170ba"], "shareTitle": "专治CSS3动画技术盲", "shareText": "小编不想推送案例并向你扔了一系列深度剖析文"}, 
+			{"vol": 9, "date": "2016-05-30", "prewords": "文青养成手册", "cover": "images/cover/vol_9.jpg", "covers":"images/cover/vol_9_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "文青系列最终章", "shareText": "中国首例APP级章节式系列解谜HTML5互动游戏（喘口气）完结啦"}
 		];
 
 		return volMaga;
@@ -291,7 +305,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	exports.category = function(){
@@ -320,7 +334,7 @@
 	};
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	exports.throttle = function (func, wait, mustRun, vue, events){
@@ -346,7 +360,7 @@
 	};
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	exports.pageLoad = function(e){
@@ -361,19 +375,6 @@
 				return;
 			}
 	};
-
-/***/ },
-/* 8 */
-/***/ function(module, exports) {
-
-	exports.jumpHref = function(jumpPath){ // 期刊链接处理
-		var p = location.pathname, 
-			pArr = p.split('/');
-		pArr.pop();
-		p = location.origin+pArr.join('/')+'/'+jumpPath;
-
-		return p;
-	}
 
 /***/ },
 /* 9 */
@@ -417,8 +418,7 @@
 	}
 
 /***/ },
-/* 10 */,
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	exports.GetQueryString = function (name){
