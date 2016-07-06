@@ -9,7 +9,7 @@ var cases = angular.module('cases', ['ngRoute']),
 		{"name": "短片", "id": 2}, 
 		{"name": "翻页动画", "id": 3}, 
 		{"name": "多屏互动", "id": 4}], 
-	indexHref = 'maga.html';
+	indexHref = 'index.html';
 
 cases.controller('casesList', function($scope, $http, $sce){
 	$scope.vol = GetQueryString('vol');

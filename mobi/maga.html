@@ -35,7 +35,7 @@
 	<!-- E：模式选择 -->
 	<!-- S：工具栏 -->
 	<div class="ar_tool">
-		<a class="ar_list" href="#">往期回顾</a>
+		<a class="ar_list" href="maga.html">往期回顾</a>
 		<a class="ar_sort" style="display:none;" href="javascript:;">分类</a>
 		<div class="ar_search" style="display:none;"><input class="ar_search_input" type="text" placeholder="翻页" /><a href="javascript:;" class="ar_search_btn">搜索</a></div>
 	</div>
@@ -47,7 +47,7 @@
 	        <section class="ar_sec" ng-repeat="case in caselist" style="background-image:url({{case.image}});">
 	        	<div class="ar_sec_wrap">
 					<a class="ar_img" href="{{case.url}}">
-						<img alt="{{case.title}}" src="{{case.image}}" />
+						<img alt="{{case.title}}" ng-src="{{case.image}}" />
 					</a>
 					<div class="ar_cnt" data-id="{{case._id}}">
 						<!--0：其他 1：游戏 2：短片3：翻页动画 4：多屏互动-->
@@ -95,7 +95,7 @@
 						<p>喜欢吗？喜欢你就扫扫我</p>
 						<p>让我静静地躺在你的会话列表里</p>
 					</div>
-					<a class="bc_back" href="#">往期回顾</a>
+					<a class="bc_back" href="maga.html">往期回顾</a>
 				</div>
 	        </section>
 	    </div>
@@ -154,7 +154,10 @@
 	<div id="thumbmaga_pc" class="qrcode"></div>
 	<div class="pc_cover_aside">
 		<p>手机上阅读体验最佳</p>
-		<p><a href="http://aotu.io/cases/mobi/mail.html?vol={{vol}}">我不管，我就要用电脑看</a></p>
+		<p>
+			<a ng-show="{{!vol}}" href="index.html">我不管，我就要用电脑看</a>
+			<a ng-show="{{vol}}" href="mail.html?vol={{vol}}">我不管，我就要用电脑看</a>
+		</p>
 	</div>
 </div>
 
@@ -178,7 +181,18 @@
 		function pc(){
 			var nav = 'ontouchstart' in window;
 			if(!nav){
-				var qrcode = new QRCode(document.getElementById('thumbmaga_pc'), location.href+'&origin=pc');
+				var qrcodeCont = document.getElementById('thumbmaga_pc');
+				var vol = qrcodeCont.getAttribute('data-vol');
+				var href = location.href;
+				var variable = href.split('?');
+				var suffix, qrcode;
+				if(variable[1] && variable[1] != ""){
+					suffix = '&origin=pc';
+				}else{
+					suffix = '?origin=pc';
+				}
+				qrcode = new QRCode(qrcodeCont, href+suffix);
+				console.log(href+suffix);
 				document.getElementById('pcCover').style.display='block';
 			}
 		}

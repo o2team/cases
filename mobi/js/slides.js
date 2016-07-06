@@ -139,7 +139,7 @@ exports.Slides = function(){
 			if(iniScroll){
 				var curDetail = document.querySelectorAll(self.detailClass)[self.cur];
 				curDetail.scrollTop = iniScroll;
-				lazyLoad(curDetail);
+				lazyLoad(curDetail, document.querySelectorAll(self.detailClass));
 			}
 		}, 
 
@@ -214,7 +214,7 @@ exports.Slides = function(){
 				// self.index.style.display = 'none';
 				self.bar.style.display = 'none';
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_show');
-				lazyLoad(document.getElementById(id));
+				lazyLoad(document.getElementById(id), document.querySelectorAll(self.detailClass));
 			}else if(action === 'close'){
 				document.getElementById(id).setAttribute('class', 'ar_mask mask_hide');
 				// self.index.style.display = 'block';

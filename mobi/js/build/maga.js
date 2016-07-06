@@ -206,7 +206,7 @@
 					pt = $scope.date.split('-');
 					projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
 					
-					mobile && $http.jsonp('http://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
+					mobile && $http.jsonp('https://jdc.jd.com/jdccase/jsonp/project?category=app&projectTime='+projectTime+'&callback=json2');
 				}else if(!$scope.date && $scope.vol>latestVol){
 					location.href = jumpHref(indexHref);
 				}
@@ -322,7 +322,8 @@
 			{"vol": 5, "date": "2016-01-25", "prewords": "备好一台电脑一二三五部手机", "cover": "images/cover/vol_5.jpg", "covers":"images/cover/vol_5_s.jpg", "hexocolor": ["f6a625", "d73930"], "shareTitle": "不建议一人观看——多屏互动特刊", "shareText": "备好一台电脑一二三五部手机"}, 
 			{"vol": 6, "date": "2016-02-29", "prewords": "擦亮你的双眼", "cover": "images/cover/vol_6.jpg", "covers":"images/cover/vol_6_s.jpg", "hexocolor": ["f8cacb", "e04d36"], "shareTitle": "放大世界我看到了金钱和肉体", "shareText": "喂？幺幺零吗？"}, 
 			{"vol": 7, "date": "2016-03-28", "prewords": "文青入门手册", "cover": "images/cover/vol_7.jpg", "covers":"images/cover/vol_7_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "一大波文艺梗即将袭来", "shareText": "Look! A pair of boobs! -> (.Y.)"}, 
-			{"vol": 8, "date": "2016-04-26", "prewords": "CSS3动画开发指南", "cover": "images/cover/vol_8.jpg", "covers":"images/cover/vol_8_s.jpg", "hexocolor": ["29a9df", "0170ba"], "shareTitle": "专治CSS3动画技术盲", "shareText": "小编不想推送案例并向你扔了一系列深度剖析文"}
+			{"vol": 8, "date": "2016-04-26", "prewords": "CSS3动画开发指南", "cover": "images/cover/vol_8.jpg", "covers":"images/cover/vol_8_s.jpg", "hexocolor": ["29a9df", "0170ba"], "shareTitle": "专治CSS3动画技术盲", "shareText": "小编不想推送案例并向你扔了一系列深度剖析文"}, 
+			{"vol": 9, "date": "2016-05-30", "prewords": "文青养成手册", "cover": "images/cover/vol_9.jpg", "covers":"images/cover/vol_9_s.jpg", "hexocolor": ["BECEBE", "072"], "shareTitle": "文青系列最终章", "shareText": "中国首例APP级章节式系列解谜HTML5互动游戏（喘口气）完结啦"}
 		];
 
 		return volMaga;
@@ -362,12 +363,13 @@
 	// author: EC
 	// last modify: 2015-12-25 13:16
 
-	exports.lazyLoad = function (context){
+	exports.lazyLoad = function (context, container){
 	    var doc = document,
 	        body = doc.body,
 	        win = window, 
 	        winDoc = win.document.documentElement, 
 	        $win = angular.element(win),
+	        $cont = container ? container : null, 
 	        uid = 0,
 	        elements = {}, 
 	        imgArr = [], 
@@ -438,7 +440,18 @@
 	        });
 	    }
 
-	    $win.bind('scroll', checkImage);
+	    if($cont){
+	        var contLen = $cont.length;
+	        if(contLen > 1){
+	            for(var i=0; i<contLen; i++){
+	                $cont[i].addEventListener('scroll', checkImage);
+	            }
+	        }else{
+	            $cont.addEventListener('scroll', checkImage);
+	        }
+	    }else{
+	        $win.bind('scroll', checkImage);
+	    }
 	    $win.bind('resize', checkImage);
 	    $win.bind('touchmove', checkImage);
 
@@ -642,7 +655,7 @@
 				if(iniScroll){
 					var curDetail = document.querySelectorAll(self.detailClass)[self.cur];
 					curDetail.scrollTop = iniScroll;
-					lazyLoad(curDetail);
+					lazyLoad(curDetail, document.querySelectorAll(self.detailClass));
 				}
 			}, 
 
@@ -717,7 +730,7 @@
 					// self.index.style.display = 'none';
 					self.bar.style.display = 'none';
 					document.getElementById(id).setAttribute('class', 'ar_mask mask_show');
-					lazyLoad(document.getElementById(id));
+					lazyLoad(document.getElementById(id), document.querySelectorAll(self.detailClass));
 				}else if(action === 'close'){
 					document.getElementById(id).setAttribute('class', 'ar_mask mask_hide');
 					// self.index.style.display = 'block';

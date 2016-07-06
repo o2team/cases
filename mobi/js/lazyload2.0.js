@@ -1,12 +1,13 @@
 // author: EC
 // last modify: 2015-12-25 13:16
 
-exports.lazyLoad = function (context){
+exports.lazyLoad = function (context, container){
     var doc = document,
         body = doc.body,
         win = window, 
         winDoc = win.document.documentElement, 
         $win = angular.element(win),
+        $cont = container ? container : null, 
         uid = 0,
         elements = {}, 
         imgArr = [], 
@@ -77,7 +78,18 @@ exports.lazyLoad = function (context){
         });
     }
 
-    $win.bind('scroll', checkImage);
+    if($cont){
+        var contLen = $cont.length;
+        if(contLen > 1){
+            for(var i=0; i<contLen; i++){
+                $cont[i].addEventListener('scroll', checkImage);
+            }
+        }else{
+            $cont.addEventListener('scroll', checkImage);
+        }
+    }else{
+        $win.bind('scroll', checkImage);
+    }
     $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);
 
