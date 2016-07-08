@@ -15,6 +15,15 @@
 <body id="magaList">
 	<div class="setpage">
 		<div class="case" @scroll="onScroll">
+			<div class="sresult" v-show="keywords[0]">
+				找到匹配
+				<a v-for="key in keywords" href="javascript:;">{{key}}
+					<span v-on:click="search" v-if="!(keywords.length - 1)" data-key="" data-category="all">&times;</span>
+					<span v-on:click="search" v-if="keywords.length > 1" data-key="{{(keywords.slice(0, $index).join(' ') + ' ' +  keywords.slice($index+1).join(' ')).trim()}}">&times;</span>
+				</a>的结果
+				<span>{{listAll.length}}</span>
+				条：
+			</div>
 			<ul class="case_list">
 				<li class="case_item case_lastest">
 					<a href="{{latestUrl}}">
@@ -41,10 +50,10 @@
 						</div>
 					</a>
 					<div class="case_item_tag">
-						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-category="classify">{{item.type[0]}}</span></a>
-						<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-category="classify">{{item.type[1]}}</span></a>
-						<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-category="keywords">{{item.vd[0]}}</span></a>
-						<a href="javascript:;" v-if="item.fe[2]"><span class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
+						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-key="{{item.type[0]}}" data-category="classify">{{item.type[0]}}</span></a>
+						<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-key="{{item.type[1]}}" data-category="classify">{{item.type[1]}}</span></a>
+						<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-key="{{item.vd[0]}}" data-category="keywords">{{item.vd[0]}}</span></a>
+						<a href="javascript:;" v-if="item.fe[2]"><span data-key="{{item.fe[2]}}" class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
 					</div>
 					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
 					<div class="case_item_cnt">
@@ -69,12 +78,12 @@
 			<div class="menu_main">
 				<div class="menu_logo"></div>
 				<div class="menu_search">
-					<input class="menu_search_input" type="text" placeholder="search" v-model="keyword" vo-on:keyup.enter="search" />
+					<input class="menu_search_input" type="text" placeholder="search" v-model="keyword" v-on:keyup.enter="search" />
 					<a href="javascript:;" class="menu_search_btn" v-on:click="search"></a>
 				</div>
 				<ul class="menu_list">
-					<li class="menu_item" data-category="all" v-on:click="search">全部案例</li>
-					<li class="menu_item" v-for="keyword in catObj" v-on:click="search" data-category="{{keyword.cat}}">{{keyword.name}}</li>
+					<li class="menu_item" data-key="" data-category="all" v-on:click="search">全部案例</li>
+					<li class="menu_item" v-for="keyword in catObj" v-on:click="search" data-key="{{keyword.name}}" data-category="{{keyword.cat}}">{{keyword.name}}</li>
 					<li class="menu_item cur">关于我们</li>
 				</ul>
 			</div>

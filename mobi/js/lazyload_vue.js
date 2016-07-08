@@ -5,13 +5,11 @@ exports.lazyLoad = function (context, container){
     var doc = document,
         body = doc.body,
         win = window, 
-        winDoc = win.document.documentElement, 
-        $win = angular.element(win),
+        $win = win.document.documentElement, 
         $cont = container ? container : null, 
         uid = 0,
         elements = {}, 
-        imgArr = [], 
-        curW = winDoc.clientWidth - (1.28 * parseFloat(winDoc.style.fontSize));
+        imgArr = [];
 
     function getUid(el){
         return el.__uid || (el.__uid = ('' + (++uid)));
@@ -28,7 +26,7 @@ exports.lazyLoad = function (context, container){
     }
 
     function isVisible(iElement){
-        var elem = iElement[0],
+        var elem = iElement,
             elemRect = elem.getBoundingClientRect(),
             windowOffset = getWindowOffset(),
             winOffsetX = windowOffset.offsetX,
@@ -69,11 +67,11 @@ exports.lazyLoad = function (context, container){
             var obj = elements[key],
                 iElement = obj.iElement,
                 lazySrc = obj.lazySrc, 
-                eleSrc = iElement.attr('src');
+                eleSrc = iElement.getAttribute('src');
 
             if(isVisible(iElement) && !eleSrc){
-                iElement.attr('src', lazySrc)
-                    .css({'opacity': 1});
+                iElement.setAttribute('src', lazySrc);
+                iElement.style.opacity = 1;
             }
         });
     }
@@ -88,16 +86,17 @@ exports.lazyLoad = function (context, container){
             $cont.addEventListener('scroll', checkImage);
         }
     }else{
-        win.bind('scroll', checkImage);
+        win.addEventListener('scroll', checkImage);
     }
-    $win.bind('resize', checkImage);
-    $win.bind('touchmove', checkImage);
+    $win.addEventListener('resize', checkImage);
+    'ontouchstart' in window && $win.addEventListener('touchmove', checkImage);
 
-    function onLoad(){
-        var $el = angular.element(this),
+    function onLoad(e){
+        var $el = this,
             uid = getUid($el);
 
-        $el.css('opacity', 1);
+        // $el.css('opacity', 1);
+        this.style.opacity = '1';
 
         if(elements.hasOwnProperty(uid)){
             delete elements[uid];
@@ -111,38 +110,30 @@ exports.lazyLoad = function (context, container){
     }
 
     for(var i=0; i<imgArr.length; i++){
-        var el = angular.element(imgArr[i]), 
-            src = imgArr[i].getAttribute('lazy-src'), 
-            oriW = el.attr('data-width') ? parseFloat(el.attr('data-width')) : 0, 
-            oriH = el.attr('data-height') ? parseFloat(el.attr('data-height')) : 0, 
-            ratio = oriW && oriH ? oriH/oriW : 0, 
-            curH = ratio ? Math.ceil(curW*ratio) : 0;
+        var el = imgArr[i], 
+            src = imgArr[i].getAttribute('lazy-src');
 
-        el.bind('load', onLoad);
+        el.addEventListener('load', onLoad);
 
         if(src){
             if(isVisible(el)){
-                el.attr('src', src)
-                    .css('opacity', 1);
+                el.setAttribute('src', src);
+                el.style.opacity = 1;
             }else{
-                var uid = getUid(el[0]);
-                el.css({
-                    'background-color': '#fff',
-                    'opacity': 1,
-                    '-webkit-transition': 'opacity .2s',
-                    'transition': 'opacity .2s'
-                });
+                var uid = getUid(el);
+                el.style.backgroundColor = '#fff';
+                el.style.opacity = 1; 
+                el.style.webkitTransition = 'opacity .2s'; 
+                el.style.transition = 'opacity .2s';
+
                 elements[uid] = {
                     iElement: el, 
                     lazySrc: src
                 };
             }
-            if(curH){
-                el.css('height', curH + 'px');
-            }
         }
 
-        el.unbind('load');
+        el.removeEventListener('load', onLoad);
     }
 
     setTimeout(function(){checkImage();}, 200);

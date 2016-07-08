@@ -91,7 +91,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 
 	// 点赞数据拉取
 	var likePull = function (key, likeIndex, self){
-		$http.post('http://aotu.jd.com/common/api/up',{key: key})
+		$http.post('https://aotu.jd.com/common/api/up',{key: key})
 			.then(function(res){
 				var msg = res.data.msg, 
 					s, 
@@ -210,7 +210,7 @@ cases.controller('casesList', function($scope, $http, $sce) {
 			var linksCont = item.links.map(function(para){return para.url;});
 			item.links = linksCont.map(parseHtml);
 
-			$http.get('http://aotu.jd.com/common/api/up/count?key='+key)
+			$http.get('https://aotu.jd.com/common/api/up/count?key='+key)
 				.success((function (key) {
 					return function(res){
 						var count = res.count ? res.count : '', 

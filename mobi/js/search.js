@@ -1,5 +1,5 @@
 exports.dataFilter = function(data, keywords, category){
-	var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[keywords.search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
+	var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[0][keywords[0].search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
 		boo = 0, 
 		dataTemp = {};
 

@@ -66,6 +66,7 @@
 	var jumpHref = __webpack_require__(4).jumpHref;
 	var dataFilter = __webpack_require__(9).dataFilter;
 	var gqs = __webpack_require__(10).GetQueryString;
+	var lazyLoad = __webpack_require__(11).lazyLoad;
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
@@ -73,6 +74,8 @@
 			patch = 5, 
 			dataTemp = [], 
 			latestVol = volMaga.pop(), 
+			linkKey = gqs('key'), 
+			linkCat = gqs('cat'), 
 			detailId = gqs('id');
 
 			dataCont = setData(dataRev);
@@ -83,11 +86,19 @@
 			data: {
 				keyword: '', 
 				keywords: [], 
+				listAll: dataCont, 
 				list: dataTemp, 
 				latest: latestVol, 
 				curPage: 1, 
 				catObj: category, 
 				detailId: detailId
+			}, 
+			compiled: function(){
+				var self = this;
+				(linkKey || linkCat) && self.search();
+			}, 
+			ready: function(){
+				lazyLoad();
 			}, 
 			computed: {
 				latestUrl: function(){
@@ -172,10 +183,10 @@
 				search: function(e){
 					var self = this,
 						s,  
-						cat = (s = e.target.getAttribute('data-category')) ? s : '', 
-						text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
+						cat = linkCat ? linkCat : e && (s = e.target.getAttribute('data-category')) ? s : '', 
+						text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' ');
 
-					this.list = [];
+					self.list = [];
 
 					self.curPage = 0;
 
@@ -192,11 +203,21 @@
 						dataTemp = dataCont.slice(0, patch);
 					}
 
-					this.keywords = (typeof text == 'string') ? [text] : text;
-					self.list = dataTemp;
+					self.keywords = text;
+					self.listAll = dataCont;
+					self.list = [];
+
+					setTimeout(function(){
+						self.list = dataTemp;
+						if(self.keyword){
+							document.querySelector('.menu_search_input').value = '';
+						}
+					}, 200);
 
 					set.hideMenu();
 					set.toTop();
+
+					linkKey = linkCat = '';
 				}
 			}
 		});
@@ -317,7 +338,6 @@
 			{name: '多屏互动', cat: 'classify'}, 
 			{name: '活动运营', cat: 'classify'}, 
 			{name: '产品介绍', cat: 'classify'}, 
-			{name: '游戏互动', cat: 'classify'}, 
 			{name: '品牌宣传', cat: 'classify'}, 
 			{name: '总结报告', cat: 'classify'}, 
 			{name: '邀请函', cat: 'classify'}, 
@@ -381,7 +401,7 @@
 /***/ function(module, exports) {
 
 	exports.dataFilter = function(data, keywords, category){
-		var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[keywords.search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
+		var keys = (category == 'grade_creativity' || category == 'grade_difficulty') ? keywords[0][keywords[0].search(/\d/)].split('') : (typeof keywords == 'string') ? keywords.split(' ') : keywords, 
 			boo = 0, 
 			dataTemp = {};
 
@@ -424,8 +444,153 @@
 	exports.GetQueryString = function (name){
 	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	     var r = window.location.search.substr(1).match(reg);
-	     if(r!=null)return  unescape(r[2]); return null;
+	     if(r!=null)return  decodeURIComponent(r[2]); return null;
 	}
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	// author: EC
+	// last modify: 2015-12-25 13:16
+
+	exports.lazyLoad = function (context, container){
+	    var doc = document,
+	        body = doc.body,
+	        win = window, 
+	        $win = win.document.documentElement, 
+	        $cont = container ? container : null, 
+	        uid = 0,
+	        elements = {}, 
+	        imgArr = [];
+
+	    function getUid(el){
+	        return el.__uid || (el.__uid = ('' + (++uid)));
+	    }
+
+	    function getWindowOffset(){
+	        var t,
+	            pageXOffset = (typeof win.pageXOffset == 'number') ? win.pageXOffset : (((t = doc.documentElement) || (t = body.parentNode)) && typeof t.ScrollLeft == 'number' ? t : body).ScrollLeft,
+	            pageYOffset = (typeof win.pageYOffset == 'number') ? win.pageYOffset : (((t = doc.documentElement) || (t = body.parentNode)) && typeof t.ScrollTop == 'number' ? t : body).ScrollTop;
+	        return {
+	            offsetX: pageXOffset,
+	            offsetY: pageYOffset
+	        };
+	    }
+
+	    function isVisible(iElement){
+	        var elem = iElement,
+	            elemRect = elem.getBoundingClientRect(),
+	            windowOffset = getWindowOffset(),
+	            winOffsetX = windowOffset.offsetX,
+	            winOffsetY = windowOffset.offsetY,
+	            elemWidth = elemRect.width,
+	            elemHeight = elemRect.height,
+	            elemOffsetX = elemRect.left + winOffsetX,
+	            elemOffsetY = elemRect.top + winOffsetY,
+	            viewWidth = Math.max(doc.documentElement.clientWidth, win.innerWidth || 0),
+	            viewHeight = Math.max(doc.documentElement.clientHeight, win.innerHeight || 0),
+	            xVisible,
+	            yVisible;
+
+	        if(elemOffsetY <= winOffsetY){
+	            if(elemOffsetY + elemHeight >= winOffsetY){
+	                yVisible = true;
+	            }
+	        }else if(elemOffsetY >= winOffsetY){
+	            if(elemOffsetY <= winOffsetY + viewHeight){
+	                yVisible = true;            }
+	        }
+
+	        if(elemOffsetX <= winOffsetX){
+	            if(elemOffsetX + elemWidth >= winOffsetX){
+	                xVisible = true;
+	            }
+	        }else if(elemOffsetX >= winOffsetX){
+	            if(elemOffsetX <= winOffsetX + viewWidth){
+	                xVisible = true;
+	            }
+	        }
+
+	        return xVisible && yVisible;
+	    };
+
+	    function checkImage(){
+	        Object.keys(elements).forEach(function(key){
+	            var obj = elements[key],
+	                iElement = obj.iElement,
+	                lazySrc = obj.lazySrc, 
+	                eleSrc = iElement.getAttribute('src');
+
+	            if(isVisible(iElement) && !eleSrc){
+	                iElement.setAttribute('src', lazySrc);
+	                iElement.style.opacity = 1;
+	            }
+	        });
+	    }
+
+	    if($cont){
+	        var contLen = $cont.length;
+	        if(contLen > 1){
+	            for(var i=0; i<contLen; i++){
+	                $cont[i].addEventListener('scroll', checkImage);
+	            }
+	        }else{
+	            $cont.addEventListener('scroll', checkImage);
+	        }
+	    }else{
+	        win.addEventListener('scroll', checkImage);
+	    }
+	    $win.addEventListener('resize', checkImage);
+	    'ontouchstart' in window && $win.addEventListener('touchmove', checkImage);
+
+	    function onLoad(e){
+	        var $el = this,
+	            uid = getUid($el);
+
+	        // $el.css('opacity', 1);
+	        this.style.opacity = '1';
+
+	        if(elements.hasOwnProperty(uid)){
+	            delete elements[uid];
+	        }
+	    }
+
+	    if(context){
+	        imgArr = context.getElementsByTagName('img');
+	    }else{
+	        imgArr = doc.getElementsByTagName('img');
+	    }
+
+	    for(var i=0; i<imgArr.length; i++){
+	        var el = imgArr[i], 
+	            src = imgArr[i].getAttribute('lazy-src');
+
+	        el.addEventListener('load', onLoad);
+
+	        if(src){
+	            if(isVisible(el)){
+	                el.setAttribute('src', src);
+	                el.style.opacity = 1;
+	            }else{
+	                var uid = getUid(el);
+	                el.style.backgroundColor = '#fff';
+	                el.style.opacity = 1; 
+	                el.style.webkitTransition = 'opacity .2s'; 
+	                el.style.transition = 'opacity .2s';
+
+	                elements[uid] = {
+	                    iElement: el, 
+	                    lazySrc: src
+	                };
+	            }
+	        }
+
+	        el.removeEventListener('load', onLoad);
+	    }
+
+	    setTimeout(function(){checkImage();}, 200);
+	};
 
 /***/ }
 /******/ ]);
