@@ -48,13 +48,13 @@
 	// last modify: 2016-2-11 12:48
 
 	var volMaga = __webpack_require__(5).volMaga();
-	var vol = __webpack_require__(11).vol();	//获取当前期数
-	var lazyLoad = __webpack_require__(12).lazyLoad;	//图片预加载
-	var Slides = __webpack_require__(13).Slides();	//页面滑动
-	var setShare = __webpack_require__(14).setShare;	//设置分享参数
+	var vol = __webpack_require__(12).vol();	//获取当前期数
+	var lazyLoad = __webpack_require__(13).lazyLoad;	//图片预加载
+	var Slides = __webpack_require__(14).Slides();	//页面滑动
+	var setShare = __webpack_require__(15).setShare;	//设置分享参数
 	var jumpHref = __webpack_require__(4).jumpHref;	// 索引添加单击事件
-	var coverClick = __webpack_require__(16).coverClick;	// 索引添加单击事件
-	var config = __webpack_require__(17).config();	//配置文件
+	var coverClick = __webpack_require__(17).coverClick;	// 索引添加单击事件
+	var config = __webpack_require__(18).config();	//配置文件
 
 	var cases = angular.module('cases', ['ngRoute']), 
 		data = config.data, 
@@ -346,7 +346,8 @@
 	}
 
 /***/ },
-/* 11 */
+/* 11 */,
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var GetQueryString = __webpack_require__(10).GetQueryString;
@@ -357,7 +358,7 @@
 	}
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// author: EC
@@ -511,12 +512,12 @@
 	};
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// author: EC
 	// last modify: 2015-12-25 16:50
-	var lazyLoad = __webpack_require__(12).lazyLoad;
+	var lazyLoad = __webpack_require__(13).lazyLoad;
 	exports.Slides = function(){
 		var Slides = {
 			// index: document.querySelector('.ar_nav'), 
@@ -746,10 +747,10 @@
 		
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var wxShare = __webpack_require__(15).wxShare();
+	var wxShare = __webpack_require__(16).wxShare();
 	var GetQueryString = __webpack_require__(10).GetQueryString;
 
 	exports.setShare = function(){ //设置分享参数
@@ -774,7 +775,7 @@
 	}
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 		/**
@@ -845,11 +846,11 @@
 		
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var jumpHref = __webpack_require__(4).jumpHref;
-	var indexHref = __webpack_require__(17).config().indexHref;
+	var indexHref = __webpack_require__(18).config().indexHref;
 	exports.coverClick = function (item){ // 索引添加单击事件
 		document.querySelector(item).addEventListener('click', function(){
 			location.href = jumpHref(indexHref);
@@ -857,7 +858,7 @@
 	}
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	exports.config = function(){
