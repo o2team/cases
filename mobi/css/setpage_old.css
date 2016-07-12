@@ -23,7 +23,6 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	font-size: 14px;
 	line-height: 26px;
 	padding: 0 10px;
-	margin-bottom: 10px;
 }
 .sresult span{
 	color: #6190e8;
@@ -48,17 +47,18 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	background: #fff;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
-	padding-top: 10px;
+	padding-top: 10px; 
 }
 .case_list{
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 .case_item{
 	position: relative;
+	margin: 10px;
+	border-radius: 3px;
 	overflow: hidden;
-	margin-bottom: 10px;
 	background: #fff;
-	border-bottom:1px solid #e4e4e4;
+	border:1px solid #e4e4e4;
 	box-shadow: 0 0 5px #e4e4e4;
 	animation: show ease .3s;
 }
@@ -128,11 +128,14 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
     background: -webkit-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,0.7));
 }
 .case_item_tag{
+	position: absolute;
+	top: 0;
+	left: 10px;
 	font-size: 12px;
 }
 .case_item_tag a{
 	display: inline-block;
-	padding: 8px 2px 8px 0;
+	padding: 10px 0;
 	height: 18px;
 }
 .case_item_tag_txt{
@@ -141,8 +144,8 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	height: 18px;
 	line-height: 18px;
 	border-radius: 18px;
-	color: #fff;
-	background: rgba(0,0,0,0.2);
+	color: rgba(255,255,255,0.8);
+	background: rgba(0,0,0,0.5);
 }
 .case_item_star{
 	position: absolute;
@@ -165,21 +168,18 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 }
 .case_item_mark{
 	position: absolute;
-	left: -30px;
-	top: 0;
+	right: -30px;
+	bottom: 0;
 	font-size: 10px;
 	width: 60px;
-	padding-top: 8px;
-	height: 14px;
-	line-height: 14px;
+	height: 22px;
 	background: #e4a558;
 	color: #fff;
 	text-align: center;
-	box-shadow: 0 0 5px rgba(0,0,0,0.7);
 	-webkit-transform:rotate(-45deg);
 	transform:rotate(-45deg);
-	-webkit-transform-origin:50% 0;
-	transform-origin:50% 0;
+	-webkit-transform-origin:50% 100%;
+	transform-origin:50% 100%;
 	z-index: 1;
 }
 .case_item_love{
@@ -200,6 +200,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 }
 .case_item_cnt{
 	padding: 10px;
+	text-align: center;
 }
 .case_item_tit{
 	position: relative;
@@ -216,8 +217,9 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	width: 20px;
 	height: 2px;
 	background: #e4a558;
-	left: 0;
+	left: 50%;
 	bottom: 4px;
+	margin-left: -10px;
 }
 .case_item_analysis{
 	position: relative;
@@ -225,7 +227,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	font-size: 12px;
 	line-height: 18px;
 	height: 36px;
-	padding-top: 10px;
+	padding: 10px 10px 0;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -245,15 +247,14 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 }
 .case_item_more{
 	display: block;
-    margin: 10px auto 5px;
-    font-size: 12px;
-    border-radius: 26px;
-    border: 1px solid #6190e8;
-    width: 98px;
-    height: 24px;
-    line-height: 24px;
-	color: #6190e8;
-	text-align: center;
+	margin: 10px auto;
+	font-size: 12px;
+	border-radius: 30px;
+	width: 100px;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	background: #6190e8;
 }
 .case_collection .case_item_analysis,
 .case_collection .case_item_mark,
