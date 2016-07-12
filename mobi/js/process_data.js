@@ -7,6 +7,7 @@ var pageLoadFunc = require('./page_load').pageLoad;
 var jumpHref = require('./jumpHref').jumpHref;
 var dataFilter = require('./search').dataFilter;
 var gqs = require('./GetQueryString').GetQueryString;
+var lazyLoad = require('./lazyload_vue.js').lazyLoad;
 
 exports.processData = function(data){
 	var dataRev = data.reverse(), 
@@ -14,6 +15,8 @@ exports.processData = function(data){
 		patch = 5, 
 		dataTemp = [], 
 		latestVol = volMaga.pop(), 
+		linkKey = gqs('key'), 
+		linkCat = gqs('cat'), 
 		detailId = gqs('id');
 
 		dataCont = setData(dataRev);
@@ -24,11 +27,19 @@ exports.processData = function(data){
 		data: {
 			keyword: '', 
 			keywords: [], 
+			listAll: dataCont, 
 			list: dataTemp, 
 			latest: latestVol, 
 			curPage: 1, 
 			catObj: category, 
 			detailId: detailId
+		}, 
+		compiled: function(){
+			var self = this;
+			(linkKey || linkCat) && self.search();
+		}, 
+		ready: function(){
+			lazyLoad();
 		}, 
 		computed: {
 			latestUrl: function(){
@@ -113,10 +124,10 @@ exports.processData = function(data){
 			search: function(e){
 				var self = this,
 					s,  
-					cat = (s = e.target.getAttribute('data-category')) ? s : '', 
-					text = this.keyword ? this.keyword.split(' ') : e.target.innerText;
+					cat = linkCat ? linkCat : e && (s = e.target.getAttribute('data-category')) ? s : '', 
+					text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' ');
 
-				this.list = [];
+				self.list = [];
 
 				self.curPage = 0;
 
@@ -133,11 +144,21 @@ exports.processData = function(data){
 					dataTemp = dataCont.slice(0, patch);
 				}
 
-				this.keywords = (typeof text == 'string') ? [text] : text;
-				self.list = dataTemp;
+				self.keywords = text;
+				self.listAll = dataCont;
+				self.list = [];
+
+				setTimeout(function(){
+					self.list = dataTemp;
+					if(self.keyword){
+						document.querySelector('.menu_search_input').value = '';
+					}
+				}, 200);
 
 				set.hideMenu();
 				set.toTop();
+
+				linkKey = linkCat = '';
 			}
 		}
 	});

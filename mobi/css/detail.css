@@ -7,7 +7,7 @@ ol, ul { list-style: none;}
 input, select, button, h1, h2, h3, h4, h5, h6 { font-size: 100%; font-family: inherit;}
 table { border-collapse: collapse; border-spacing: 0;}
 a { text-decoration: none; color: #666;}
-body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
+body{max-width:700px;min-width:320px;margin:0 auto;font-size:14px;
   font-family: Helvetica, STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial; line-height: 1.5; color: #666;background:#f6f6f6;}
 /*setpage*/
 .detail{

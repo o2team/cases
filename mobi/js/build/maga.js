@@ -137,7 +137,7 @@
 
 		// 点赞数据拉取
 		var likePull = function (key, likeIndex, self){
-			$http.post('http://aotu.jd.com/common/api/up',{key: key})
+			$http.post('https://aotu.jd.com/common/api/up',{key: key})
 				.then(function(res){
 					var msg = res.data.msg, 
 						s, 
@@ -256,7 +256,7 @@
 				var linksCont = item.links.map(function(para){return para.url;});
 				item.links = linksCont.map(parseHtml);
 
-				$http.get('http://aotu.jd.com/common/api/up/count?key='+key)
+				$http.get('https://aotu.jd.com/common/api/up/count?key='+key)
 					.success((function (key) {
 						return function(res){
 							var count = res.count ? res.count : '', 
@@ -342,7 +342,7 @@
 	exports.GetQueryString = function (name){
 	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 	     var r = window.location.search.substr(1).match(reg);
-	     if(r!=null)return  unescape(r[2]); return null;
+	     if(r!=null)return  decodeURIComponent(r[2]); return null;
 	}
 
 /***/ },
@@ -451,7 +451,7 @@
 	            $cont.addEventListener('scroll', checkImage);
 	        }
 	    }else{
-	        $win.bind('scroll', checkImage);
+	        win.bind('scroll', checkImage);
 	    }
 	    $win.bind('resize', checkImage);
 	    $win.bind('touchmove', checkImage);

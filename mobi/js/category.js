@@ -7,7 +7,6 @@ exports.category = function(){
 		{name: '多屏互动', cat: 'classify'}, 
 		{name: '活动运营', cat: 'classify'}, 
 		{name: '产品介绍', cat: 'classify'}, 
-		{name: '游戏互动', cat: 'classify'}, 
 		{name: '品牌宣传', cat: 'classify'}, 
 		{name: '总结报告', cat: 'classify'}, 
 		{name: '邀请函', cat: 'classify'}, 
