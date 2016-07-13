@@ -56,7 +56,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="detail_bottom">
+		<div class="detail_bottom hide">
 			<a href="javascript:;" class="detail_bottom_btn">
 			</a>
 			<div class="detail_bottom_right">
@@ -67,26 +67,34 @@
 	</div>
 	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
 	<script type="text/javascript">
-	// var detail = {
-	// 	menuBtn: document.querySelector(".detail_bottom_btn"),
-	// 	curVol: document.querySelector(".detail_bottom_curvol"),
-	// 	detail: document.querySelector(".detail"),
-	// 	addClass: function(ele,cls) { 
-	// 		if (!this.hasClass(ele,cls)) ele.className += " " +cls; 
-	// 	},
-	// 	removeClass: function(ele,cls) { 
-	// 		if (this.hasClass(ele,cls)) { 
-	// 			var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)'); 
-	// 			ele.className=ele.className.replace(reg,''); 
-	// 		} 
-	// 	},
-	// 	init: function(){
-	// 		this.detail.addEventListener("touchmove",function(){
-	// 			console.log(event.changedTouches[0].clientX,event.changedTouches[0].clientY);
-	// 		})
-	// 	}
-	// }
-	// detail.init();
+	var detail = {
+		startY: 0,
+		endY: 0,
+		detail: document.querySelector(".detail"),
+		menu : document.querySelector(".detail_bottom"),
+		startTouchScroll: function(event){
+        	var touch = event.touches[0];
+        	this.startY = touch.pageY;
+		},
+		moveTouchScroll: function(event){
+			var touch = event.touches[0];
+			this.endY = touch.pageY;
+		},
+		endTouchScroll:	function(event){
+			var self = this;   
+			//判断移动的点,1为手指向下滑动,-1为手指向上滑动
+		    var scrollDirection = (self.endY - self.startY) > 0 ? 1 : -1 ;
+		    // scrollDirection = 1 ? menu.classList.add("hide") : menu.classList.remove("hide"); 
+		    this.menu.classList.remove("hide");
+		},
+		init: function(){
+			var self = this;
+			self.detail.addEventListener("touchstart", self.startTouchScroll, false);
+			self.detail.addEventListener("touchmove", self.moveTouchScroll, false);
+			self.detail.addEventListener("touchend", function(){}self.endTouchScroll, false);
+		}
+	}
+	detail.init();
 	</script>
 </body>
 </html>
