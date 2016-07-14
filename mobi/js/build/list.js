@@ -67,19 +67,21 @@
 	var dataFilter = __webpack_require__(9).dataFilter;
 	var gqs = __webpack_require__(10).GetQueryString;
 	var lazyLoad = __webpack_require__(11).lazyLoad;
+	var wxShare = __webpack_require__(16).wxShare();
 
 	exports.processData = function(data){
 		var dataRev = data.reverse(), 
 			dataCont = [], 
 			patch = 5, 
 			dataTemp = [], 
-			latestVol = volMaga.pop(), 
+			latestVol = volMaga.slice(-1)[0], 
 			linkKey = gqs('key'), 
 			linkCat = gqs('cat'), 
 			detailId = gqs('id');
 
 			dataCont = setData(dataRev);
 			dataTemp = dataCont.slice(0, patch);
+
 
 		var vue = new Vue({
 			el: '#magaList', 
@@ -96,6 +98,8 @@
 			compiled: function(){
 				var self = this;
 				(linkKey || linkCat) && self.search();
+
+				!detailId && wxShare(jumpHref('img/share_3.0.png'),100,100,location.href,'拇指期刊案例合集');
 			}, 
 			ready: function(){
 				lazyLoad();
@@ -150,15 +154,35 @@
 				}, 
 
 				detailObj: function(){
-					var temp = {};
-					dataRev.forEach(function(item, idx){
-						if(item._id == detailId) {
-							for(var key in item){
-								temp[key] = item[key];
+					if(detailId){
+						var temp = {};
+						dataRev.forEach(function(item, idx){
+							if(item._id == detailId) {
+								for(var key in item){
+									temp[key] = item[key];
+								}
 							}
+						});
+
+						wxShare(temp.image,100,100,location.href,temp.title,temp.vd);
+
+						document.title = temp.title + ' - 拇指期刊';
+						return temp;
+					}
+				}, 
+
+				curVol: function(){
+					var vol = 0;
+					detailId && volMaga.forEach(function(item, idx){
+						var pt = item.date.split('-'), 
+							projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
+
+						if(projectTime == this.detailObj.projectTime){
+							vol = item.vol;
 						}
-					});
-					return temp;
+					}.bind(this));
+
+					return vol;
 				}
 			}, 
 			methods: {
@@ -184,7 +208,8 @@
 					var self = this,
 						s,  
 						cat = linkCat ? linkCat : e && (s = e.target.getAttribute('data-category')) ? s : '', 
-						text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' ');
+						text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' '), 
+						pageTitle = '';
 
 					self.list = [];
 
@@ -218,6 +243,10 @@
 					set.toTop();
 
 					linkKey = linkCat = '';
+					pageTitle = '拇指期刊-' + text.join(', ') + '的搜索结果';
+
+					wxShare(temp.image,100,100,location.href+'?key='+key.join(',')+'cat='+cat,pageTitle,'拇指期刊案例合集');
+					document.title = pageTitle;
 				}
 			}
 		});
@@ -591,6 +620,81 @@
 
 	    setTimeout(function(){checkImage();}, 200);
 	};
+
+/***/ },
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */
+/***/ function(module, exports) {
+
+		/**
+		* 微信分享
+		*/
+
+	exports.wxShare = function (){	
+		var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
+		    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		        WeixinJSBridge.on('menu:share:timeline', function(argv){
+		            WeixinJSBridge.invoke('shareTimeline',{
+		                "img_url":img_url,
+		                "img_width":img_width,
+		                "img_height":img_height,
+		                "link":link,
+		                "title": title,
+		                "desc":desc
+		            }, function() {
+		                callback('timeline');
+		            });
+		        });
+
+		        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+
+		            WeixinJSBridge.invoke('sendAppMessage',{
+		                "appid":appid || "",
+		                "img_url":img_url,
+		                "img_width":img_width,
+		                "img_height":img_height,
+		                "link":link,
+		                "title": title,
+		                "desc":desc
+		            }, function() {
+		                callback('appmessage');
+		            })
+
+		        });
+
+
+		        WeixinJSBridge.on('menu:share:weibo', function(argv){
+		          WeixinJSBridge.invoke('shareWeibo',{
+		             "content":title,
+		             "url":link
+		          }, function(res){
+		            callback('weibo');
+		          });
+		        });
+
+		        WeixinJSBridge.on('menu:share:facebook', function(argv){
+		          (dataForWeixin.callback)();
+		          WeixinJSBridge.invoke('shareFB',{
+		                "img_url":img_url,
+		                "img_width":img_width,
+		                "img_height":img_height,
+		                "link":link,
+		                "title": title,
+		                "desc":desc
+		          }, function(res){
+		            callback('facebook');
+		          });
+		        });
+
+		    })
+		}
+
+		return wxShare;
+	}
+		
 
 /***/ }
 /******/ ]);

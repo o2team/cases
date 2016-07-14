@@ -2,7 +2,7 @@
 <html ng-app="index" ng-controller="iList">
 <head>
 	<meta charset="utf-8" />
-	<title>拇指期刊</title>
+	<title>拇指期刊-案例合集</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -49,15 +49,15 @@
 							<div class="case_item_mark" v-show="item.links">精选</div>
 						</div>
 					</a>
-					<div class="case_item_tag">
-						<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-key="{{item.type[0]}}" data-category="classify">{{item.type[0]}}</span></a>
-						<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-key="{{item.type[1]}}" data-category="classify">{{item.type[1]}}</span></a>
-						<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-key="{{item.vd[0]}}" data-category="keywords">{{item.vd[0]}}</span></a>
-						<a href="javascript:;" v-if="item.fe[2]"><span data-key="{{item.fe[2]}}" class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
-					</div>
 					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
 					<div class="case_item_cnt">
 						<h2 class="case_item_tit">{{item.title}}</h2>
+						<div class="case_item_tag">
+							<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-key="{{item.type[0]}}" data-category="classify">{{item.type[0]}}</span></a>
+							<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-key="{{item.type[1]}}" data-category="classify">{{item.type[1]}}</span></a>
+							<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-key="{{item.vd[0]}}" data-category="keywords">{{item.vd[0]}}</span></a>
+							<a href="javascript:;" v-if="item.fe[2]"><span data-key="{{item.fe[2]}}" class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
+						</div>
 						<p class="case_item_analysis" v-show="item.links">
 							{{item.magaLinkShort}}
 						</p>
@@ -94,6 +94,7 @@
 			<span></span>
 			<span></span>
 		</a>
+		<a href="javascript:;" class="top"></a>
 	</div>
 	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
 	<script type="text/javascript">
@@ -156,6 +157,7 @@
 		setPage: document.querySelector(".setpage"),
 		caseArea: document.querySelector(".case"),
 		menuMask: document.querySelector(".menu_mask"),
+		toTopBtn: document.querySelector(".top"), 
 		addClass: function(ele,cls) { 
 			if (!this.hasClass(ele,cls)) ele.className += " " +cls; 
 		},
@@ -185,6 +187,7 @@
 				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
  			});
 			self.menuMask.addEventListener("click",function(){self.hideMenu()});
+			self.toTopBtn.addEventListener("click", function(){self.toTop();});
 		}
 	};
 	set.init();

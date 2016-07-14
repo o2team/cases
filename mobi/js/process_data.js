@@ -8,19 +8,21 @@ var jumpHref = require('./jumpHref').jumpHref;
 var dataFilter = require('./search').dataFilter;
 var gqs = require('./GetQueryString').GetQueryString;
 var lazyLoad = require('./lazyload_vue.js').lazyLoad;
+var wxShare = require('./share').wxShare();
 
 exports.processData = function(data){
 	var dataRev = data.reverse(), 
 		dataCont = [], 
 		patch = 5, 
 		dataTemp = [], 
-		latestVol = volMaga.pop(), 
+		latestVol = volMaga.slice(-1)[0], 
 		linkKey = gqs('key'), 
 		linkCat = gqs('cat'), 
 		detailId = gqs('id');
 
 		dataCont = setData(dataRev);
 		dataTemp = dataCont.slice(0, patch);
+
 
 	var vue = new Vue({
 		el: '#magaList', 
@@ -37,6 +39,8 @@ exports.processData = function(data){
 		compiled: function(){
 			var self = this;
 			(linkKey || linkCat) && self.search();
+
+			!detailId && wxShare(jumpHref('img/share_3.0.png'),100,100,location.href,'拇指期刊案例合集');
 		}, 
 		ready: function(){
 			lazyLoad();
@@ -91,15 +95,35 @@ exports.processData = function(data){
 			}, 
 
 			detailObj: function(){
-				var temp = {};
-				dataRev.forEach(function(item, idx){
-					if(item._id == detailId) {
-						for(var key in item){
-							temp[key] = item[key];
+				if(detailId){
+					var temp = {};
+					dataRev.forEach(function(item, idx){
+						if(item._id == detailId) {
+							for(var key in item){
+								temp[key] = item[key];
+							}
 						}
+					});
+
+					wxShare(temp.image,100,100,location.href,temp.title,temp.vd);
+
+					document.title = temp.title + ' - 拇指期刊';
+					return temp;
+				}
+			}, 
+
+			curVol: function(){
+				var vol = 0;
+				detailId && volMaga.forEach(function(item, idx){
+					var pt = item.date.split('-'), 
+						projectTime = new Date(parseInt(pt[0]), parseInt(pt[1])-1, parseInt(pt[2])).toISOString();
+
+					if(projectTime == this.detailObj.projectTime){
+						vol = item.vol;
 					}
-				});
-				return temp;
+				}.bind(this));
+
+				return vol;
 			}
 		}, 
 		methods: {
@@ -125,7 +149,8 @@ exports.processData = function(data){
 				var self = this,
 					s,  
 					cat = linkCat ? linkCat : e && (s = e.target.getAttribute('data-category')) ? s : '', 
-					text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' ');
+					text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' '), 
+					pageTitle = '';
 
 				self.list = [];
 
@@ -159,6 +184,10 @@ exports.processData = function(data){
 				set.toTop();
 
 				linkKey = linkCat = '';
+				pageTitle = '拇指期刊-' + text.join(', ') + '的搜索结果';
+
+				wxShare(temp.image,100,100,location.href+'?key='+key.join(',')+'cat='+cat,pageTitle,'拇指期刊案例合集');
+				document.title = pageTitle;
 			}
 		}
 	});

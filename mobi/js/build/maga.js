@@ -771,7 +771,7 @@
 		});
 
 		/*分享*/
-		wxShare('http://jdc.jd.com/h5/case/img/share_3.0.png',100,100,location.href,shareTitle,shareText);
+		wxShare('img/share_3.0.png',100,100,location.href,shareTitle,shareText);
 	}
 
 /***/ },
