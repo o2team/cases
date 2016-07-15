@@ -19,12 +19,14 @@ exports.setData = function(data){
 					break;
 				case "links":
 					var temp = '';
-					item[key].forEach(function(url, uidx){
-						temp += url.url;
-					});
-					data[idx].linkText = removeHTMLTag(temp);
-					temp = data[idx].linkText;
-					data[idx].magaLinkShort = temp.split('').splice(0, 200).join('') + '...';
+					if(item[key][0]){
+						item[key].forEach(function(url, uidx){
+							temp += url.url;
+						});
+						data[idx].linkText = removeHTMLTag(temp);
+						temp = data[idx].linkText;
+						data[idx].magaLinkShort = temp.split('').splice(0, 200).join('') + '...';
+					} 
 					break;
 				case "vd":
 					data[idx][key] = item[key].split(',');

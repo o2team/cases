@@ -88,7 +88,7 @@ exports.lazyLoad = function (context, container){
             $cont.addEventListener('scroll', checkImage);
         }
     }else{
-        win.bind('scroll', checkImage);
+        $win.bind('scroll', checkImage);
     }
     $win.bind('resize', checkImage);
     $win.bind('touchmove', checkImage);

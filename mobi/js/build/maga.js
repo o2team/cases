@@ -47,7 +47,6 @@
 	// author: EC
 	// last modify: 2016-2-11 12:48
 
-	var volMaga = __webpack_require__(5).volMaga();
 	var vol = __webpack_require__(12).vol();	//获取当前期数
 	var lazyLoad = __webpack_require__(13).lazyLoad;	//图片预加载
 	var Slides = __webpack_require__(14).Slides();	//页面滑动
@@ -71,7 +70,8 @@
 		$indexBox = config.$indexBox, //索引容器
 		likeClass = config.likeClass, 					//点赞类名
 		indexJumpClass = config.indexJumpClass, 	//索引页入口按钮类名
-		aotuBlue = config.aotuBlue; 			//凹凸蓝
+		aotuBlue = config.aotuBlue,  			//凹凸蓝
+		volMagaCode = 0;
 
 
 	// 索引设置
@@ -214,7 +214,18 @@
 				indexSet($scope);
 			}
 		}
-		json1();
+		if(volMaga){
+			json1();
+			volMagaCode = 1;
+		}
+		if(!volMagaCode){
+			var si = setInterval(function(){
+				if(volMaga){
+					json1();
+					clearInterval(si);
+				}
+			}, 200);
+		}
 
 		window.json2 = function (data) { 
 			var likeObj = [], 
@@ -451,7 +462,7 @@
 	            $cont.addEventListener('scroll', checkImage);
 	        }
 	    }else{
-	        win.bind('scroll', checkImage);
+	        $win.bind('scroll', checkImage);
 	    }
 	    $win.bind('resize', checkImage);
 	    $win.bind('touchmove', checkImage);
@@ -784,7 +795,13 @@
 
 	exports.wxShare = function (){	
 		var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
-		    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+	    	document.addEventListener('WeixinJSBridgeReady', onBridgeReady);
+	    	if(typeof WeixinJSBridge != 'undefined'){
+	    		onBridgeReady();
+	    	}
+
+		    function onBridgeReady() {
 		        WeixinJSBridge.on('menu:share:timeline', function(argv){
 		            WeixinJSBridge.invoke('shareTimeline',{
 		                "img_url":img_url,
@@ -838,7 +855,7 @@
 		          });
 		        });
 
-		    })
+		    }
 		}
 
 		return wxShare;

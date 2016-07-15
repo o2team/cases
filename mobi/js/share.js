@@ -4,7 +4,13 @@
 
 exports.wxShare = function (){	
 	var wxShare = function(img_url,img_width,img_height,link,title,desc,callback,appid){
-	    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+    	document.addEventListener('WeixinJSBridgeReady', onBridgeReady);
+    	if(typeof WeixinJSBridge != 'undefined'){
+    		onBridgeReady();
+    	}
+
+	    function onBridgeReady() {
 	        WeixinJSBridge.on('menu:share:timeline', function(argv){
 	            WeixinJSBridge.invoke('shareTimeline',{
 	                "img_url":img_url,
@@ -58,7 +64,7 @@ exports.wxShare = function (){
 	          });
 	        });
 
-	    })
+	    }
 	}
 
 	return wxShare;

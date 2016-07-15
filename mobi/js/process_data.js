@@ -1,6 +1,5 @@
 var removeHTMLTag = require('./remove_html_tag').removeHTMLTag;
 var setData = require('./set_data').setData;
-var volMaga = require('./vol_maga').volMaga();
 var category = require('./category').category();
 var throttle = require('./throttle').throttle;
 var pageLoadFunc = require('./page_load').pageLoad;
@@ -38,9 +37,12 @@ exports.processData = function(data){
 		}, 
 		compiled: function(){
 			var self = this;
-			(linkKey || linkCat) && self.search();
 
-			!detailId && wxShare(jumpHref('img/share_3.0.png'),100,100,location.href,'拇指期刊案例合集');
+			if(!detailId && !(linkKey || linkCat)){
+				wxShare(jumpHref('img/share_3.0.png'),100,100,location.href,'拇指期刊案例合集');
+			}
+
+			(linkKey || linkCat) && self.search();
 		}, 
 		ready: function(){
 			lazyLoad();
@@ -105,7 +107,7 @@ exports.processData = function(data){
 						}
 					});
 
-					wxShare(temp.image,100,100,location.href,temp.title,temp.vd);
+					wxShare('https:'+temp.image,100,100,location.href,temp.title,removeHTMLTag(temp.links[0].url));
 
 					document.title = temp.title + ' - 拇指期刊';
 					return temp;
@@ -149,7 +151,7 @@ exports.processData = function(data){
 				var self = this,
 					s,  
 					cat = linkCat ? linkCat : e && (s = e.target.getAttribute('data-category')) ? s : '', 
-					text = linkKey ? linkKey.split(' ') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' '), 
+					text = linkKey ? linkKey.split(',') : !!self.keyword ? self.keyword.trim().split(' ') : e.target.getAttribute('data-key').split(' '), 
 					pageTitle = '';
 
 				self.list = [];
@@ -177,6 +179,7 @@ exports.processData = function(data){
 					self.list = dataTemp;
 					if(self.keyword){
 						document.querySelector('.menu_search_input').value = '';
+						document.querySelector('.menu_search_input').blur();
 					}
 				}, 200);
 
@@ -184,9 +187,9 @@ exports.processData = function(data){
 				set.toTop();
 
 				linkKey = linkCat = '';
-				pageTitle = '拇指期刊-' + text.join(', ') + '的搜索结果';
+				pageTitle = '拇指期刊-“' + text.join(', ') + '”的搜索结果';
 
-				wxShare(temp.image,100,100,location.href+'?key='+key.join(',')+'cat='+cat,pageTitle,'拇指期刊案例合集');
+				dataTemp[0] && wxShare('https:'+dataTemp[0].image,100,100,jumpHref('maga_list.html?key='+text.join(',')+'&cat='+cat),pageTitle,'拇指期刊案例合集');
 				document.title = pageTitle;
 			}
 		}

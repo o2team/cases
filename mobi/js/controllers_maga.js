@@ -1,7 +1,6 @@
 // author: EC
 // last modify: 2016-2-11 12:48
 
-var volMaga = require('./vol_maga').volMaga();
 var vol = require('./getVol').vol();	//获取当前期数
 var lazyLoad = require('./lazyload2.0.js').lazyLoad;	//图片预加载
 var Slides = require('./slides').Slides();	//页面滑动
@@ -25,7 +24,8 @@ var cases = angular.module('cases', ['ngRoute']),
 	$indexBox = config.$indexBox, //索引容器
 	likeClass = config.likeClass, 					//点赞类名
 	indexJumpClass = config.indexJumpClass, 	//索引页入口按钮类名
-	aotuBlue = config.aotuBlue; 			//凹凸蓝
+	aotuBlue = config.aotuBlue,  			//凹凸蓝
+	volMagaCode = 0;
 
 
 // 索引设置
@@ -168,7 +168,18 @@ cases.controller('casesList', function($scope, $http, $sce) {
 			indexSet($scope);
 		}
 	}
-	json1();
+	if(volMaga){
+		json1();
+		volMagaCode = 1;
+	}
+	if(!volMagaCode){
+		var si = setInterval(function(){
+			if(volMaga){
+				json1();
+				clearInterval(si);
+			}
+		}, 200);
+	}
 
 	window.json2 = function (data) { 
 		var likeObj = [], 

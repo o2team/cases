@@ -163,6 +163,7 @@
 
 	<script src="js/angular-1.4.7.min.js"></script>
 	<script src="js/angular-route-1.4.7.min.js"></script>
+	<script src="js/volMaga.js"></script>
 	<script src="js/build/maga.js"></script>
 	<script src="js/index_ctrl.js"></script>
 	<script src="js/mode.js"></script>
@@ -192,7 +193,6 @@
 					suffix = '?origin=pc';
 				}
 				qrcode = new QRCode(qrcodeCont, href+suffix);
-				console.log(href+suffix);
 				document.getElementById('pcCover').style.display='block';
 			}
 		}

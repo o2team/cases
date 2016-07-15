@@ -46,7 +46,7 @@
 								<span>创意指数：{{item.magaStar[0]}}</span>
 								<span>实现难度：{{item.magaStar[1]}}</span>
 							</div>
-							<div class="case_item_mark" v-show="item.links">精选</div>
+							<div class="case_item_mark" v-show="item.links[0]">精选</div>
 						</div>
 					</a>
 					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
@@ -58,10 +58,10 @@
 							<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-key="{{item.vd[0]}}" data-category="keywords">{{item.vd[0]}}</span></a>
 							<a href="javascript:;" v-if="item.fe[2]"><span data-key="{{item.fe[2]}}" class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
 						</div>
-						<p class="case_item_analysis" v-show="item.links">
+						<p class="case_item_analysis" v-show="item.links[0]">
 							{{item.magaLinkShort}}
 						</p>
-						<a href="{{item.magaDetail}}" class="case_item_more" data-lid="{{item._id}}" v-show="item.links">查看完整分析</a>
+						<a href="{{item.magaDetail}}" class="case_item_more" data-lid="{{item._id}}" v-show="item.links[0]">查看完整分析</a>
 					</div>
 				</li>
 			</ul>
@@ -96,6 +96,7 @@
 		</a>
 		<a href="javascript:;" class="top"></a>
 	</div>
+	<script src="js/volMaga.js"></script> 
 	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
 	<script type="text/javascript">
 
@@ -198,5 +199,15 @@
 	<script src="js/vue.js"></script> 
 	<script src="js/build/list.js"></script>
 	<script src="https://jdc.jd.com/jdccase/jsonp/project?category=app&callback=json2"></script>
+	<script>
+		/*统计*/
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
 </body>
 </html>

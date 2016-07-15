@@ -4,5 +4,11 @@
 var processData = require('./process_data').processData;
 
 window.json2 = function(){
-		processData(arguments[0]);
+	var args = arguments[0];
+		var si = setInterval(function(){
+			if(volMaga){
+				processData(args);
+				clearInterval(si);
+			}
+		}, 200);
 	};
