@@ -104,19 +104,47 @@
 				</div>
 				<ul class="menu_list">
 					<li class="menu_item">全部案例</li>
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item cur">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
+					<li class="menu_item">分类名称</li>	
 					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li>
-					<li class="menu_item">分类名称分类</li>
-					<li class="menu_item">分类名称分类名称</li><li class="menu_item cur">关于我们</li>
+					<li class="menu_item">分类名称</li>		
+					<li class="menu_item">关于我们</li>
 				</ul>
 			</div>
 			<div class="menu_mask" style="display:none"></div>
@@ -164,27 +192,10 @@
 	  }
 	});
 
-	// !function(){
-	// 	var menuBtn = $(".btn"),
-	// 		setPage = $(".setpage"),
-	// 		caseArea = $(".case"),
-	// 		menuMask = $(".menu_mask");
-	// 	var menuShow = function(){
-	// 		setPage.addClass("menu_show");
-	// 		menuMask.show();
-	// 	}
-	// 	var menuHide = function(){
-	// 		setPage.removeClass("menu_show");
-	// 		menuMask.hide();
-	// 	}
-	// 	menuBtn.on("tap",function(){
-	// 		setPage.hasClass("menu_show")?menuHide():menuShow();
-	//  	})
-	//  	menuMask.on("tap",menuHide);
-	// }();
-
-
 	var set={
+		startTime: 0,
+		endTime: 0,
+		isTouch: false,
 		menuBtn: document.querySelector(".btn"),
 		setPage: document.querySelector(".setpage"),
 		caseArea: document.querySelector(".case"),
@@ -209,17 +220,53 @@
 			this.addClass(this.setPage,"menu_show");
  			this.menuMask.style.display = "block";
 		},
+		startFun: function(){
+			this.startTime = Date.now();
+		},
+		endFun: function(){
+			var self = this;
+			this.endTime = Date.now();
+			this.isTouch = this.endTime - this.startTime >= 50 ? true : false;
+			if(this.isTouch){
+				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
+			}
+		},
 		init: function(){
 			var self = this;
-			self.menuBtn.addEventListener("click",function(){
-				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
- 			});
-			self.menuMask.addEventListener("click",function(){self.hideMenu()});
+			self.menuBtn.addEventListener("touchstart",function(){
+				self.startFun();
+			});
+			self.menuBtn.addEventListener("touchend",function(){
+				self.endFun();
+			});
+			self.menuMask.addEventListener("touchstart",function(){
+				self.hideMenu();
+			});
 		}
+		// touchTime: function(){
+		// 	var isTouch,
+		// 		startTime,
+		// 		endTime;
+		// 	startTime = Date.now();
+		// 	this.menuBtn.addEventListener("touchend",function(){
+		// 		endTime = Date.now();
+		// 	alert(endTime);
+		// 	})
+		// 	endTime - startTime >= 50 ? isTouch = true : isTouch = false ;
+		// 	alert(endTime);
+		// 	return isTouch;
+		// },
+		// init: function(){
+		// 	var self = this;
+		// 	self.menuBtn.addEventListener("touchstart",function(){
+		// 		alert(self.touchTime());
+		// 		if(self.touchtime()){
+		// 			self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
+		// 		}
+ 	// 		});
+		// }
 	};
 	set.init();
-
-
 	</script>
 </body>
 </html>
