@@ -151,14 +151,14 @@
 	//  	})
 	//  	menuMask.on("tap",menuHide);
 	// }();
-
-
 	var set={
+		startTime: 0,
+		endTime: 0,
+		isTouch: false,
 		menuBtn: document.querySelector(".btn"),
 		setPage: document.querySelector(".setpage"),
 		caseArea: document.querySelector(".case"),
 		menuMask: document.querySelector(".menu_mask"),
-		toTopBtn: document.querySelector(".top"), 
 		addClass: function(ele,cls) { 
 			if (!this.hasClass(ele,cls)) ele.className += " " +cls; 
 		},
@@ -182,17 +182,32 @@
 		toTop: function(){
 			this.caseArea.scrollTop = 0;
 		}, 
+		startFun: function(){
+			this.startTime = Date.now();
+		},
+		endFun: function(){
+			var self = this;
+			this.endTime = Date.now();
+			this.isTouch = this.endTime - this.startTime >= 50 ? true : false;
+			if(this.isTouch){
+				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
+			}
+		},
 		init: function(){
 			var self = this;
-			self.menuBtn.addEventListener("click",function(){
-				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
- 			});
-			self.menuMask.addEventListener("click",function(){self.hideMenu()});
-			self.toTopBtn.addEventListener("click", function(){self.toTop();});
+			self.menuBtn.addEventListener("touchstart",function(){
+				self.startFun();
+			});
+			self.menuBtn.addEventListener("touchend",function(){
+				self.endFun();
+			});
+			self.menuMask.addEventListener("touchstart",function(){
+				self.hideMenu();
+			});
+			self.toTopBtn.addEventListener("touchend", function(){self.toTop();});
 		}
 	};
 	set.init();
-
 
 	</script>
 

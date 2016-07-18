@@ -24,13 +24,13 @@
 					</div>
 				</div>
 			</a>
-			<div class="detail_tag">
-				<a href="maga_list.html?key={{detailObj.type[0]}}&cat=classify" v-if="detailObj.type[0]"><span class="detail_tag_txt type" data-category="classify">{{detailObj.type[0]}}</span></a>
-				<a href="maga_list.html?key={{detailObj.type[1]}}&cat=classify" v-if="detailObj.type[1]"><span class="detail_tag_txt team" data-category="classify">{{detailObj.type[1]}}</span></a>
-				<a href="maga_list.html?key={{detailObj.vd[0]}}&cat=keywords" v-if="detailObj.type[0]"><span class="detail_tag_txt technology" data-category="keywords">{{detailObj.vd[0]}}</span></a>
-			</div>
 			<!-- <a href="javascript:;" class="detail_love loved"></a> -->
 			<div class="detail_cnt">
+				<div class="detail_tag">
+					<a href="maga_list.html?key={{detailObj.type[0]}}&cat=classify" v-if="detailObj.type[0]"><span class="detail_tag_txt type" data-category="classify">{{detailObj.type[0]}}</span></a>
+					<a href="maga_list.html?key={{detailObj.type[1]}}&cat=classify" v-if="detailObj.type[1]"><span class="detail_tag_txt team" data-category="classify">{{detailObj.type[1]}}</span></a>
+					<a href="maga_list.html?key={{detailObj.vd[0]}}&cat=keywords" v-if="detailObj.type[0]"><span class="detail_tag_txt technology" data-category="keywords">{{detailObj.vd[0]}}</span></a>
+				</div>
 				<h2 class="detail_tit">{{detailObj.title}}</h2>
 				<div class="detail_analysis">
 					<p v-for="para in detailObj.links" v-html="para.url"></p>
