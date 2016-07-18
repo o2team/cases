@@ -103,33 +103,6 @@
 					<a href="javascript:;" class="menu_search_btn"></a>
 				</div>
 				<ul class="menu_list">
-					<li class="menu_item">全部案例</li>
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
-					<li class="menu_item">分类名称</li>	
 					<li class="menu_item">分类名称</li>	
 					<li class="menu_item">分类名称</li>
 					<li class="menu_item">分类名称</li>	
@@ -191,7 +164,7 @@
 	    evt.preventDefault();
 	  }
 	});
-
+	// 07.18 脚本优化：延时50ms
 	var set={
 		startTime: 0,
 		endTime: 0,
@@ -243,28 +216,6 @@
 				self.hideMenu();
 			});
 		}
-		// touchTime: function(){
-		// 	var isTouch,
-		// 		startTime,
-		// 		endTime;
-		// 	startTime = Date.now();
-		// 	this.menuBtn.addEventListener("touchend",function(){
-		// 		endTime = Date.now();
-		// 	alert(endTime);
-		// 	})
-		// 	endTime - startTime >= 50 ? isTouch = true : isTouch = false ;
-		// 	alert(endTime);
-		// 	return isTouch;
-		// },
-		// init: function(){
-		// 	var self = this;
-		// 	self.menuBtn.addEventListener("touchstart",function(){
-		// 		alert(self.touchTime());
-		// 		if(self.touchtime()){
-		// 			self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
-		// 		}
- 	// 		});
-		// }
 	};
 	set.init();
 	</script>
