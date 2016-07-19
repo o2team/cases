@@ -532,11 +532,6 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	left: 50%;
 	-webkit-transform: translate(-50%,-50%);
 	transform: translate(-50%,-50%);
-	-webkit-animation: load 2s linear infinite;
-}
-@-webkit-keyframes load{
-	0%,90%{ opacity: 1;}
-	100%{ opacity: 0;}
 }
 .load .main{
 	stroke-dasharray: 855;
