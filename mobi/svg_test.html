@@ -12,7 +12,7 @@
 	    !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
 	</script>
 	<style>
-	.main{
+	.load_main{
 	  stroke-dasharray: 855;
 	  stroke-dashoffset: 855;
 	  fill: rgba(0,0,0,0);
@@ -60,9 +60,9 @@
 	</style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">    
-	<symbol viewBox="0 0 320 320" id="main">
-	    <title>main</title>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none">
+	<symbol viewBox="0 0 320 320" id="load_main">
+	    <title>load_main</title>
 	    <path stroke="#ffffff" transform="translate(-26, -47)" stroke-width="1"  fill-rule="evenodd" d="M318.065511,367 C317.771291,284.936704 296.833013,218.530485 274.62589,180.097449 C231.984105,139.986751 133.07137,139.680396 90.3603029,180.097449 C56.6429567,225.193716 50.5005061,307.220868 50.4073076,367 C50.5736085,366.57158 317.771291,365.86955 318.065511,367 Z M183.986649,175.877768 C145.522687,175.877771 107.107737,183.868534 95.2692807,202.999995 C76.740156,232.943868 80.7032002,321.209552 136.499646,336.900442 C160.362548,343.611088 200.837955,354.366358 238.70934,336.900442 C276.580724,319.434527 287.044226,225.325016 264.618269,202.999989 C246.61623,183.343357 222.450611,175.877766 183.986649,175.877768 Z"></path>
 	</symbol>
 	<symbol viewBox="0 0 320 320" id="eye_l">
@@ -96,7 +96,7 @@
 </svg>
 
 <svg width="320px" height="320px" viewBox="0 0 320 320">
-    <use xlink:href="#main" class="main"/>
+    <use xlink:href="#load_main" class="load_main"/>
     <use xlink:href="#eye_l" class="eye_l"/>
     <use xlink:href="#eye_r" class="eye_r"/>
     <use xlink:href="#line_t" class="line_t"/>
