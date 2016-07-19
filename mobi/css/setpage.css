@@ -62,6 +62,7 @@ body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
 	position: relative;
 	height: 8.53333rem;
 	overflow: hidden;
+	background: #6190e8 url(../img/thumb.png) no-repeat center;
 }
 .case_lastest .case_item_info{
 	height: 4.26667rem;
