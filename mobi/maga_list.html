@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html ng-app="index" ng-controller="iList">
+<head>
+	<meta charset="utf-8" />
+	<title>拇指期刊-案例合集</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/setpage.css">
+<script>
+    !function(x){function w(){var v,u,t,tes,s=x.document,r=s.documentElement,a=r.getBoundingClientRect().width;if(!v&&!u){var n=!!x.navigator.appVersion.match(/AppleWebKit.*Mobile.*/);v=x.devicePixelRatio;tes=x.devicePixelRatio;v=n?v:1,u=1/v}if(a>=640){r.style.fontSize="40px"}else{if(a<=320){r.style.fontSize="20px"}else{r.style.fontSize=a/320*20+"px"}}}x.addEventListener("resize",function(){w()});w()}(window);
+</script>
+</head>
+<body id="magaList">
+	<!-- S：load动画svg -->
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
+		<symbol viewBox="0 0 320 320" id="main">
+		    <title>main</title>
+		    <path stroke="#ffffff" transform="translate(-26, -47)" stroke-width="1"  fill-rule="evenodd" d="M318.065511,367 C317.771291,284.936704 296.833013,218.530485 274.62589,180.097449 C231.984105,139.986751 133.07137,139.680396 90.3603029,180.097449 C56.6429567,225.193716 50.5005061,307.220868 50.4073076,367 C50.5736085,366.57158 317.771291,365.86955 318.065511,367 Z M183.986649,175.877768 C145.522687,175.877771 107.107737,183.868534 95.2692807,202.999995 C76.740156,232.943868 80.7032002,321.209552 136.499646,336.900442 C160.362548,343.611088 200.837955,354.366358 238.70934,336.900442 C276.580724,319.434527 287.044226,225.325016 264.618269,202.999989 C246.61623,183.343357 222.450611,175.877766 183.986649,175.877768 Z"></path>
+		</symbol>
+		<symbol viewBox="0 0 320 320" id="eye_l">
+		    <title>eye</title>
+	   		<g stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(-26, -47)" fill="#ffffff">
+	            <ellipse cx="141.439739" cy="241.078054" rx="9.26751191" ry="17.3262179"></ellipse>
+	    	</g>
+		</symbol>
+		<symbol viewBox="0 0 320 320" id="eye_r">
+		    <title>eye</title>
+	   		<g stroke="none" stroke-width="1" fill-rule="evenodd" transform="translate(58, -47)" fill="#ffffff">
+	            <ellipse cx="141.439739" cy="241.078054" rx="9.26751191" ry="17.3262179"></ellipse>
+	    	</g>
+		</symbol>
+		<symbol viewBox="0 0 320 320" id="line_b">
+		    <title>line_b</title>
+	    	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		        <g stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-dasharray="187,439">
+	            	<ellipse transform="translate(161.236409, 138.102574) rotate(-147) translate(-184.236409, -184.102574) " cx="184.236409" cy="184.102574" rx="89.0276963" ry="91.2822368"></ellipse>
+		        </g>
+		    </g>
+		</symbol>
+		<symbol viewBox="0 0 320 320" id="line_t">
+		    <title>line_t</title>
+		    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+		        <g stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-dasharray="327,431">
+		            <ellipse transform="translate(161.236409, 138.102574) rotate(-147) translate(-184.236409, -184.102574) " cx="184.236409" cy="184.102574" rx="128.718267" ry="131.977933"></ellipse>
+		        </g>
+		    </g>
+	    </symbol>
+	</svg>
+	<!-- ：load动画svg -->
+	<div class="setpage">
+		<div class="case" @scroll="onScroll">
+			<div class="sresult" v-show="keywords[0]">
+				找到匹配
+				<a v-for="key in keywords" href="javascript:;">{{key}}
+					<span v-on:click="search" v-if="!(keywords.length - 1)" data-key="" data-category="all">&times;</span>
+					<span v-on:click="search" v-if="keywords.length > 1" data-key="{{(keywords.slice(0, $index).join(' ') + ' ' +  keywords.slice($index+1).join(' ')).trim()}}">&times;</span>
+				</a>的结果
+				<span>{{listAll.length}}</span>
+				条：
+			</div>
+			<ul class="case_list">
+				<li class="case_item case_lastest">
+					<a href="{{latestUrl}}">
+						<div class="case_item_info">
+							<img class="case_item_img" v-bind:src="latest.cover" alt="{{latest.prewords}}" />
+							<div class="case_lastest_tit">
+								<h2 class="tit">{{latest.prewords}}</h2>
+								<h3 class="subtit">vol.{{latest.vol}}</h3>
+							</div>
+							<div class="case_item_mark">最新</div>
+						</div>
+					</a>
+				</li>
+
+				<li v-for="item in list" class="case_item">
+					<a href="{{item.url}}">
+						<div class="case_item_info">
+							<img class="case_item_img" v-bind:src="item.image" alt="" />
+							<div class="case_item_star">
+								<span>创意指数：{{item.magaStar[0]}}</span>
+								<span>实现难度：{{item.magaStar[1]}}</span>
+							</div>
+							<div class="case_item_mark" v-show="item.links[0]">精选</div>
+						</div>
+					</a>
+					<!-- <a href="javascript:void(0);" class="case_item_love loved"></a> -->
+					<div class="case_item_cnt">
+						<h2 class="case_item_tit">{{item.title}}</h2>
+						<div class="case_item_tag">
+							<a href="javascript:;" v-if="item.type[0]" v-on:click="search"><span class="case_item_tag_txt type" data-key="{{item.type[0]}}" data-category="classify">{{item.type[0]}}</span></a>
+							<a href="javascript:;" v-if="item.type[1]" v-on:click="search"><span class="case_item_tag_txt team" data-key="{{item.type[1]}}" data-category="classify">{{item.type[1]}}</span></a>
+							<a href="javascript:;" v-if="item.vd[0]" v-on:click="search"><span class="case_item_tag_txt technology" data-key="{{item.vd[0]}}" data-category="keywords">{{item.vd[0]}}</span></a>
+							<a href="javascript:;" v-if="item.fe[2]"><span data-key="{{item.fe[2]}}" class="case_item_tag_txt technology">{{item.fe[2]}}</span></a>
+						</div>
+						<p class="case_item_analysis" v-show="item.links[0]">
+							{{item.magaLinkShort}}
+						</p>
+						<a href="{{item.magaDetail}}" class="case_item_more" data-lid="{{item._id}}" v-show="item.links[0]">查看完整分析</a>
+					</div>
+				</li>
+			</ul>
+			
+			<!-- S：loading动画 -->
+			<div class="load case_load" v-show="list.length < listAll.length">
+				<svg width="50px" height="50px" viewBox="0 0 50 50" class="load_main">
+					<use xlink:href="#main" class="main"/>
+					<use xlink:href="#eye_l" class="eye_l"/>
+					<use xlink:href="#eye_r" class="eye_r"/>
+					<use xlink:href="#line_t" class="line_t"/>
+					<use xlink:href="#line_b" class="line_b"/>
+				</svg>
+			</div>
+			<!-- E：loading动画 -->
+		</div>
+		<div class="menu">
+			<div class="menu_main">
+				<div class="menu_logo"></div>
+				<div class="menu_search">
+					<input class="menu_search_input" type="text" placeholder="search" v-model="keyword" v-on:keyup.enter="search" />
+					<a href="javascript:;" class="menu_search_btn" v-on:click="search"></a>
+				</div>
+				<ul class="menu_list">
+					<li class="menu_item" data-key="" data-category="all" v-on:click="search">全部案例</li>
+					<li class="menu_item" v-for="keyword in catObj" v-on:click="search" data-key="{{keyword.name}}" data-category="{{keyword.cat}}">{{keyword.name}}</li>
+					<li class="menu_item cur">关于我们</li>
+				</ul>
+			</div>
+			<div class="menu_mask" style="display:none"></div>
+		</div>
+		<a href="javascript:;" class="btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</a>
+		<a href="javascript:;" class="top"></a>
+	</div>
+	<!-- S：闪屏页 -->
+	<div class="load loading" v-show="!item.links[0]">
+		<svg width="80px" height="80px" viewBox="0 0 80 80" class="load_main">
+			<use xlink:href="#main" class="main"/>
+			<use xlink:href="#eye_l" class="eye_l"/>
+			<use xlink:href="#eye_r" class="eye_r"/>
+			<use xlink:href="#line_t" class="line_t"/>
+			<use xlink:href="#line_b" class="line_b"/>
+		</svg>
+	</div>
+	<!-- E：闪屏页 -->
+	<script src="js/volMaga.js"></script> 
+	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+	<script type="text/javascript">
+
+	var overscroll = function(el) {
+	  el.addEventListener('touchstart', function() {
+	    var top = el.scrollTop
+	      , totalScroll = el.scrollHeight
+	      , currentScroll = top + el.offsetHeight;
+	    //If we're at the top or the bottom of the containers
+	    //scroll, push up or down one pixel.
+	    //
+	    //this prevents the scroll from "passing through" to
+	    //the body.
+	    if(top === 0) {
+	      el.scrollTop = 1;
+	    } else if(currentScroll === totalScroll) {
+	      el.scrollTop = top - 1;
+	    }
+	  });
+	  el.addEventListener('touchmove', function(evt) {
+	    //if the content is actually scrollable, i.e. the content is long enough
+	    //that scrolling can occur
+	    if(el.offsetHeight < el.scrollHeight)
+	      evt._isScroller = true;
+	  });
+	}
+	overscroll(document.querySelector('.case'));
+	overscroll(document.querySelector('.menu_main'));
+	document.body.addEventListener('touchmove', function(evt) {
+	  //In this case, the default behavior is scrolling the body, which
+	  //would result in an overflow.  Since we don't want that, we preventDefault.
+	  if(!evt._isScroller) {
+	    evt.preventDefault();
+	  }
+	});
+
+	// !function(){
+	// 	var menuBtn = $(".btn"),
+	// 		setPage = $(".setpage"),
+	// 		caseArea = $(".case"),
+	// 		menuMask = $(".menu_mask");
+	// 	var menuShow = function(){
+	// 		setPage.addClass("menu_show");
+	// 		menuMask.show();
+	// 	}
+	// 	var menuHide = function(){
+	// 		setPage.removeClass("menu_show");
+	// 		menuMask.hide();
+	// 	}
+	// 	menuBtn.on("tap",function(){
+	// 		setPage.hasClass("menu_show")?menuHide():menuShow();
+	//  	})
+	//  	menuMask.on("tap",menuHide);
+	// }();
+	var set={
+		startTime: 0,
+		endTime: 0,
+		isTouch: false,
+		menuBtn: document.querySelector(".btn"),
+		setPage: document.querySelector(".setpage"),
+		caseArea: document.querySelector(".case"),
+		menuMask: document.querySelector(".menu_mask"),
+		addClass: function(ele,cls) { 
+			if (!this.hasClass(ele,cls)) ele.className += " " +cls; 
+		},
+		removeClass: function(ele,cls) { 
+			if (this.hasClass(ele,cls)) { 
+				var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)'); 
+				ele.className=ele.className.replace(reg,''); 
+			} 
+		},
+		hasClass: function(ele,cls) { 
+			return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)')); 
+		},
+		hideMenu: function(){
+ 			this.removeClass(this.setPage,"menu_show");
+ 			this.menuMask.style.display = "none";
+		},
+		showMenu: function(){
+			this.addClass(this.setPage,"menu_show");
+ 			this.menuMask.style.display = "block";
+		},
+		toTop: function(){
+			this.caseArea.scrollTop = 0;
+		}, 
+		startFun: function(){
+			this.startTime = Date.now();
+		},
+		endFun: function(){
+			var self = this;
+			this.endTime = Date.now();
+			this.isTouch = this.endTime - this.startTime >= 50 ? true : false;
+			if(this.isTouch){
+				self.hasClass(self.setPage,"menu_show")?self.hideMenu():self.showMenu();
+			}
+		},
+		init: function(){
+			var self = this;
+			self.menuBtn.addEventListener("touchstart",function(){
+				self.startFun();
+			});
+			self.menuBtn.addEventListener("touchend",function(){
+				self.endFun();
+			});
+			self.menuMask.addEventListener("touchstart",function(){
+				self.hideMenu();
+			});
+			self.toTopBtn.addEventListener("touchend", function(){self.toTop();});
+		}
+	};
+	set.init();
+
+	</script>
+
+	<script src="js/vue.js"></script> 
+	<script src="js/build/list.js"></script>
+	<script src="https://jdc.jd.com/jdccase/jsonp/project?category=app&callback=json2"></script>
+	<script>
+		/*统计*/
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</body>
+</html>

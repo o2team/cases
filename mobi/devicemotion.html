@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="cases" ng-controller="casesList">
+<head>
+	<meta charset="utf-8" />
+	<title>H5 精品案例赏析</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+</head>
+<body>
+
+<div id="test" style="font-size:14px;">啊啊啊啊啊啊啊啊啊啊啊啊 </div>
+
+<script>
+function shaking(){
+	if(window.DeviceMotionEvent) {
+		var speed = 10, //定义一个数值
+			x = y = z = lastX = lastY = lastZ = 0, //重置所有数值
+			modeString = '', 
+			modified = 0;
+
+		window.addEventListener('devicemotion', function(){
+			if(!modified){
+				var acceleration =event.accelerationIncludingGravity;//将传感值赋给acceleration
+				/*我叫雷锋 我为自己代言。*/
+				x = acceleration.x;
+				y = acceleration.y;
+				if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed ) {
+					modified = 1;
+					// document.body.appendChild(document.createTextNode('1'));
+					setTimeout(function(){
+						modified = 0;
+					}, 1000);
+				}
+				lastX = x;
+				lastY = y;
+				lastZ = z;
+			}
+		});
+	}
+}
+
+shaking();
+</script>
+</body>
+</html>

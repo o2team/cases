@@ -1,0 +1,12 @@
+/*gb*/
+* { -webkit-tap-highlight-color: transparent; outline: 0; margin:0; padding:0; vertical-align:baseline;}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; vertical-align: baseline; font-weight:normal;}
+img { border: 0 none; vertical-align: top;}
+i, em { font-style: normal;}
+ol, ul { list-style: none;}
+input, select, button, h1, h2, h3, h4, h5, h6 { font-size: 100%; font-family: inherit;}
+table { border-collapse: collapse; border-spacing: 0;}
+a { text-decoration: none; color: #666;}
+body{max-width:700px;min-width:320px;height:100%;margin:0 auto;font-size:14px;
+  font-family: Helvetica, STHeiti STXihei, Microsoft JhengHei, Microsoft YaHei, Arial; line-height: 1.5; color: #666;background:#f6f6f6;}
+/*loading*/

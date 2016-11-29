@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html ng-app="index" ng-controller="iList">
+<head>
+	<meta charset="utf-8" />
+	<title>H5 精品案例赏析</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" href="css/mail.css">
+</head>
+<body>
+	<article class="wrap">
+		<header class="header">
+			<h1>H5精品案例赏析<i></i></h1>
+			<h2>共{{total}}期</h2>
+		</header>
+
+		<section class="index_sec" ng-repeat="item in volList">
+			<h3 class="i_title"><a href="mail.html?vol={{item.vol}}">第{{item.vol}}期<span class="i_title_date">{{item.date}}</span></a></h3>
+			<ol class="i_list">
+				<li ng-repeat="case in item.titles"><a href="mail.html?vol={{item.vol}}#{{case.id}}">{{item.vol}}.{{case.num}} <span ng-bind-html="case.title"></span></a></li>
+			</ol>
+		</section>
+
+		<!-- <section class="mail_sec" ng-repeat="case in caselist">
+			<h3 class="title"><a href="{{case.url}}">{{case.title}}</a></h3>
+			<a class="img_link" href="{{case.url}}"><span class="type_tag type_tag_{{case.type[1].id}}">{{case.type[1].name}}</span><img class="img" src="img/demo.png" lazy-src="{{case.image}}" /></a>
+			<div class="aside_wrap">
+				<ul class="attr_list">
+					<li class="tags"><strong>标签：</strong><span ng-repeat="tags in case.vd">{{tags}}</span></li>	
+					<li><strong>需求背景：</strong>{{case.type[2].name}}</li>	
+				</ul>
+				<ul class="rate_list">
+					<li><strong>创意指数：</strong><span class="rate_star"><i>{{case.fe[0]}}</i></span></li>	
+					<li><strong>实现难度：</strong><span class="rate_star"><i>{{case.fe[1]}}</i></span></li>
+				</ul>
+			</div>
+
+			<div class="cont">
+				<h4 class="subtitle">创意分析</h4>
+				<p ng-repeat="para in case.desc" ng-bind-html="para"></p>
+			</div>
+			<div class="cont">
+				<h4 class="subtitle">技术分析</h4>
+				<p ng-repeat="para in case.links" ng-bind-html="para.url"></p>
+			</div>
+		</section> -->
+
+		<!-- <footer class="footer">
+			<div class="wanted">
+				<div class="wanted_words">
+					<p><strong>HI! </strong>我们是JDC的H5品鉴小分队</p>
+					<p class="aside">爷～赏点钱呗～</p>
+				</div>
+				<div class="wanted_qrcode">
+					<img src="img/wanted_qrcode_200_temp.png" alt="O2team">
+				</div>
+			</div>		
+		</footer> -->
+
+		<footer class="footer">
+			<div class="wanted">
+				<div class="wanted_words">
+					<p><strong>HI! </strong>我们是凹凸实验室 <span>H5品鉴小分队</span></p>
+					<p class="aside">爷～谈钱俗～来我们组织添添人气呗～</p>
+				</div>
+				<div class="wanted_qrcode">
+					<img src="img/o2team_qrcode_temp.png" alt="O2team">
+				</div>
+			</div>		
+		</footer>
+	</article>
+	<div class="loading">
+		<div><i></i><i></i><i></i></div>
+	</div>
+	<script src="js/angular-1.4.7.min.js"></script>
+	<script src="js/angular-route-1.4.7.min.js"></script>
+	<script src="js/share1.0.js"></script>
+	<script src="js/index_ctrl.js"></script>
+	<script src="js/vol.js"></script>
+	<script>
+	/*分享*/
+		wxShare('img/share.png',100,100,location.href,'H5 精品案例赏析-往期合集','凹凸实验室－H5品鉴小分队都给您存这儿了');
+	/*统计*/
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?d5b80c453a4ec5015928c81ab29e8a02";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+</body>
+</html>
