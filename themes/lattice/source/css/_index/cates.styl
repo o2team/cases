@@ -1,0 +1,57 @@
+.cates
+    overflow: hidden
+    font-size: 16px
+    margin-bottom: 15px
+    overflow: hidden
+    background: #fff
+    &::-webkit-scrollbar
+        display: none
+    
+
+    ul
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        height: 100%
+        font-size: 0
+        position: relative
+        -webkit-overflow-scrolling: touch
+        overflow-x: scroll
+        &::-webkit-scrollbar
+            display: none
+    li
+        // display: inline-block
+        text-align: center
+        white-space: nowrap
+        flex-basis: (100%/9)
+        flex-grow: 1
+        flex-basis: 0
+        padding: 0 10px
+        font-size: 16px
+        height: 30px
+        line-height:30px;
+        &.active
+            background: bg-primary
+            font-weight: 400
+            a
+                color: #fff
+                cursor: default
+                &:hover
+                    color: #fff
+
+    // +mobile()
+    //     padding: 0 10px
+    //     h3
+    //         display: none
+    //     ul
+    //         float: none
+    //     li
+    //         margin-right: 15px
+    //         &.active
+    //             background: none
+    //             a
+    //                 color: $color-theme
+    //     font-size: 14px
+    //     box-shadow: 0 1px 2px rgba(0,0,0,0.1)
+
+        

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/08/24/2016-8-24-webvr/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈 WebVR</title>
+        <pubTime>2016-08-24T12:00:00.000Z</pubTime>
+        
+        <tag>webvr</tag>
+         
+        <tag>vr</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/08/first-mobile-rebuild/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的第一次移动端页面制作 — 总结与思考</title>
+        <pubTime>2016-11-08T08:22:23.000Z</pubTime>
+        
+        <tag>html</tag>
+         
+        <tag>css</tag>
+         
+        <tag>mobile rebuild</tag>
+         
+         
+           
+             
+              <breadCrumb title="项目总结" url="http://aotu.io/cates/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/10/weui-wxss/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>WeUI for 小程序 - 为微信小程序量身设计</title>
+        <pubTime>2016-11-10T09:21:43.000Z</pubTime>
+        
+        <tag>weui</tag>
+         
+        <tag>wsxx</tag>
+         
+        <tag>小程序</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/14/booklist-for-every-programmer/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>漫漫编程路上必读的7本书</title>
+        <pubTime>2016-11-14T08:21:43.000Z</pubTime>
+        
+        <tag>读书清单</tag>
+         
+        <tag>程序开发</tag>
+         
+         
+           
+             
+              <breadCrumb title="资源合集" url="http://aotu.io/cates/%E8%B5%84%E6%BA%90%E5%90%88%E9%9B%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/14/webpack-tips/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>Webpack 实用配置技巧</title>
+        <pubTime>2016-11-14T08:16:31.000Z</pubTime>
+        
+        <tag>Webpack</tag>
+         
+        <tag>模块打包工具</tag>
+         
+        <tag>Webpack 配置技巧</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/17/regexp-theory/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>正则表达式理论篇</title>
+        <pubTime>2016-11-17T01:29:38.000Z</pubTime>
+        
+        <tag>正则表达式</tag>
+         
+        <tag>String方法</tag>
+         
+        <tag>RegExp方法</tag>
+         
+        <tag>回溯</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/21/liteo2-app-tarots/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>「塔罗牌」 - 轻氧 V1.4 尝鲜体验邀请</title>
+        <pubTime>2016-11-21T05:21:43.000Z</pubTime>
+        
+        <tag>liteo2</tag>
+         
+        <tag>app</tag>
+         
+        <tag>ios</tag>
+         
+         
+           
+             
+              <breadCrumb title="移动开发" url="http://aotu.io/cates/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/22/figlet/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>FIGlet初识</title>
+        <pubTime>2016-11-22T09:33:00.000Z</pubTime>
+        
+        <tag>FIGlet</tag>
+         
+        <tag>ASCII Decorator</tag>
+         
+        <tag>ASCII Art</tag>
+         
+        <tag>字符图形</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/15/xcel/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>XCel 项目总结 - Electron 与 Vue 的性能优化</title>
+        <pubTime>2016-11-15T15:23:23.000Z</pubTime>
+        
+        <tag>node</tag>
+         
+        <tag>excel</tag>
+         
+        <tag>data-clening</tag>
+         
+        <tag>electron</tag>
+         
+        <tag>js-xlsx</tag>
+         
+        <tag>vue</tag>
+         
+         
+           
+             
+              <breadCrumb title="项目总结" url="http://aotu.io/cates/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/09/liteo2-app/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>轻氧 - 2016年末最新款互联网专业资讯 APP</title>
+        <pubTime>2016-11-09T06:21:43.000Z</pubTime>
+        
+        <tag>liteo2</tag>
+         
+        <tag>app</tag>
+         
+        <tag>ios</tag>
+         
+         
+           
+             
+              <breadCrumb title="移动开发" url="http://aotu.io/cates/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/22/SVG_Web_Animation/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>三看 SVG Web 动效</title>
+        <pubTime>2016-11-22T09:33:00.000Z</pubTime>
+        
+        <tag>SVG</tag>
+         
+        <tag>动效</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/11/28/css3-animation-properties/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>css3 animation 属性众妙</title>
+        <pubTime>2016-11-28T02:00:00.000Z</pubTime>
+        
+        <tag>动画</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://aotu.io/notes/2016/08/24/2016-8-24-css-3d-panorama/</loc>
+    <lastmod>2016-11-28T19:26:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>CSS 3D Panorama - 淘宝造物节技术剖析</title>
+        <pubTime>2016-08-24T10:58:35.000Z</pubTime>
+        
+        <tag>CSS</tag>
+         
+        <tag>panorama</tag>
+         
+        <tag>3d</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web开发" url="http://aotu.io/cates/Web%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
+</urlset>

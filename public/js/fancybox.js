@@ -1,0 +1,1 @@
+!function(t){t(".post-content img").each(function(){var a=t(this),r=a.attr("title"),e=a.parent("a");e.size()>0||(e=a.wrap('<a href="'+this.getAttribute("src")+'"></a>').parent("a"),e.addClass("fancybox"),e.attr("rel","group"),r&&e.attr("title",r))}),t(".fancybox").fancybox()}(jQuery);

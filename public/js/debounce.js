@@ -1,0 +1,1 @@
+function debounce(n,t,u){var e;return t=t||100,function(){var i=this,o=arguments,a=function(){e=null,u||n.apply(i,o)},c=u&&!e;clearTimeout(e),e=setTimeout(a,t),c&&n.apply(i,o)}}
