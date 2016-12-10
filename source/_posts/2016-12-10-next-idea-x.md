@@ -1,4 +1,4 @@
-title: next idea x
+title: Next idea x 故宫
 subtitle: 一个跳骑马舞的朱帝意外的在夏天，把H5这种网站形式给炒得更热了。
 cover: next idea x.png
 tags:
