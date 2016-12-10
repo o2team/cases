@@ -1,7 +1,9 @@
 title: {{ title }}
-subtitle: {{ subtitle }}
-cover: git-flow.jpg
+subtitle: "用来一句话描述文章"
+cover: {{ title }}
 date: {{ date }}
+publishDate: 2016-01-25 08:00:00
+link: 
 tags:
   - Git
   - Fork
