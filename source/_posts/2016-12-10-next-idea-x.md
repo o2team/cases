@@ -1,0 +1,15 @@
+title: next idea x
+subtitle: 一个跳骑马舞的朱帝意外的在夏天，把H5这种网站形式给炒得更热了。
+cover: next idea x.png
+tags:
+  - Git
+  - Fork
+author:
+  nick: treedom
+  github_name: treedom
+date: 2016-12-10 19:32:49
+publishDate: 2016-07-01 16:00:00
+link: http://nigg.treedom.cn/
+---
+
+<!-- more -->
