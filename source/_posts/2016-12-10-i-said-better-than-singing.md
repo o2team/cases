@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯TGI团队
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 13:26:07
 publishDate: 2016-10-26 08:00:00
 link: http://codol.qq.com/act/a20161026hh/index7.htm

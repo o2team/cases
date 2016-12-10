@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯公益
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 13:40:57
 publishDate: 2016-09-09 08:00:00
 link: http://game.qq.com/gongyi/gs/index.htm

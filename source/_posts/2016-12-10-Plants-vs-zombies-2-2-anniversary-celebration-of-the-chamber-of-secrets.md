@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯游戏
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 00:56:00
 publishDate: 2015-11-04 08:00:00
 link: http://shouji.sogou.com/sapp/mishi/

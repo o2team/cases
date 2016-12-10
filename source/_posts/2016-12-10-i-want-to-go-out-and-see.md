@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 京东
-  github_name: o2team
+  github_name: JD
 date: 2016-12-10 16:59:13
 publishDate: 2015-11-09 08:00:00
 link: http://wqs.jd.com/promote/2015/planet/index.html

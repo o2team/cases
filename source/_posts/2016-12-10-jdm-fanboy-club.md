@@ -5,8 +5,8 @@ tags:
   - Git
   - Fork
 author:
-  nick: 雷克塞斯
-  github_name: o2team
+  nick: 雷克萨斯
+  github_name: Lexus
 date: 2016-12-10 13:36:29
 publishDate: 2016-08-22 08:00:00
 link: http://www.wmy-ad.com/lexus/20160822/

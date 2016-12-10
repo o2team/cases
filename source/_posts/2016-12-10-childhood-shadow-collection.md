@@ -5,8 +5,8 @@ tags:
   - Git
   - Fork
 author:
-  nick: 凹凸实验室
-  github_name: o2team
+  nick: 滴滴出行
+  github_name: didi
 date: 2016-12-10 13:36:10
 publishDate: 2016-03-10 08:00:00
 link: http://www.wmy-ad.com/didi/20160905/index.html

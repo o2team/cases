@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 大众点评
-  github_name: o2team
+  github_name: dianping
 date: 2016-12-10 17:05:47
 publishDate: 2015-11-09 08:00:00
 link: http://evt.dianping.com/market/2015073117/index.html

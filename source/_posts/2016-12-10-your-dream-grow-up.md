@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 梅赛德斯-奔驰
-  github_name: o2team
+  github_name: Mercedes-Benz
 date: 2016-12-10 13:36:58
 publishDate: 2016-06-01 08:00:00
 link: http://special.mercedes-benz.com.cn/dream_car/m3/index.html

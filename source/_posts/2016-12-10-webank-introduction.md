@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 13:36:58
 publishDate: 2015-10-26 08:00:00
 link: http://www.webank.com/mobile/index.html

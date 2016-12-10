@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 黄山悦榕庄
-  github_name: o2team
+  github_name: banyantreehuangshanevents
 date: 2016-12-10 13:36:58
 publishDate: 2015-10-26 08:00:00
 link: http://www.banyantreehuangshanevents.com/index.html

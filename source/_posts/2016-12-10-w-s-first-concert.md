@@ -5,8 +5,8 @@ tags:
   - Git
   - Fork
 author:
-  nick: 凹凸实验室
-  github_name: o2team
+  nick: W上海
+  github_name: wearewer
 date: 2016-12-10 13:38:31
 publishDate: 2016-10-08 08:00:00
 link: http://wdsv.wearewer.com/index.php

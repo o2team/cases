@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 百度钱包
-  github_name: o2team
+  github_name: Baidu
 date: 2016-12-10 13:35:42
 publishDate: 2016-07-20 08:00:00
 link: http://www.wmy-ad.com/baidu/20160720/

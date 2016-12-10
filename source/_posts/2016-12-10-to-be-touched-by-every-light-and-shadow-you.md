@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯影业
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 13:42:35
 publishDate: 2016-09-17 08:00:00
 link: http://game.qq.com/act/a20160917fbh/index.html

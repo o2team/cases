@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 百度理财
-  github_name: o2team
+  github_name: Baidu
 date: 2016-12-10 13:32:44
 publishDate: 2016-11-08 08:00:00
 link: http://www.wmy-ad.com/baidu/20161108/index.html

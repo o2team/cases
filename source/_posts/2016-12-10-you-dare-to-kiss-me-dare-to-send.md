@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 京东
-  github_name: o2team
+  github_name: JD
 date: 2016-12-10 17:11:49
 publishDate: 2015-11-23 08:00:00
 link: http://jdc.jd.com/fd/promote/2015/kiss/index.html

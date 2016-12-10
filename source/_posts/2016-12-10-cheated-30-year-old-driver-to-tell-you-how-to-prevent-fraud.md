@@ -5,8 +5,8 @@ tags:
   - Git
   - Fork
 author:
-  nick: 凹凸实验室
-  github_name: o2team
+  nick: 腾讯
+  github_name: Tencent
 date: 2016-12-10 13:37:38
 publishDate: 2016-09-05 08:00:00
 link: http://www.wmy-ad.com/tencent/20160910/index.html

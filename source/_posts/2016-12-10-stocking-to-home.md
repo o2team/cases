@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 京东
-  github_name: o2team
+  github_name: JD
 date: 2016-12-10 17:48:37
 publishDate: 2016-04-26 16:00:00
 link: http://jdc.jd.com/fd/promote/201601/djnianhuo/

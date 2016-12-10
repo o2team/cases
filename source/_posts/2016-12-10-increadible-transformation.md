@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 锤子科技
-  github_name: o2team
+  github_name: Smartisan
 date: 2016-12-10 13:40:04
 publishDate: 2016-10-01 08:00:00
 link: http://www.smartisan.com/marketing/franky/

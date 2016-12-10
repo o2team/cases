@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 别克威朗
-  github_name: o2team
+  github_name: VERANO
 date: 2016-12-10 17:24:36
 publishDate: 2015-12-28 16:00:00
 link: http://m.buick.com.cn/act/veranogs/dreamcreator/

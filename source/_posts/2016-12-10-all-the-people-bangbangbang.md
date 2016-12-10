@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 腾讯游戏
-  github_name: o2team
+  github_name: Tencent
 date: 2016-12-10 17:28:01
 publishDate: 2016-01-25 16:00:00
 link: http://moba.qq.com/act/a20150907video/

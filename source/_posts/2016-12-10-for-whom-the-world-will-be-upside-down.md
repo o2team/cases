@@ -6,7 +6,7 @@ tags:
   - Fork
 author:
   nick: 天猫
-  github_name: o2team
+  github_name: Tmall
 date: 2016-11-01 13:25:18
 publishDate: 2016-03-10 08:00:00
 link: http://tmall.pp.cc/20151111/nations
