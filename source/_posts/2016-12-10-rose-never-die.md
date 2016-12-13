@@ -1,6 +1,7 @@
 title: 罗斯·绝不凋零
 subtitle: 堪比电视广告的流畅转场、堪比电视广告的旁白、堪比电视广告的高契合配乐，看完之后只有一个字：酣畅淋漓。
 cover: rose never die.png
+categories: 技术型
 tags:
   - Git
   - Fork

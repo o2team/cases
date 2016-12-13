@@ -1,6 +1,7 @@
 title: 献给夏天最闷的人
 subtitle: 2015年雪碧“释放夏日100招”传播活动H5页面。以小电影的形式展开，颇具新意。影片着重故事内容的呈现，不同于一般充斥着商业元素的广告，使观众更容易参与其中。
 cover: dedicated to the most boring summer people.png
+categories: 技术型
 tags:
   - Git
   - Fork

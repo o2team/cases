@@ -1,6 +1,7 @@
 title: 2015年双11来了！世界将为谁颠倒？
 subtitle: 为了迎接即将到来的双十一大促，主打今年最热的海外购主题的天猫配合推出该H5宣传预热双十一。新颖的翻页形式，配上“喵喵喵”的洗脑歌，衔接无缝的动画效果简直让人欲罢不能。
 cover: for whom the world will be upside down.jpg
+categories: 技术型
 tags:
   - Git
   - Fork

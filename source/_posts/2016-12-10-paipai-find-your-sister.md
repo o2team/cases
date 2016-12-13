@@ -1,6 +1,7 @@
 title: 拍拍找你妹
 subtitle: 拍拍双十一大促的运营类小游戏——找你妹。
 cover: paipai find your sister.png
+categories: 游戏型
 tags:
   - Git
   - Fork

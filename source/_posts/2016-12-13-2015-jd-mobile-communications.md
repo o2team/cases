@@ -1,7 +1,7 @@
 title: 2015京东手机通讯招募
-subtitle: 1. 使用了很多css3 复合循环动画。 让页面动画更富层次感
-2. 类native app 的页面切换效果。
+subtitle: 1. 使用了很多css3 复合循环动画。 让页面动画更富层次感 2. 类native app 的页面切换效果。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384617616.jpg
+categories: 展示型
 tags:
   - 招聘
 author:

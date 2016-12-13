@@ -1,6 +1,7 @@
 title: 双十一爆款上架了！
 subtitle: 就喜欢这种无节操的作品，越不上档次，越觉得真诚, 越狗血，越像是在真打折！
 cover: double eleven explosion on the shelves.png
+categories: 视频型
 tags:
   - Git
   - Fork

@@ -1,6 +1,7 @@
 title: 我想出去看看啊
 subtitle: JDC出品粘土风H5，深层剖析奉上独家花絮入口～以出走探索宇宙的“公路片”情节模式牵引出“惊喜一直在身边”的微信京东购物，干了这碗鸡汤！
 cover: i want to go out and see.png
+categories: 其他
 tags:
   - Git
   - Fork
