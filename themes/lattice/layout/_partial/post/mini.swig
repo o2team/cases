@@ -1,7 +1,13 @@
 <article class="mod-post" itemscope itemtype="http://schema.org/Article">
     <a href="{{ url_for(post.link) }}" target="__blank" itemprop="url" title="{{ post.title }}">
         <div class="mod-post-cover" itemscope itemtype="http://schema.org/ImageObject">
-            <img src="{{ site.data.html5cases.case_cover_prefix+post.cover }}" alt="{{ post.title }}" itemprop="contentUrl"/>
+            {# <img src="{{ \/^http(s)?\/.test(post.cover) ? post.cover : site.data.html5cases.case_cover_prefix+post.cover }}" alt="{{ post.title }}" itemprop="contentUrl"/> #}
+            {# {% if /^http(s)?/.test(post.cover) %} #}
+            {% if post.cover.indexOf('//') === 0 || post.cover.startsWith('http') || post.cover.startsWidth('https') %}
+            <img src="{{post.cover}}">
+            {% else %}
+            <img src="{{site.data.html5cases.case_cover_prefix+post.cover}}" alt="">
+            {% endif %}
             <div class="mod-post-qrcode">
             	<img src="http://qr.liantu.com/api.php?text={{post.link}}" alt="">
             </div>

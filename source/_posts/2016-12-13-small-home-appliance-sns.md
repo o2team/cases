@@ -1,0 +1,13 @@
+title: 小家电SNS
+subtitle: 使用promise异步优雅控制牌子掉落，混淆，翻起效果
+cover: //jdc.jd.com/h5/imagespool/1480559216250.png
+tags:
+  - 游戏
+author:
+  nick: 京东
+  github_name: JDC
+date: 2016-12-13 08:00:00
+publishDate: 2016-11-30T16:00:00.000Z
+link: http://jdc.jd.com/fd/h5/1609/xiaojiadian/index.html
+
+---
