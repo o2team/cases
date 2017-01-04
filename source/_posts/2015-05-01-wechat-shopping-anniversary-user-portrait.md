@@ -1,6 +1,6 @@
 title: 微信购物一周年用户画像
 subtitle: 
-cover: http://jdc.jd.com/h5/imagespool/1448608328867.png
+cover: wechat shopping anniversary user portrait.jpg
 tags:
   - 其他
 author:

@@ -1,6 +1,6 @@
 title: 拍拍小店全新上线
 subtitle: 拍拍小店全新上线，利用CSS3动画的补间动画
-cover: paipai shop new.png
+cover: paipai shop new.jpg
 categories: 展示型
 tags:
   - Git

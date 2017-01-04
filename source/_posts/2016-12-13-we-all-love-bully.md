@@ -1,6 +1,6 @@
 title: 我们都爱小霸王
 subtitle: 
-cover: //jdc.jd.com/h5/imagespool/1476793513166.png
+cover: http://jdc.jd.com/h5/imagespool/1476793513166.png
 tags:
   - 宣传
 author:

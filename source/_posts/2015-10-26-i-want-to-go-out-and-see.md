@@ -1,6 +1,6 @@
 title: 我想出去看看啊
 subtitle: 
-cover: http://jdc.jd.com/h5/imagespool/1445927477614.png
+cover: i want to go out and see.jpg
 tags:
   - 宣传
 author:

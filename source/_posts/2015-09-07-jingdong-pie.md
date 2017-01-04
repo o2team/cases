@@ -1,6 +1,6 @@
 title: 京东派
 subtitle: 页面剧情通过向三个不同角色（同学、兄弟、情侣）借钱前后反差效果，最后主推京东白条。
-cover: http://jdc.jd.com/h5/imagespool/1441610037814.png
+cover: jingdong pie.jpg
 tags:
   - 游戏
 author:

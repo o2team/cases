@@ -1,6 +1,6 @@
 title: 年货送到家
 subtitle: 还有两个小时就要到家了，你准备好了吗？
-cover: stocking to home.png
+cover: stocking to home.jpg
 categories: 场景型
 tags:
   - Git

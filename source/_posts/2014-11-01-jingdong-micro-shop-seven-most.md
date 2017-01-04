@@ -1,6 +1,6 @@
 title: 京东微店七宗最
 subtitle: 绝对酷炫吊炸天的背景效果，体验就知道！
-cover: http://jdc.jd.com/h5/imagespool/1448611730405.png
+cover: jingdong micro shop seven most.jpg
 tags:
   - 其他
 author:

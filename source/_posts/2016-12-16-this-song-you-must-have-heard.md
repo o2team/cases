@@ -1,6 +1,6 @@
 title: 这首歌，你绝对听过
 subtitle: 旋律恒永久，魔性永流传
-cover: 'this song you must have heard.jpg'
+cover: this song you must have heard.jpg
 categories: 视频型
 tags:
   - Git

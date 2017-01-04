@@ -1,6 +1,6 @@
 title: 2015感恩节
 subtitle: 
-cover: //jdc.jd.com/h5/imagespool/1476792594586.png
+cover: 2015 thanksgiving day.jpg
 tags:
   - 宣传
 author:

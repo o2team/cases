@@ -1,6 +1,6 @@
 title: 2016年京东集团海外招聘
 subtitle: 
-cover: http://jdc.jd.com/h5/imagespool/1448609278887.png
+cover: jingdong group 2016.jpg
 tags:
   - 招聘
 author:

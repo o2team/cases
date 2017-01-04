@@ -1,6 +1,6 @@
 title: each shoes has a story
 subtitle: 让球鞋控与耐克死忠粉双眼放光的品牌宣传页，新颖的阅读模式、炫目的3D效果，快去找个阴暗的小角落看上半小时，一个字都不要错过。
-cover: each shoes has a story.png
+cover: each shoes has a story.jpg
 categories: 技术型
 tags:
   - Git

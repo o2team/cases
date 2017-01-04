@@ -1,6 +1,6 @@
 title: 我的色彩，你的青春
 subtitle: New Balance 574 产品介绍页，扁平化的页面设计，配以大色块的单色，页面简洁，使用户可以将注意力更好地集中到作品所要表达的内容上。
-cover: my color your youth.png
+cover: my color your youth.jpg
 categories: 场景型
 tags:
   - Git

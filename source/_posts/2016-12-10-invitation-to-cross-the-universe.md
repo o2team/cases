@@ -1,6 +1,6 @@
 title: 穿越宇宙的邀请函
 subtitle: 整个10月行业最大的惊喜，可以说，就是这支穿越宇宙的邀请函了。虽然作品在上线后接连遭到封杀、封服的挫折。但作品在后期传播的推动下还是创造了夸张的刷屏效应，记得上次看到这样的现象还是在3个月前，而如此现象级的作品确实也不是你每个月都能见到的了！
-cover: invitation to cross the universe.png
+cover: invitation to cross the universe.jpg
 categories: 技术型
 tags:
   - Git

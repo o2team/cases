@@ -1,6 +1,6 @@
 title: 一份有温度的狗粮
 subtitle: 要说游戏打五折这不科学，必定手游都是免费安装的，但是腾讯的游戏玩家看完这支H5就要注意了！道具好多都要打折了！
-cover: a temperature of dog food.png
+cover: a temperature of dog food.jpg
 categories: 场景型
 tags:
   - Git

@@ -1,6 +1,6 @@
 title: 唤起这一刻
 subtitle: 黄山悦榕庄的品牌宣传页，水墨画风格的页面设计，意图“唤起这一刻”人们对那一份宁静、自在的向往。
-cover: arouse this moment.png
+cover: arouse this moment.jpg
 categories: 展示型
 tags:
   - Git

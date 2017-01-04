@@ -1,6 +1,6 @@
 title: 麦芒，爱书人的圈子
 subtitle: 麦芒产品的推广页面
-cover: http://jdc.jd.com/h5/imagespool/1448852270689.png
+cover: head booklovers circle.jpg
 tags:
   - 宣传
   - 移动案例

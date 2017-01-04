@@ -1,6 +1,6 @@
 title: 拍拍二手-欢迎页
 subtitle: 
-cover: http://jdc.jd.com/h5/imagespool/1449217214723.png
+cover: pat second hand welcome page.jpg
 tags:
   - 宣传
   - 移动案例
