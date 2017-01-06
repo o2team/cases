@@ -1,6 +1,7 @@
 title: 拷问拍拍618机密
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1445239603298.png
+categories: 游戏型
 tags:
   - 游戏
 author:

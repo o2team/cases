@@ -1,6 +1,7 @@
 title: 价格竞猜
 subtitle: 在单页面中实现多场景切换。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384756413.jpg
+categories: 游戏型
 tags:
   - 其他
 author:

@@ -1,6 +1,7 @@
 title: 一年面膜免费送
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1444793925652.png
+categories: 展示型
 tags:
   - 宣传
 author:

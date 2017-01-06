@@ -1,6 +1,7 @@
 title: 微信购物一周年用户画像
 subtitle: 
 cover: wechat shopping anniversary user portrait.jpg
+categories: 展示型
 tags:
   - 其他
 author:

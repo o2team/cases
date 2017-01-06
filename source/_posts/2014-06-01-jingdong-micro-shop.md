@@ -1,6 +1,7 @@
 title: 京东微店
 subtitle: 多动画并发时android卡顿的问题优化
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384699777.jpg
+categories: 展示型
 tags:
   - 宣传
 author:

@@ -1,6 +1,7 @@
 title: 京东神占卜
 subtitle: 准到哭的京东神占卜，揭秘你的小心思，二次开发的
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437385001150.jpg
+categories: 展示型
 tags:
   - 游戏
 author:

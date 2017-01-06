@@ -1,6 +1,7 @@
 title: 数钱数到手软
 subtitle: canvas制作游戏，事件机制发射游戏状态及进度。监听响应事件处理优惠券领券逻辑
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384721893.jpg
+categories: 游戏型
 tags:
   - 游戏
 author:

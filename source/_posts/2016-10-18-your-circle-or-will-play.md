@@ -1,6 +1,7 @@
 title: 贵圈还是会玩
 subtitle: 贵圈还是会玩
 cover: //jdc.jd.com/h5/imagespool/1476789552433.png
+categories: 展示型
 tags:
   - 宣传
 author:

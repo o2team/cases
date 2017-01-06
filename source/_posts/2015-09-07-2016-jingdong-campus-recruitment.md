@@ -1,6 +1,7 @@
 title: 2016京东校园招聘
 subtitle: 12313
 cover: http://jdc.jd.com/h5/imagespool/1441609977454.png
+categories: 展示型
 tags:
   - 招聘
 author:

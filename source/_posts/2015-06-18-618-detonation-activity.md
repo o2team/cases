@@ -1,6 +1,7 @@
 title: 618引爆活动
 subtitle: 3D
 cover: http://jdc.jd.com/h5/imagespool/1452149490410.png
+categories: 展示型
 tags:
   - 宣传
 author:

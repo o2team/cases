@@ -1,6 +1,7 @@
 title: 中欧京东班首发起航
 subtitle: 欣赏设计就好了，页面由HIPAGE生成的
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384994261.jpg
+categories: 展示型
 tags:
   - 招聘
 author:

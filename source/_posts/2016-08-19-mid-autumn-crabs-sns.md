@@ -1,6 +1,7 @@
 title: 中秋大闸蟹SNS
 subtitle: 玩法，通过集齐五种月饼参与抽奖。
 cover: //jdc.jd.com/h5/imagespool/1480500193429.png
+categories: 游戏型
 tags:
 author:
   nick: 京东

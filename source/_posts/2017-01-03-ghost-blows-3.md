@@ -1,7 +1,7 @@
 title: 鬼吹灯-精绝古城广州篇
 subtitle: 秘传百年的羊城传说，这次终于有望得到证实！
 cover: ghost blows 3.jpg
-categories: 视频型
+categories: 技术型
 tags:
   - Git
   - Fork

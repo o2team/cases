@@ -1,6 +1,7 @@
 title: 京东首届创业培训营招募
 subtitle: 京东首届创业培训营招募
 cover: http://jdc.jd.com/h5/imagespool/1457701164390.png
+categories: 展示型
 tags:
   - 宣传
 author:

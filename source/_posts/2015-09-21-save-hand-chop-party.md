@@ -1,6 +1,7 @@
 title: 拯救剁手党
 subtitle: 拯救剁手党
 cover: http://jdc.jd.com/h5/imagespool/1444803903867.png
+categories: 展示型
 tags:
   - 宣传
 author:

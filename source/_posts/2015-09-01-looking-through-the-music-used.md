@@ -1,6 +1,7 @@
 title: 二手翻翻乐
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1452150260400.png
+categories: 游戏型
 tags:
   - 游戏
 author:

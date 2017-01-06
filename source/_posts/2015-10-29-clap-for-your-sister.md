@@ -1,6 +1,7 @@
 title: 拍拍找你妹
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1452149254470.png
+categories: 游戏型
 tags:
   - 游戏
 author:

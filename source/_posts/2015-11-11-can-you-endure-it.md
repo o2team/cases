@@ -1,6 +1,7 @@
 title: 你能忍吗？
 subtitle:  
 cover: http://jdc.jd.com/h5/imagespool/1452149362698.png
+categories: 场景型
 tags:
   - 宣传
 author:

@@ -1,6 +1,7 @@
 title: 拍拍手游戏
 subtitle: 1.使用audio sprite应用于ios上，实现多音频交互；2. 分拆音频在android系统下，使用在各种第三方浏览器下，音频交互都可以进行。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384647013.jpg
+categories: 展示型
 tags:
   - 游戏
 author:

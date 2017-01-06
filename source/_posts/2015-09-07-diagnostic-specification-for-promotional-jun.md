@@ -1,6 +1,7 @@
 title: 促销君的诊断说明书
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1441619370702.png
+categories: 展示型
 tags:
   - 宣传
 author:

@@ -1,6 +1,7 @@
 title: 京东800万
 subtitle: zoom的应用，使用在不同分辨率下，文案都以一屏显示
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384628732.jpg
+categories: 展示型
 tags:
   - 宣传
 author:

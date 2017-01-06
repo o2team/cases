@@ -1,6 +1,7 @@
 title: 微信购物一周年红人惠
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1444299969921.png
+categories: 展示型
 tags:
   - 其他
 author:

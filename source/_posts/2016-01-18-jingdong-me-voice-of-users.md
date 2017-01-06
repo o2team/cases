@@ -1,6 +1,7 @@
 title: 京东ME·用户之声
 subtitle: 用户之声推广页
 cover: //jdc.jd.com/h5/imagespool/1460635698146.png
+categories: 展示型
 tags:
   - 宣传
 author:

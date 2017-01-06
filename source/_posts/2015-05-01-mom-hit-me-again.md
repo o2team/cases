@@ -1,6 +1,7 @@
 title: 妈妈再打我一次
 subtitle: 感人
 cover: mom hit me again.jpg
+categories: 游戏型
 tags:
   - 游戏
 author:

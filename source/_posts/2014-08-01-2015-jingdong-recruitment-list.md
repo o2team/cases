@@ -1,6 +1,7 @@
 title: 2015京东招募榜
 subtitle: 编写支持四向滚动的滑动翻页组件
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384634952.jpg
+categories: 展示型
 tags:
   - 招聘
 author:

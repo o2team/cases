@@ -1,6 +1,7 @@
 title: 来自星座买手们的使用报告
 subtitle: 利用canvas制作，刷字效果。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384811647.jpg
+categories: 展示型
 tags:
   - 宣传
 author:

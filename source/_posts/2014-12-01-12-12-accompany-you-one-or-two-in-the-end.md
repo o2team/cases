@@ -1,6 +1,7 @@
 title: 12.12 陪你一二到底
 subtitle: 贱贱的手绘风格，引爆朋友圈转发。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384872899.jpg
+categories: 展示型
 tags:
   - 其他
 author:

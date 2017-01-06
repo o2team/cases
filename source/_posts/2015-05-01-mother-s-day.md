@@ -1,6 +1,7 @@
 title: 拍拍母亲节活动
 subtitle: 
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437388639306.jpg
+categories: 展示型
 tags:
   - 其他
 author:

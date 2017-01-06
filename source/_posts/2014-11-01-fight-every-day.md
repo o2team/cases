@@ -1,6 +1,7 @@
 title: 天天拼购
 subtitle: 十二星座奇葩省钱秘籍，JS结合css实现Android 2.3动画效果的优雅降级
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384832204.jpg
+categories: 展示型
 tags:
   - 其他
 author:

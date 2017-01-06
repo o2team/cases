@@ -1,6 +1,7 @@
 title: iPhone6预约
 subtitle: 模拟iPhone滑动解锁效果。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384739963.jpg
+categories: 展示型
 tags:
   - 其他
 author:

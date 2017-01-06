@@ -1,6 +1,7 @@
 title: 你无聊么？
 subtitle: 创新项目
 cover: http://jdc.jd.com/h5/imagespool/1443148406991.png
+categories: 场景型
 tags:
   - 宣传
 author:

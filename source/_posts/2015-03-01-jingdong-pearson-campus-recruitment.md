@@ -1,6 +1,7 @@
 title: 京东管培生校园招聘
 subtitle: Jimmy画得真好啊！
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384964857.jpg
+categories: 展示型
 tags:
   - 招聘
 author:

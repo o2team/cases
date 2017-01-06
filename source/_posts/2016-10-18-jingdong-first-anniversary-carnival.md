@@ -1,6 +1,7 @@
 title: 京东到家 一周年狂欢趴
 subtitle: 京东到家 一周年狂欢趴
 cover: //jdc.jd.com/h5/imagespool/1476790115915.png
+categories: 游戏型
 tags:
   - 宣传
 author:

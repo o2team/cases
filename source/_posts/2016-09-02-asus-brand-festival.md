@@ -1,6 +1,7 @@
 title: 华硕品牌盛典
 subtitle: 依托create.js库分离背景，人物，怪物三层对象，通过游戏逻辑控制对象操作，实现酷跑跳跃躲怪
 cover: //jdc.jd.com/h5/imagespool/1480558944343.png
+categories: 游戏型
 tags:
 author:
   nick: 京东

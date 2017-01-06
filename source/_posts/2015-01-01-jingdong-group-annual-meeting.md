@@ -1,6 +1,7 @@
 title: 京东集团年会
 subtitle: 科技感
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384892473.jpg
+categories: 展示型
 tags:
   - 其他
 author:

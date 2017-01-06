@@ -1,6 +1,7 @@
 title: 拍拍618剁手猜价
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1452150362011.png
+categories: 游戏型
 tags:
   - 游戏
 author:

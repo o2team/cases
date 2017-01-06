@@ -1,6 +1,7 @@
 title: 拍拍APP-双十一攻略
 subtitle: 
 cover: pat app double eleven raiders.jpg
+categories: 展示型
 tags:
   - 宣传
 author:

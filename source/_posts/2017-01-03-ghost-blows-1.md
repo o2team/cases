@@ -1,7 +1,7 @@
 title: 鬼吹灯-精绝古城帝都篇
 subtitle: 是谣传还是史实，扒一扒隐藏在帝都地下的惊世秘密！
 cover: ghost blows 1.jpg
-categories: 视频型
+categories: 技术型
 tags:
   - Git
   - Fork

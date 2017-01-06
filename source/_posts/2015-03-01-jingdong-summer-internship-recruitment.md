@@ -1,6 +1,7 @@
 title: 京东暑期实习招聘
 subtitle: 真的不知道怎么描述了。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437388991700.jpg
+categories: 展示型
 tags:
   - 招聘
 author:

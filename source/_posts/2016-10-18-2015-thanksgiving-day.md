@@ -1,6 +1,7 @@
 title: 2015感恩节
 subtitle: 
 cover: 2015 thanksgiving day.jpg
+categories: 场景型
 tags:
   - 宣传
 author:

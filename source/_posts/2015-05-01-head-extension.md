@@ -1,6 +1,7 @@
 title: 麦芒推广
 subtitle: 
 cover: http://jdc.jd.com/h5/imagespool/1445239446209.png
+categories: 展示型
 tags:
   - 其他
 author:

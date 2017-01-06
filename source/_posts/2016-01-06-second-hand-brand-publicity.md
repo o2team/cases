@@ -1,6 +1,7 @@
 title: 二手品牌宣传
 subtitle: 二手品牌宣传
 cover: http://jdc.jd.com/h5/imagespool/1453098502367.png
+categories: 展示型
 tags:
   - 宣传
 author:

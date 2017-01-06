@@ -1,6 +1,7 @@
 title: 京东旗下拍拍APP全新上线
 subtitle: 拍拍新版APP推广页，H5页面中嵌入视频模拟H5动画
 cover: http://jdc.jd.com/h5/imagespool/1442391241916.png
+categories: 视频型
 tags:
   - 宣传
 author:

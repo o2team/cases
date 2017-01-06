@@ -1,6 +1,7 @@
 title: 小家电SNS
 subtitle: 使用promise异步优雅控制牌子掉落，混淆，翻起效果
 cover: //jdc.jd.com/h5/imagespool/1480559216250.png
+categories: 游戏型
 tags:
   - 游戏
 author:

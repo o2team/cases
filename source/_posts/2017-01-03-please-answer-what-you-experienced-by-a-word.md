@@ -1,7 +1,7 @@
 title: 请回答2016你经历了一个什么词
 subtitle: 用来一句话描述文章
 cover: please answer what you experienced by a word.jpg
-categories: 视频型
+categories: 场景型
 tags:
   - Git
   - Fork

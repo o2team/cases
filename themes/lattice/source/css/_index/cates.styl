@@ -4,6 +4,13 @@
     margin-bottom: 15px
     overflow: hidden
     background: #fff
+    position: fixed
+    left: 0
+    right: 0
+    top: 0
+    z-index: 3
+    box-shadow: 0 2px 4px rgba(0,0,0,.1)
+
     &::-webkit-scrollbar
         display: none
     
@@ -28,13 +35,17 @@
         flex-basis: 0
         padding: 0 10px
         font-size: 16px
-        height: 30px
-        line-height:30px;
+        
+        a
+            display: block
+            line-height:48px;
+            
         &.active
             background: bg-primary
             font-weight: 400
             a
                 color: #fff
+
                 cursor: default
                 &:hover
                     color: #fff

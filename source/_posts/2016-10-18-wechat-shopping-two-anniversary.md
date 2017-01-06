@@ -1,6 +1,7 @@
 title: 微信购物两周年
 subtitle: 微信购物两周年
 cover: //jdc.jd.com/h5/imagespool/1476790472548.png
+categories: 展示型
 tags:
   - 宣传
 author:

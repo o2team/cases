@@ -1,6 +1,7 @@
 title: 寻找搭配达人大赛
 subtitle: 进入活动页面后，用户上传搭配作品后，通过分享的方式邀请好友为自己点赞。如果用户的点赞数达到全国前100即有机会获得大奖。每个用户最多能发布10套作品  
 cover: http://jdc.jd.com/h5/imagespool/1442560860387.png
+categories: 展示型
 tags:
   - 其他
 author:

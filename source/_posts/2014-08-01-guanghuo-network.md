@@ -1,6 +1,7 @@
 title: 广货网上行
 subtitle: Grunt系列插件[sass, inline, uglify, imagemin]使用，将页面总资源压缩到90kb，http请求减少至4次。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384747642.jpg
+categories: 展示型
 tags:
   - 其他
 author:

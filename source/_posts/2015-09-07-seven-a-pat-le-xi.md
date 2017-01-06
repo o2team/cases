@@ -1,6 +1,7 @@
 title: 拍拍七叻个夕
 subtitle: 重口味
 cover: seven a pat le xi.jpg
+categories: 游戏型
 tags:
   - 趣味游戏
   - 游戏

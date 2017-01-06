@@ -1,6 +1,7 @@
 title: 拍拍二手-欢迎页
 subtitle: 
 cover: pat second hand welcome page.jpg
+categories: 展示型
 tags:
   - 宣传
   - 移动案例

@@ -1,6 +1,7 @@
 title: 2015京东校园招聘
 subtitle: 1.compass快速切二倍图组合，快速定位图片；2.前后视差效果。
 cover: http://jdc.jd.com/h5/imagespool/1441610092432.png
+categories: 展示型
 tags:
   - 招聘
 author:

@@ -1,6 +1,7 @@
 title: 拍拍微小店-推广页H5版
-subtitle: 
+subtitle: 好赞的动画
 cover: http://jdc.jd.com/h5/imagespool/1441686495817.png
+categories: 展示型
 tags:
   - 其他
 author:

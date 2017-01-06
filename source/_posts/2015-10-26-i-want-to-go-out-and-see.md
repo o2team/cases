@@ -1,6 +1,7 @@
 title: 我想出去看看啊
 subtitle: 
 cover: i want to go out and see.jpg
+categories: 展示型
 tags:
   - 宣传
 author:

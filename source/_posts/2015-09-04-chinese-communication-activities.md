@@ -1,6 +1,7 @@
 title: 七夕传播活动
 subtitle: 能过手机摇一摇来完成交互。  技术亮点：模拟实物碰撞效果。 
 cover: http://jdc.jd.com/h5/imagespool/1441610048887.png
+categories: 游戏型
 tags:
   - 其他
 author:

@@ -1,6 +1,7 @@
 title: 京东到家三八节活动H5
 subtitle: 对于createJs配合canvas逐帧动画场景下
 cover: //jdc.jd.com/h5/imagespool/1476788780480.png
+categories: 场景型
 tags:
   - 宣传
 author:
