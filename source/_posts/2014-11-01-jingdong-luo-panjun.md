@@ -1,6 +1,7 @@
 title: 京东罗盘君
 subtitle: js加css生成随机的落叶效果。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384818571.jpg
+categories: 展示型
 tags:
   - 其他
 author:
