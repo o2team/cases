@@ -1,6 +1,7 @@
 title: 男装节SNS -- 我要找李白
 subtitle: 玩法：在一张画券中找出随机分布的李白，如果在规定时间内找到所有的李白就有机会参与抽奖。
 cover: //jdc.jd.com/h5/imagespool/1480502986243.png
+categories: 展示型
 tags:
 author:
   nick: 京东
