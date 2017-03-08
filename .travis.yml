@@ -1,0 +1,27 @@
+language: node_js
+sudo: false
+node_js:
+- '6'
+cache:
+  apt: true
+  directories:
+  - node_modules
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+  ssh_known_hosts: github.com
+script:
+- npm run build
+- npm run clean
+- npm run deploy  "${TRAVIS_PULL_REQUEST}"
+branches:
+  only:
+  - src
+env:
+  global:
+  - CXX: g++-4.8
+  - GH_REPO: github.com/o2team/cases.git
+  - secure: jqa4AMJqwhINU876Z6SjFqzL02UDAr1S4TyknNy66gE+Cbp5GsaGct1W78MpKHfyA6mthjm29zgvYF8nuR2SrIBVbtcDWvULA0AoDazwwS1yPsjhIbRCPioHTky9KMfkb8Fkxj3R+plD/So9fGsfSr1eJCGJPtjUV9mGhVT/lEyMATCRNCPH0I34e7YYqTyotel0hd8EruTnl6hSNBsY+CSdH/Tw6gROJGqE5fMkeUVMPEvYhxF1Rr3yKAB+Jhm+fi0hWotaaqKGOvkeFo866hStgKE9vwr3JLtIynsxPyiO9aZ1Jeu5kztdgeHKuSrgxNTxAdeD/P1eWScn26/MJZfmbI0DQ9Hz3Ccm3YilS1ByuxyNfEGTdiHJwn6nDtgremD4CLuqC4ZbeC/mi2Uxrpqk33KaNS2UKVNhf0yyIM0Q5zSw9Rj2fGnchqzHv27wi3ixfHYthgHy+T12ECBaMUK7Nh8jEg9UDo7dm2cAZzS22rUbWXTZWqZSHGmEdj29ep0fFiaqSJKPJ3mL2myAtcf8XMoKvIcLSoAw1PIB68ykU8UvAukPWeKvMRJAYsxsPRU5j7NgEBUmsCbnV3o3c39iLRbGJ6iCunshoqCfnjLYEq/Woo1n1Yf88bEz6CvWf1LJWSl1oUZVbPFBI6ys4qVggGqW+bt1jjJLIhlID5A=

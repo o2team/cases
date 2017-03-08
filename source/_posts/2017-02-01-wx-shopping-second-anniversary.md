@@ -12,5 +12,3 @@ date: 2017-02-01 17:27:26
 publishDate: 2017-02-01 17:27:26
 link: http://jdc.jd.com/fd/promote/201606/wx_anniversary/home.html
 ---
-
-<!-- more -->

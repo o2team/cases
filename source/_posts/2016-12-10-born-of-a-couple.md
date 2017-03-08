@@ -13,4 +13,4 @@ publishDate: 2016-01-25 16:00:00
 link: http://cny.kappa.com.cn/
 ---
 
-<!-- more -->
+ 

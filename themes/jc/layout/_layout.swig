@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="theme-lattice">
+<html class="theme-jc">
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}「{{ config.subtitle }}」{% endblock %}</title>
