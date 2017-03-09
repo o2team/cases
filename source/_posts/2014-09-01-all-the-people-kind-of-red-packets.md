@@ -1,6 +1,7 @@
 title: 全民种红包
 subtitle: 使用局部横向滚动、局部纵向滚动、在不同尺寸的设备中一屏显示所有内容。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437384732755.jpg
+categories: 游戏型
 tags:
   - 游戏
 author:

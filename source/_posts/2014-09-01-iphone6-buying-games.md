@@ -1,6 +1,7 @@
 title: IPHONE6抢购游戏
 subtitle: canvas跳绳游戏，dom和canvas结合快速去掉了字体模糊问题。
 cover: http://jdc.jd.com/jfs/download/blobs/blob1437386870923.jpg
+categories: 游戏型
 tags:
   - 游戏
 author:
