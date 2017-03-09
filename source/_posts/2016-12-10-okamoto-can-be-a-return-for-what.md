@@ -12,5 +12,3 @@ date: 2016-12-10 13:30:17
 publishDate: 2016-03-10 08:00:00
 link: http://h5.baconbuy.com/okamoto/
 ---
-
-<!-- more -->

@@ -12,5 +12,3 @@ date: 2017-02-15 17:27:26
 publishDate: 2016-02-01 17:27:26
 link: http://monkey.wearewer.com/
 ---
-
-<!-- more -->

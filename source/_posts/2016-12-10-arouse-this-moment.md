@@ -13,4 +13,4 @@ publishDate: 2015-10-26 08:00:00
 link: http://www.banyantreehuangshanevents.com/index.html
 ---
 
-<!-- more -->
+ 

@@ -8,14 +8,14 @@ subtitle: H5频道页
 subtitle_desc: Open Oriented Development Center
 slogan: Open Oriented, more haste, less speed.
 keywords: 凹凸实验室, Aotu, 前端开发, 全栈开发, IOS开发, Android开发
-description: 凹凸实验室(Aotu.io) 始建于2015年，是一个年轻基情的技术社区组织。<br/>O2面向多终端技术体系，致力于构建沉淀与分享包括但不限于交互、页面制作技巧、前端开发、原生APP开发等方面的专业知识及案例。
+description: 凹凸实验室精心挑选的HTML5场景应用。凹凸实验室(Aotu.io) 始建于2015年，是一个年轻基情的技术社区组织。<br/>O2面向多终端技术体系，致力于构建沉淀与分享包括但不限于交互、页面制作技巧、前端开发、原生APP开发等方面的专业知识及案例。
 author: 凹凸实验室
 language: zh-cn
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://aotu.io
+url: https://cases.aotu.io
 root: /
 permalink: notes/:year/:month/:day/:title/
 permalink_defaults:
@@ -29,8 +29,8 @@ category_dir: cates
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-  - 'baidu*.html'
   - 'demo/**'
+  - 'mobi/**'
 
 # Writing
 new_post_name: :year-:month-:day-:title.md # File name of new posts
@@ -62,32 +62,30 @@ time_format: HH:mm:ss
 
 # generator-index
 index_generator:
-  per_page: 24
+  per_page: 12
   order_by: -date
 
 # tag generator
 ## https://github.com/hexojs/hexo-generator-tag
 tag_generator:
-  per_page: 24
+  per_page: 12
 
 # fragments generator
 ## https://github.com/mamboer/hexo-generator-fragments
 fragments_generator:
   dir: fragments
-  per_page: 24
+  per_page: 12
   index_dir: index
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 24
+per_page: 12
 pagination_dir: page
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: lattice
-# theme: o2
-
+theme: jc
 
 # Feeds
 ## https://www.npmjs.com/package/hexo-generator-feed
@@ -118,7 +116,7 @@ deploy:
   type: git
   message: Super AOTUMan at {{ now('YYYY-MM-DD HH:mm:ss') }}
   repo: 
-    github: git@github.com:o2team/o2team.github.io.git,master
+    github: git@github.com:o2team/cases.git,gh-pages
 
 # Disqus
 disqus_shortname:
@@ -136,7 +134,7 @@ github:
 
 # baidu sitemap
 baidusitemap:
-  url: http://aotu.io/
+  url: https://cases.aotu.io/
 
 baiduce: 2b74a5aea155a215abea8547f929190c
 
@@ -144,6 +142,8 @@ baiduce: 2b74a5aea155a215abea8547f929190c
 hfc_useref:
   enable: true
   concat: true
+  exclude:
+    - '**/mobi/**'
 
 hfc_html:
   enable: true
@@ -152,12 +152,14 @@ hfc_css:
   enable: true
   exclude: 
     - '*.min.css'
+    - '**/mobi/**'
 
 hfc_js:
   enable: true
   mangle: true
   exclude: 
     - '*.min.js'
+    - '**/mobi/**'
 
 hfc_img:
   enable: true

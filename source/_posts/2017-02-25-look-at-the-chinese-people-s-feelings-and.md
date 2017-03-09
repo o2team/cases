@@ -12,5 +12,3 @@ date: 2017-02-14 17:27:26
 publishDate: 2015-02-01 17:27:26
 link: http://rmb.wearewer.com/
 ---
-
-<!-- more -->

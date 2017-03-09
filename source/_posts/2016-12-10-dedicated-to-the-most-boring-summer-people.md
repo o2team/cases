@@ -12,5 +12,3 @@ date: 2016-12-10 13:32:44
 publishDate: 2015-11-09 08:00:00
 link: http://summer.wearewer.com/
 ---
-
-<!-- more -->

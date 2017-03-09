@@ -12,5 +12,3 @@ date: 2017-01-03 17:45:28
 publishDate: 2016-12-30 16:00:00
 link: http://news.163.com/special/dada2016/
 ---
-
-<!-- more -->
