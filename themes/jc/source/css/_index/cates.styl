@@ -2,67 +2,51 @@
     overflow: hidden
     font-size: 16px
     margin-bottom: 15px
+    height: 50px
+    line-height: 50px
     overflow: hidden
     background: #fff
-    position: fixed
-    left: 0
-    right: 0
-    top: 0
-    z-index: 3
-    box-shadow: 0 2px 4px rgba(0,0,0,.1)
-
     &::-webkit-scrollbar
         display: none
     
-
     ul
-        display: flex
-        justify-content: space-between
-        flex-wrap: wrap
+        float: left
+        display: block
+        white-space: nowrap
         height: 100%
         font-size: 0
         position: relative
         -webkit-overflow-scrolling: touch
         overflow-x: scroll
+        overflow-y: hidden
         &::-webkit-scrollbar
             display: none
     li
-        // display: inline-block
-        text-align: center
-        white-space: nowrap
-        flex-basis: (100%/9)
-        flex-grow: 1
-        flex-basis: 0
+        display: inline-block
         padding: 0 10px
         font-size: 16px
-        
-        a
-            display: block
-            line-height:48px;
-            
+        margin: 10px 10px 10px 0
+        height: 30px
+        line-height:30px;
         &.active
             background: bg-primary
             font-weight: 400
             a
                 color: #fff
-
                 cursor: default
                 &:hover
                     color: #fff
-
-    // +mobile()
-    //     padding: 0 10px
-    //     h3
-    //         display: none
-    //     ul
-    //         float: none
-    //     li
-    //         margin-right: 15px
-    //         &.active
-    //             background: none
-    //             a
-    //                 color: $color-theme
-    //     font-size: 14px
-    //     box-shadow: 0 1px 2px rgba(0,0,0,0.1)
-
-        
+    +mobile()
+        padding: 0 10px
+        h3
+            display: none
+        ul
+            float: none
+        li
+            margin-right: 15px
+            &.active
+                background: none
+                a
+                    color: $color-theme
+        font-size: 14px
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1)

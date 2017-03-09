@@ -13,12 +13,12 @@
                         {{ header_menu('main-nav') }}
                     </ul>
                 </nav>
-                <div class="mod-search" id="J_search">
+                {# <div class="mod-search" id="J_search">
                     <a class="fa fa-search mod-search-ico" id="J_searchTrigger" title="{{ __('menu.search') }}"></a>
                     <form id="J_searchForm" method="get" class="mod-search-form" action="/search/">
                         <input type="text" name="query" class="mod-search-ipt" id="J_searchInput" placeholder="{{ __('menu.search') }}" />
                     </form>
-                </div>
+                </div> #}
             </div> 
         </div>
     </div>

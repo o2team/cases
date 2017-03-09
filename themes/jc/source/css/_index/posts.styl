@@ -1,22 +1,21 @@
 .posts
-  // margin-right: -30px
+  margin-right: -30px
   text-align: center
-  margin-top: 50px;
   &:after
     content: ' '
     clear: both
     display: table
-  // +mobile() {
-  //   margin-right: 0      
-  // }
-  // +desktop() {
-  //   margin-right: -60px
-  // }
+  +mobile() {
+    margin-right: 0      
+  }
+  +desktop() {
+    margin-right: -60px
+  }
     
  .mod-post
     overflow: hidden
     background: #fff
-    margin: 10px
+    margin: 0 10px 10px
     padding: 10px
     box-sizing: content-box
     // float: left
@@ -46,7 +45,6 @@
       background-position: 50% 0
       background-repeat: no-repeat
       background-size: cover
-
       & img
         display: block
         width: 100%

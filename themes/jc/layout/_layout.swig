@@ -6,9 +6,9 @@
     {{partial('_partial/common/head')}}
 </head>
 <body class="{% block page_class %}{% endblock %}">
-    {# {% block header %}
+    {% block header %}
         {% include '_partial/common/header.swig' %}
-    {% endblock %} #}
+    {% endblock %}
 
 	{% block main %}{% endblock %}
 
