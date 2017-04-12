@@ -1,7 +1,7 @@
 title: 60秒，帮你摆脱朋友圈
 subtitle: 利用重力感应判断手机是否在60秒内被使用。
 cover: help you get rid of moments in 60 seconds.jpg
-categories: 游戏
+categories: 场景型
 tags:
   - Git
   - Fork
