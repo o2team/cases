@@ -52,3 +52,47 @@
         +mobile() {
             height: 200px
         }
+
+.github-star-btn
+    position fixed;
+    right: 0;
+    top: 0;
+    background-color: #6190e8;
+    width: 60px;
+    line-height: 30px;
+    
+    text-align: center
+    font-weight: 400
+    margin-top: 15px;
+    z-index: 30
+
+    a
+        color: #fff;
+
+.github-star
+    vertical-align: middle
+    margin-top: -2px;
+    margin-right: 4px;
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+  animation: shake 1s 1s both
+}
