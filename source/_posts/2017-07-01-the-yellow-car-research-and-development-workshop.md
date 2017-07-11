@@ -1,7 +1,7 @@
 title: ofo小黄车研发车间
-subtitle: 该H5的寓意是表现品牌在进化和升级的过程中逐渐的开始包罗万象，涵盖的面越来越广阔。
+subtitle: 将小黄人的幽默带进ofo的生厂车间。
 cover: the yellow car research and development workshop.jpg
-categories: 视频型
+categories: 场景型
 tags:
   - Git
   - Fork

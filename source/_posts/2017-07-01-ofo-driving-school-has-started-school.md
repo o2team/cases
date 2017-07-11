@@ -1,7 +1,7 @@
 title: ofo驾校已开学，来和鹿晗一起安全骑行
-subtitle: 该H5的寓意是表现品牌在进化和升级的过程中逐渐的开始包罗万象，涵盖的面越来越广阔。
+subtitle: 以视频为载体，展示ofo的日常注意事项。
 cover: ofo driving school has started school.jpg
-categories: 视频型
+categories: 场景型型
 tags:
   - Git
   - Fork
