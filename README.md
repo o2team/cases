@@ -6,9 +6,9 @@
 ## 提交
 开发环境：Node.js v5
 
-  1. 拉取该项目代码，切换到 `src` 分支。
-  2. 在 `./source/_posts/` 添加指定格式的文件。如：
-  ```
+1. 拉取该项目代码，切换到 `src` 分支。
+2. 在 `./source/_posts/` 添加指定格式的文件。如：
+```
   title: 穿上军装（标题）
   subtitle: 根据用户用户上传的头像生成不同年代的军装照。（描述）
   cover: put on uniforms.jpg （封面）
@@ -23,10 +23,9 @@
   publishDate: 2017-08-01 17:28:36（展示日期）
   link: http://www.h5case.com.cn/case/people-cn/81/（体验链接）
   ---
-
   ```
-  3. 封面上传到 https://github.com/o2team/misc/tree/gh-pages/JChehe/html5cases （格式取决于你填写，尺寸为 375px * 667px）
-  4. 填好信息和上传图片后，`hexo s` 预览效果。
-  5. 检查无误后 push 代码。
+3. 封面上传到 https://github.com/o2team/misc/tree/gh-pages/JChehe/html5cases （格式取决于你填写，尺寸为 375px * 667px）。  
+4. 填好信息和上传图片后，执行 `hexo s` 预览效果。   
+5. 检查无误后 push 代码。   
 
 感谢！✌️
