@@ -8,13 +8,18 @@ var publicDir   = hexo.public_dir;
 var sourceDir   = hexo.source_dir;
 var route       = hexo.route;
 
-var postImgDir  = 'img/post/';  
+var postImgDir  = 'img/post/';
 
-var localizedPath = ['docs', 'api'];    
+var localizedPath = ['docs', 'api'];
 
 // Utils
 function startsWith(str, start){
     return str.substring(0, start.length) === start;
+}
+
+// 移除协议
+function removeProtocol (url) {
+  return url.replace(/^http(s?):/i, '')
 }
 
 // Hexo extensions
@@ -55,9 +60,9 @@ hexo.extend.helper.register('header_menu', function(className){
     path1 = this.path,
     isActive = function(path0){
         if(path0 === 'index.html') {
-            return path1 === path0;    
+            return path1 === path0;
         }
-        return (path1.indexOf(path0)!==-1);    
+        return (path1.indexOf(path0)!==-1);
     }
 
   _.each(menu, function(path, title){
@@ -83,9 +88,9 @@ hexo.extend.helper.register('cate_menu', function(className){
     path1 = this.path,
     isActive = function(path0){
         if(path0 === 'index.html') {
-            return path1 === path0;    
+            return path1 === path0;
         }
-        return (path1.indexOf(path0) !== -1);    
+        return (path1.indexOf(path0) !== -1);
     }
 
   menu.forEach(function(obj) {
@@ -120,7 +125,7 @@ hexo.extend.helper.register('page_keywords', function(asStr){
     if (tags) {
         tags.each(function(tag){
             siteKeywords.splice(0, 0, tag.name);
-        }); 
+        });
     }
     if (asStr) {
         return siteKeywords.join(',');
@@ -147,3 +152,18 @@ hexo.extend.helper.register('num_toArray', function(num) {
     }
     return ret;
 });
+
+hexo.extend.helper.register('setImgWidthWithJFS', function (url) {
+  if (!url) return ''
+  if (url.indexOf('360buyimg.com') === -1 || url.indexOf('jfs') === -1) return url
+
+  let imgUrl = removeProtocol(url)
+
+  // 统一使用 300x300 分辨率的图片
+  let regExp = /\/jfs\//i
+  if (regExp.test(imgUrl)) {
+    imgUrl = imgUrl.replace(regExp, '/s375x667_jfs/')
+  }
+
+  return imgUrl
+})
