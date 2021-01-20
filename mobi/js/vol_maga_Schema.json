@@ -1,0 +1,52 @@
+{
+	"title": "vol_maga Schema", 
+	"type": "object", 
+	"properties": {
+		"vol": {
+			"description": "期刊期数", 
+			"type": "integer", 
+			"minimum": 0
+		}, 
+		"date": {
+			"description": "当期发刊日, yyyy-mm-dd", 
+			"type": "string"
+		}, 
+		"prewords": {
+			"description": "当期导语，将在封面出现", 
+			"type": "string", 
+			"maximun": 32
+		}, 
+		"cover": {
+			"description": "当期封面大图，相对地址，images/cover/", 
+			"type": "string"
+		}, 
+		"covers": {
+			"description": "当期封面小图，相对地址，images/cover",
+			"type": "string"
+		}, 
+		"hexocolor": {
+			"description": "当期封面色调", 
+			"type": "array", 
+			"items": {
+				"0": {
+					"description": "封面主色，HEX值", 
+					"type": "string", 
+					"maximun": 6
+				}, 
+				"1": {
+					"description": "封面边框色，HEX值", 
+					"type": "string", 
+					"maximun": 6
+				}
+			}
+		}, 
+		"shareTitle": {
+			"description": "分享标题", 
+			"type": "string"
+		}, 
+		"shareText": {
+			"description": "分享语，分享副标题", 
+			"type": "string"
+		}
+	}
+}
